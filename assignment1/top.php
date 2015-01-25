@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Mark me wrong</title>
+        <title>Register Today</title>
         <meta charset="utf-8">
-        <meta name="author" content="Mark me wrong">
-        <meta name="description" content="Mark me wrong for not changing this">
+        <meta name="author" content="sam colburn">
+        <meta name="description" content="a form">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
-
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-
+        <link rel="stylesheet" title="professional" href="form.css" type="text/css" media="screen">
+        <link rel="alternate stylesheet" title="creative" href="form2.css" type="text/css" media="screen">
         <?php
         $debug = false;
 

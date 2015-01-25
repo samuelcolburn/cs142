@@ -33,7 +33,7 @@ $dataRecord[] = $comments;
 //Initialize: SECTION 1c.
 $gender="Female";
 
-//Sanitize: SECTION 2c.
+//Sanitize: SECTION 2b.
 $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
 $dataRecord[] = $gender;
 
