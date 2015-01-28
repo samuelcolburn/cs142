@@ -1,4 +1,4 @@
-/* CSS designed by  Robert Erickson 
+/* CSS designed by  Sam Colburn 
 
 to understand the comments like 900px / 960px
    read http://alistapart.com/article/responsive-web-design/
@@ -8,6 +8,7 @@ to understand the comments like 900px / 960px
 body{
     margin: 36px auto;
     width: 90%;
+    font-family:Century Gothic, sans-serif;
 }
 
 #page{
@@ -27,20 +28,45 @@ body{
     width: 36.7777778%; /* 331px / 900px */
 }
 
+h2 {
+    font-weight:normal;
+    margin-left:6%;
+}
+
 /*****************     header section             *****************************/
 header h1 {
     padding: 0.8em 5.33333333%;  /* 48px / 900px */
+    font-weight:normal;
+    text-transform:uppercase;
+
 }
 
 
 /*****************     navigation section         *****************************/
 nav ol {
     padding-left: 5.33333333%;  /* 48px / 900px */
+    background-color:#0078D7;
+    color:#FFF;
 }
 nav ol li{
     display: inline-block;
     list-style-type: none;
     padding-right: 3em;
+}
+
+nav a:link{
+    color:#FFF;
+    text-decoration: none;
+}
+
+nav a:visited{
+    color:#FFF;
+    text-decoration: none;
+}
+
+nav a:hover{ 
+    text-decoration: none;
+
 }
 
 
@@ -69,10 +95,41 @@ aside h2, aside p{
 
 
 /*****************     footer section              ****************************/
-footer{
+/* ===================  Footer Section  ==================================== */
+
+
+footer {
+    font-size: small;
+    text-align: center;
+    margin-top:1em;
+    color:#FFF;
     clear: both;
-    padding: 0.8em 5.33333333%;  /* 48px / 900px */
+    background-color:#0078D7;
 }
+
+footer a:link{
+    color:#FFF;
+    text-decoration: none;
+    font-size:medium;
+
+}
+
+footer a:visited{
+    color:#FFF;
+    text-decoration: none;
+    font-size:medium;
+}    
+
+footer a:hover{
+    color:#FFF; 
+    text-decoration: none;
+    font-size: medium;
+
+}
+.footer {
+    color:#FFF;
+}
+
 
 /*****************     form section                ****************************/
 #form article#main{
@@ -82,30 +139,17 @@ footer{
     width: 600px; /* not repsonive but fixed */
 }
 
-/* need to clear any floats that may exist */
+/*need to clear any floats that may exist */
+
 fieldset{
-    border: 1px solid #00498e;
+    border-top:thin solid #0078D7;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    margin: 1em;
     clear: both;  
 }
-/* just pushes content to left side of the box. */
-fieldset.contact{
-    float: left;
-}
-/* when you look at the labels this pushes then next to the input and right
-aligns them. Display block means they are each on their own line. */
-fieldset.contact label{
-    display: block;
-    text-align: right /* pushes the text to the right where they line up */
-        /* the float left above pushes everything back to the left*/
-}
 
-fieldset.contact input{
-    width: 15em; /* works with above to be the same size for the boxes */
-}
-
-fieldset.buttons{
-    border: none;
-}
 
 fieldset.wrapper {
     border: 0;
@@ -113,32 +157,142 @@ fieldset.wrapper {
 }
 
 fieldset.wrapper legend {
-    color: #00498e;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 10px;
+    margin-left:5%
 }
 
-fieldset.wrapper > legend {
-    /* i only want the first legend ie if it follows the class wrapper */
-    font-size: 2em;
+fieldset.intro{
+    border-top: medium solid #349033;
 }
 
 label {
-    color: #005cb3;
+    color: #0F527A;
     display: block;
     font-size: .9em;
-    font-weight: bold;
+
 }
 
+label:hover {
+    background-color: #F5F5F5;
+}
+input {
+    color:#000;
+    border:0;
+    background-color:#F5F5F5;
+    border-radius:3px;
+
+}
+
+/*~~~ CONTACT ~~~~~~~~~~ */
+fieldset.contactwrapper{
+    float:none;
+}
+
+/* just pushes content to left side of the box. */
+fieldset.contact{
+    float: left;
+    margin:0;
+    padding:0;
+    border:0;
+   
+}
+legend.contact {
+    font-weight: normal;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.contact label{
+    display: block;
+    text-align: right;/* pushes the text to the right where they line up */
+     padding-top:0.5em;
+       
+}
+
+fieldset.contact input{
+    width: 28em; /* works with above to be the same size for the boxes */
+}
+
+
+
+/* ~~~ RADIO ~~~*/ 
+fieldset.radiowrapper {
+    float:none;
+}
+fieldset.radio {
+    float:left;
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+fieldset.radio label {
+    width:32em;
+    padding-top:0.1em;
+}
+/* ~~~ CHECKBOX ~~~*/ 
+fieldset.checklist label {
+    padding-top:0.1em;
+}
+/* ~~~ List Box ~~~*/ 
+
+select#lstMountains{
+    background-color:#F5F5F5;
+    border:0;
+    border-radius:3px;
+    color:#0F527A;
+    font-family:Century Gothic, sans-serif;
+}
+/* Style the comment box*/
+
+fieldset.textarea label {
+    float:left;
+    padding-top:0.5em;
+    padding-right:0.5em;
+}
+textarea#txtComments{
+    border:0;
+    background-color:#F5F5F5;
+    font-family: Tahoma, Geneva, sans-serif;
+    width:20em;
+    border-radius:3px;
+      overflow: auto;
+        resize: none;
+}
+
+
+/* changes button style*/
+fieldset.buttons{
+    border: none;
+    margin-top:0;
+    margin-left:5%;
+    margin-right:0;
+    margin-bottom:0;
+    padding:0;
+}
+
+input#btnSubmit{
+    background-color: #349033;
+    color: #FFF;
+    border: 0;
+    padding:0.5em;
+
+}
+input#btnSubmit:hover{
+    background-color: #69227B;
+
+}
 /* style the errors in the form so they are visible */
 .mistake {
     color: #fff;
-    background-color:#800;
-    border: thin solid #000;
+    background-color:#ff5555;
+    border: 0;
 }
 
 /* style the list of errors that will show before the form */
+
+#errors ol {
+    margin-top:5%;
+}
 #errors ol li{
     color: #ff5555;
+    margin-top:0.2em;
 }

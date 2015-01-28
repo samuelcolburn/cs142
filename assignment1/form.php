@@ -250,7 +250,7 @@ if (isset($_POST["btnSubmit"])) {
 
 <article id="main">
 
-<?php
+    <?php
 //####################################
 //
 // SECTION 3a.
@@ -260,131 +260,140 @@ if (isset($_POST["btnSubmit"])) {
 // 
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
-if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-    print "<h1>Your Request has ";
+    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+        print "<h1>Your Request has ";
 
-    if (!$mailed) {
-        print "not ";
-    }
+        if (!$mailed) {
+            print "not ";
+        }
 
-    print "been processed</h1>";
+        print "been processed</h1>";
 
-    print "<p>A copy of this message has ";
-    if (!$mailed) {
-        print "not ";
-    }
-    print "been sent</p>";
-    print "<p>To: " . $email . "</p>";
-    print "<p>Mail Message:</p>";
+        print "<p>A copy of this message has ";
+        if (!$mailed) {
+            print "not ";
+        }
+        print "been sent</p>";
+        print "<p>To: " . $email . "</p>";
+        print "<p>Mail Message:</p>";
 
-    print $message;
-} else {
+        print $message;
+    } else {
 
 
-    //####################################
-    //
+        //####################################
+        //
         // SECTION 3b Error Messages
-    //
+        //
         // display any error messages before we print out the form
 
-    if ($errorMsg) {
-        print '<div id="errors">';
-        print "<ol>\n";
-        foreach ($errorMsg as $err) {
-            print "<li>" . $err . "</li>\n";
+        if ($errorMsg) {
+            print '<div id="errors">';
+            print "<ol>\n";
+            foreach ($errorMsg as $err) {
+                print "<li>" . $err . "</li>\n";
+            }
+            print "</ol>\n";
+            print '</div>';
         }
-        print "</ol>\n";
-        print '</div>';
-    }
 
 
-    //####################################
-    //
+        //####################################
+        //
         // SECTION 3c html Form
-    //
+        //
         /* Display the HTML form. note that the action is to this same page. $phpSelf
-      is defined in top.php
-      NOTE the line:
+          is defined in top.php
+          NOTE the line:
 
-      value="<?php print $email; ?>
+          value="<?php print $email; ?>
 
-      this makes the form sticky by displaying either the initial default value (line 35)
-      or the value they typed in (line 84)
+          this makes the form sticky by displaying either the initial default value (line 35)
+          or the value they typed in (line 84)
 
-      NOTE this line:
+          NOTE this line:
 
-      <?php if($emailERROR) print 'class="mistake"'; ?>
+          <?php if($emailERROR) print 'class="mistake"'; ?>
 
-      this prints out a css class so that we can highlight the background etc. to
-      make it stand out that a mistake happened here.
+          this prints out a css class so that we can highlight the background etc. to
+          make it stand out that a mistake happened here.
 
-     */
-    ?>
+         */
+        ?>
 
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
-
+            <h2>Register Today</h2>
             <fieldset class="wrapper">
-                <legend>Register Today</legend>
-                <p>You information will greatly help us with our research.</p>
+                <legend></legend>
+
 
                 <fieldset class="intro">
                     <legend>Please complete the following form</legend>
 
+
                     <!-- start contact -->
+                     <fieldset class ="contactwrapper"><!-- start contact wrapper -->
+                          <legend>Contact Information</legend>
                     <fieldset class="contact">
-                        <legend>Contact Information</legend>
-                        <label for="txtFirstName" class="required">First Name
-                            <input type="text" id="txtFirstName" name="txtFirstName"
-                                   value="<?php print $firstName; ?>"
-                                   tabindex="100" maxlength="45" placeholder="Enter your first name"
-    <?php if ($firstNameERROR) print 'class="mistake"'; ?>
-                                   onfocus="this.select()"
-                                   autofocus>
-                        </label>
+                       
+                       
+                            <label for="txtFirstName" class="required">First Name
+                                <input type="text" id="txtFirstName" name="txtFirstName"
+                                       value="<?php print $firstName; ?>"
+                                       tabindex="100" maxlength="45" placeholder="Enter your first name"
+                                       <?php if ($firstNameERROR) print 'class="mistake"'; ?>
+                                       onfocus="this.select()"
+                                       autofocus>
+                            </label>
 
-                        <label for="txtLastName" class="required">Last Name
-                            <input type="text" id="txtLastName" name="txtLastName"
-                                   value="<?php print $LastName; ?>"
-                                   tabindex="110" maxlength="45" placeholder="Enter your last name"
-    <?php if ($LastNameERROR) print 'class="mistake"'; ?>
-                                   onfocus="this.select()"
-                                   autofocus>
-                        </label>
+                            <label for="txtLastName" class="required">Last Name
+                                <input type="text" id="txtLastName" name="txtLastName"
+                                       value="<?php print $LastName; ?>"
+                                       tabindex="110" maxlength="45" placeholder="Enter your last name"
+                                       <?php if ($LastNameERROR) print 'class="mistake"'; ?>
+                                       onfocus="this.select()"
+                                       autofocus>
+                            </label>
 
-                        <label for="txtEmail" class="required">Email
-                            <input type="text" id="txtEmail" name="txtEmail"
-                                   value="<?php print $email; ?>"
-                                   tabindex="120" maxlength="45" placeholder="Enter a valid email address"
-    <?php if ($emailERROR) print 'class="mistake"'; ?>
-                                   onfocus="this.select()" 
-                                   >
-                        </label>
-                    </fieldset> <!-- ends contact -->
+                            <label for="txtEmail" class="required">Email
+                                <input type="text" id="txtEmail" name="txtEmail"
+                                       value="<?php print $email; ?>"
+                                       tabindex="120" maxlength="45" placeholder="Enter a valid email address"
+                                       <?php if ($emailERROR) print 'class="mistake"'; ?>
+                                       onfocus="this.select()" 
+                                       >
+                            </label>
+                        </fieldset> <!-- ends contact -->
+                    </fieldset> <!-- ends contact wrapper -->
 
                     <!-- start radio -->
+                    <fieldset class ="radiowrapper"><!-- start radio wrapper -->
+                         <legend>What is your gender?</legend>
                     <fieldset class="radio">	
-                        <legend>What is your gender?</legend>
+                       
+                        
                         <label><input type="radio" 
                                       id="radGenderMale" 
                                       name="radGender" 
                                       value="Male"
-    <?php if ($gender == "Male") print 'checked' ?>
+                                      <?php if ($gender == "Male") print 'checked' ?>
                                       tabindex="330">Male</label>
                         <label><input type="radio" 
                                       id="radGenderFemale" 
                                       name="radGender" 
                                       value="Female"
-    <?php if ($gender == "Female") print 'checked' ?>
+                                      <?php if ($gender == "Female") print 'checked' ?>
                                       tabindex="340">Female</label>
                         <label><input type="radio" 
                                       id="radGenderOther" 
                                       name="radGender" 
                                       value="Other"
-    <?php if ($gender == "Other") print 'checked' ?>
+                                      <?php if ($gender == "Other") print 'checked' ?>
                                       tabindex="350">Other</label>
-                    </fieldset><!-- end radio -->	
+                            </fieldset><!-- end radio -->
+                    </fieldset>	<!-- end radio wrapper -->
 
                     <!-- start checkbox -->                  
                     <fieldset class="checkbox">
@@ -393,20 +402,21 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                       id="chkHiking" 
                                       name="chkHiking" 
                                       value="Hiking"
-    <?php if ($hiking) print " checked "; ?>
+                                      <?php if ($hiking) print " checked "; ?>
                                       tabindex="420"> Hiking</label>
 
                         <label><input type="checkbox" 
                                       id="chkKayaking" 
                                       name="chkKayaking" 
                                       value="Kayaking"
-    <?php if ($kayaking) print " checked "; ?>
+                                      <?php if ($kayaking) print " checked "; ?>
                                       tabindex="430"> Kayaking</label>    
                     </fieldset><!-- end checkbox -->
 
                     <!-- start listbox -->
                     <fieldset  class="listbox">	
-                        <label for="lstMountains">Favorite Mountain</label>
+                        <legend>What is your favorite mountain?</legend>
+                        <label for="lstMountains"></label>
                         <select id="lstMountains" 
                                 name="lstMountains" 
                                 tabindex="520" >
@@ -427,12 +437,13 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
 
                     <!-- start text area --> 
                     <fieldset  class="textarea">	
+                        <legend>Comments</legend>
 
-                        <label for="txtComments" class="required">Comments</label>
+                        <label for="txtComments" class="required"></label>
                         <textarea id="txtComments" 
                                   name="txtComments" 
                                   tabindex="800"
-    <?php if ($commentsERROR) print 'class="mistake"'; ?>
+                                  <?php if ($commentsERROR) print 'class="mistake"'; ?>
                                   onfocus="this.select()" 
                                   ><?php print $comments; ?></textarea>
                         <!-- NOTE: no blank spaces inside the text area -->
@@ -449,9 +460,9 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
             </fieldset> <!-- Ends Wrapper -->
         </form>
 
-    <?php
-} // end body submit
-?>
+        <?php
+    } // end body submit
+    ?>
 
 </article>
 
