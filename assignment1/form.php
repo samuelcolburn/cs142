@@ -370,7 +370,7 @@ if (isset($_POST["btnSubmit"])) {
 
                     <!-- start radio -->
                     <fieldset class ="radiowrapper"><!-- start radio wrapper -->
-                         <legend>What is your gender?</legend>
+                         <legend>Gender</legend>
                     <fieldset class="radio">	
                        
                         
@@ -397,7 +397,7 @@ if (isset($_POST["btnSubmit"])) {
 
                     <!-- start checkbox -->                  
                     <fieldset class="checkbox">
-                        <legend>Do you like (check all that apply):</legend>
+                        <legend>Preferences</legend>
                         <label><input type="checkbox" 
                                       id="chkHiking" 
                                       name="chkHiking" 
@@ -415,7 +415,7 @@ if (isset($_POST["btnSubmit"])) {
 
                     <!-- start listbox -->
                     <fieldset  class="listbox">	
-                        <legend>What is your favorite mountain?</legend>
+                        <legend>Mountains</legend>
                         <label for="lstMountains"></label>
                         <select id="lstMountains" 
                                 name="lstMountains" 

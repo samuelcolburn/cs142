@@ -8,7 +8,7 @@ to understand the comments like 900px / 960px
 body{
     margin: 36px auto;
     width: 90%;
-    font-family:Century Gothic, sans-serif;
+    font-family:"Century Gothic", sans-serif;
 }
 
 #page{
@@ -37,7 +37,6 @@ h2 {
 header h1 {
     padding: 0.8em 5.33333333%;  /* 48px / 900px */
     font-weight:normal;
-    text-transform:uppercase;
 
 }
 
@@ -208,7 +207,9 @@ fieldset.contact label{
 }
 
 fieldset.contact input{
-    width: 28em; /* works with above to be the same size for the boxes */
+    width: 27em; /* works with above to be the same size for the boxes */
+    padding-left:1em;
+     font-family:"Century Gothic", sans-serif;
 }
 
 
@@ -239,19 +240,17 @@ select#lstMountains{
     border:0;
     border-radius:3px;
     color:#0F527A;
-    font-family:Century Gothic, sans-serif;
+    font-family:"Century Gothic", sans-serif;
 }
 /* Style the comment box*/
 
 fieldset.textarea label {
-    float:left;
-    padding-top:0.5em;
-    padding-right:0.5em;
+    display:none;
 }
 textarea#txtComments{
     border:0;
     background-color:#F5F5F5;
-    font-family: Tahoma, Geneva, sans-serif;
+    font-family:"Century Gothic", sans-serif;
     width:20em;
     border-radius:3px;
       overflow: auto;

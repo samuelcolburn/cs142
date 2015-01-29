@@ -7,7 +7,9 @@ to understand the comments like 900px / 960px
 /*****************     main layout section             ************************/
 body{
     width: 100%;
-    font-family:Tahoma, Geneva, sans-serif;
+    font-family:"Century Gothic", sans-serif;
+    margin:0;
+    color:#222;
 }
 
 #page{
@@ -23,6 +25,8 @@ body{
 
 h2 {
     font-weight:normal;
+    margin-left:5.333333%;
+    padding-top:1em;
 }
 
 /*****************     header section             *****************************/
@@ -36,27 +40,28 @@ header h1 {
 /*****************     navigation section         *****************************/
 nav ol {
     padding-left: 5.33333333%;  /* 48px / 900px */
-    background-color:#0078D7;
-    color:#FFF;
+    color:#222;
+    border-bottom:thin solid #999;
 }
 nav ol li{
     display: inline-block;
     list-style-type: none;
     padding-right: 3em;
+ 
 }
 
 nav a:link{
-    color:#FFF;
+    color:#222;
     text-decoration: none;
 }
 
 nav a:visited{
-    color:#FFF;
+    color:#222;
     text-decoration: none;
 }
 
 nav a:hover{ 
-    text-decoration: none;
+    text-decoration: underline;
 
 }
 
@@ -93,26 +98,25 @@ footer {
     font-size: small;
     text-align: center;
     margin-top:1em;
-    color:#FFF;
     clear: both;
-    background-color:#0078D7;
+    border-top:thin solid #999;
 }
 
 footer a:link{
-    color:#FFF;
+    color:#222;
     text-decoration: none;
     font-size:medium;
 
 }
 
 footer a:visited{
-    color:#FFF;
+    color:#222;
     text-decoration: none;
     font-size:medium;
 }    
 
 footer a:hover{
-    color:#FFF; 
+    color:#222; 
     text-decoration: none;
     font-size: medium;
 
@@ -132,14 +136,18 @@ footer a:hover{
 /*need to clear any floats that may exist */
 
 fieldset{
-    border-top:thin solid #0078D7;
+    border-top:0;
     border-left:0;
     border-right:0;
     border-bottom:0;
-    margin: 1em;
-    clear: both;  
+    margin: 0;
+    padding:0;
+    padding-bottom:3em;
 }
 
+legend {
+    font-size:small;
+}
 
 fieldset.wrapper {
     border: 0;
@@ -151,100 +159,174 @@ fieldset.wrapper legend {
 }
 
 fieldset.intro{
-    border-top: medium solid #349033;
+    padding-left:5.3333%;
+    padding-right:20%;
+    padding-top:2em;
+    max-width:600px;
+
 }
 
+fieldset.intro legend {
+    display:none;
+}
+
+
+
 label {
-    color: #0F527A;
+    color: #222;
     display: block;
-    font-size: .9em;
+    font-size: medium;
 
 }
 
 label:hover {
-    background-color: #F5F5F5;
-}
+    background-color: #FFF;
+} 
+
 input {
     color:#000;
     border:0;
     background-color:#F5F5F5;
-    border-radius:3px;
+    font-family:"Century Gothic", sans-serif;
 
 }
 
 /*~~~ CONTACT ~~~~~~~~~~ */
 fieldset.contactwrapper{
     float:none;
-}
+    padding-right:10%;
 
+
+
+}
+fieldset.contactwrapper legend{
+    display:inline;
+}
 /* just pushes content to left side of the box. */
 fieldset.contact{
     float: left;
     margin:0;
     padding:0;
     border:0;
-   
+    width:100%;
+
 }
 legend.contact {
-    font-weight: normal;
+    display: none;
 }
 /* when you look at the labels this pushes then next to the input and right
 aligns them. Display block means they are each on their own line. */
 fieldset.contact label{
     display: block;
     text-align: right;/* pushes the text to the right where they line up */
-     padding-top:0.5em;
-       
+    padding-top:0.5em;
+    font-size:0;
+
 }
 
 fieldset.contact input{
-    width: 100%; /* works with above to be the same size for the boxes */
+    width: 100%; 
+    font-size:medium;
+    height:2em;
+    padding-left:2em;
+    border-radius:3px;
+    margin-top:1em;
+}
+input#txtFirstName {
+    margin-top:0.5em;
 }
 
 
 
 /* ~~~ RADIO ~~~*/ 
 fieldset.radiowrapper {
-    float:none;
+    float:left;
+    width:30%;
+
+}
+
+fieldset.radiowrapper legend{
+    display:block;
 }
 fieldset.radio {
     float:left;
     margin:0;
     padding:0;
     border:0;
+    clear:both;
 }
 
 fieldset.radio label {
     width:100%;
-    padding-top:0.1em;
+    font-size:medium;
+}
+
+fieldset.radio input {
+    margin-right:1em;
 }
 /* ~~~ CHECKBOX ~~~*/ 
-fieldset.checklist label {
-    padding-top:0.1em;
+
+fieldset.checkbox {
+    float:left;
+    width:30%;
+    min-width:8em;
+
+}
+
+fieldset.checkbox legend{
+    display:inline;
+}
+
+fieldset.checkbox label {
+    padding-top:0.3em;
+    font-size:medium;
+}
+
+fieldset.checkbox input {
+    margin-right:1em;
 }
 /* ~~~ List Box ~~~*/ 
+fieldset.listbox {
+width:30%;
+}
 
+fieldset.listbox legend{
+    display:inline;
+}
 select#lstMountains{
     background-color:#F5F5F5;
     border:0;
     border-radius:3px;
-    color:#0F527A;
+    color:#222;
+    font-family:"Century Gothic", sans-serif;
+    font-size:medium;
+    margin-top:0.5em;
+
 }
 /* Style the comment box*/
 
+fieldset.textarea {
+    padding-bottom:0;
+    clear:both;
+}
+
+fieldset.textarea legend{
+    display:block;
+}
 fieldset.textarea label {
-    float:left;
-    padding-top:0.5em;
-    padding-right:0.5em;
+    display:none;
 }
 textarea#txtComments{
+    margin-top: 0.5em;
     border:0;
     background-color:#F5F5F5;
-    font-family: Tahoma, Geneva, sans-serif;
+    font-family:"Century Gothic", sans-serif;
     width:20em;
     border-radius:3px;
-      overflow: auto;
-        resize: none;
+    overflow: auto;
+    resize: none;
+    font-size:medium;
+
 }
 
 
@@ -259,14 +341,19 @@ fieldset.buttons{
 }
 
 input#btnSubmit{
-    background-color: #349033;
+    background-color: #222;
     color: #FFF;
     border: 0;
     padding:0.5em;
+    font-size:large;
+    border:thin solid #222;
+    border-radius:3px;
 
 }
 input#btnSubmit:hover{
-    background-color: #69227B;
+    background-color: #444;
+    font-size:large;
+    border:thin solid #222;
 
 }
 /* style the errors in the form so they are visible */
