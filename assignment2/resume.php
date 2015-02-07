@@ -25,7 +25,7 @@ look for your resume. -->
 
         <link rel="stylesheet" title="professional" href="resume.css" type="text/css" media="screen">
         <link rel="alternate stylesheet" title="creative" href="resume2.css" type="text/css" media="screen">
-
+        <link rel="stylesheet" href="print.css" type="text/css" media="print">
 <body id="resume">
     <article>
 <!-- *************   Your personal information ***************************  -->
@@ -41,9 +41,9 @@ look for your resume. -->
 
 <!-- ****  in all the following span tags put in your address info -->	
 <div class="adr">
-    <span class="street-address">166 East Avenue</span>, 
-    <span class="locality">Burlington</span>,  
-    <span class="region">Vermont</span>, 
+    <span class="street-address">166 East Avenue</span>
+    <span class="locality">Burlington</span>  
+    <span class="region">Vermont</span>
     <span class="postal-code">05401</span>
     <span class="country-name">USA</span>
 </div>
@@ -78,59 +78,26 @@ the <a href="http://microformats.org/code/hcard/creator">hCard creator</a>.
 
 <!-- This section is for work that you do that is directly related to your 
 career. Internships, projects etc.  if you do not have any GET some, till then
-just comment this section out ********************* -->
+just comment this section out ********************* 
 
 <div id="profExperience">
 <h2>Professional Experience</h2>
 
-<!-- **** notice the comments for a job, to have more than one copy from Begin 
-job  to end of job and replace the text as needed. They list the most recent first
-
-change the id coName to the name of the	company HERE and in the 
-STYLE SHEET if you want to style it.
-
-use google maps, yahoo maps or anyone you like. its neat to click on it to 
-see the building.
- -->
-
-<!-- Begin job 
-<ol>
-    <li class="job" id="coName"> 
-        <span class="dates">1991 - present</span>
-        <a href="http://www.uvm.edu" class="company">University of Vermont</a>, 
-        
-        <!-- notice i change the google maps url. everyplace it has a & made it &amp; so it would 
-        validate 
-
-        <a href="http://maps.google.com/maps?q=+colchester+ave%2C+Burlington%2C+VT+05401%2C+United+States&amp;l=explore&amp;utm_campaign=en&amp;utm_medium=ha&amp;utm_source=en-ha-na-us-gns-lt&amp;utm_term=searchbox&amp;submit.x=116&amp;submit.y=23&amp;submit=Explore+this+place" 
-        class="location">Burlington, VT</a>
-
-        <span class="jobtitle">Senior Lecturer.</span>
-
-        <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-    </li> 
-end of this job -->
 
 
-<!-- past other jobs here, descending by dates 
-
-
-	
-    <!-- list web sites and projects here -->
-
-
+    <ol>
     <li class="job" id="workExamples"><span class="dates">2014 - present</span>
     Websites and Projects
         <ul class="websites">
-            <li><a href="https://smcolbur.w3.uvm.edu/cs142/assignment1/form.php">Form Page</a> A simple form page with my style. Note there is a second style sheet as well.</li>
+            <li><a href="https://smcolbur.w3.uvm.edu/cs142/assignment1/form.php">Form Page</a> A simple form page with my style. Note there is a second style sheet.</li>
         </ul>
     </li>
 
 
-    <!-- end web sites and projects -->
-<!--
+   
+
 </ol>		
-</div>  end of your Experience-->
+</div> end of your Experience-->
 
 
 
@@ -175,11 +142,12 @@ class="location">Burlington, VT</a>
     be available. -->
     <h3 class="subtitle">Course of Study </h3>
     <ul class="courses major">
+        <li>Linear Programming</li>
         <li>Accounting</li>
-        <li>Sustainable Business Strategies</li>
-        <li>Linear Programming and Decision Analysis</li>
-        <li>Entrepreneurial and Organizational Leadership</li>
-        <li>Information Technology and Business Systems</li>
+        <li>Sustainable Business Strategy</li>
+        <li>Entrepreneurial Leadership</li>
+        <li>Business Information Systems</li>
+        
 
     </ul>
 
@@ -228,14 +196,13 @@ experience only the work is not related to your career but shows that you can wo
 
         <span class="jobtitle">Branch Manger , Head Baker</span>
 
-        <p class="description"> As Branch Manger, I managed the Dartmouth College branch of the restaurant. I Kept all inventory records and established standards of cleanliness and professionalism. 
-        As Head Baker, I oversaw production and distribution of goods to all major business clients. Maintained quality during company rebranding transition.  </p>
+        <p class="description"> As Branch Manger, I managed the Dartmouth College branch of the restaurant. As Head Baker, I oversaw production and distribution of goods to all major business clients, and maintained quality standards during company rebranding transition.  </p>
     </li><!-- end of this job -->
     
   <li class="job">
         <span class="dates">2011</span>
         <a href="http://uvlightning.org/" class="company">Lightning Soccer Club</a>,  
-        <a href="https://www.google.com/maps/place/Lightning+Soccer+Club/@43.715539,-72.309511,15z/data=!4m2!3m1!1s0x0:0xf0324464c2c425ea?sa=X&ei=3G_VVNqsD6LIsAT4zYGYDA&ved=0CIQBEPwSMA4" class="location">Norwich, VT</a>
+        <a href="https://www.google.com/maps/place/Lightning+Soccer+Club/@43.715539,-72.309511,15z/data=!4m2!3m1!1s0x0:0xf0324464c2c425ea?sa=X&amp;ei=3G_VVNqsD6LIsAT4zYGYDA&amp;ved=0CIQBEPwSMA4" class="location">Norwich, VT</a>
 
         <span class="jobtitle">Youth Soccer Coach</span>
 
@@ -252,9 +219,9 @@ experience only the work is not related to your career but shows that you can wo
 You have to have something that interests you. This is to let everyone know that you have a life beyond working. -->
 <div id="interests">
 <h2>Interests</h2>
-	<ol><li class="int">Hiking with my Dog</li>
+	<ul><li class="int">Hiking with my Dog</li>
         <li class="int">Competitive Dota 2 Player</li>
-        </ol>
+        </ul>
 </div> <!-- ends interests -->
 
 </article>

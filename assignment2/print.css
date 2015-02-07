@@ -1,10 +1,224 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Feb 6, 2015, 7:16:21 PM
-    Author     : Sam
-*/
+/* Remove link styling */
+* {
+    font-family:"Century Gothic", sans-serif;
+     color:#222;
+}
+a:link{
+    color:#000;
+    text-decoration: none;
+}
+
+a:visited{
+    color:#000;
+    text-decoration: none;
+}
+
+a:hover{ 
+    color:#000;
+    text-decoration: none;
+
+}
+
+
+#resume {
+    width: 100%;
+    margin: 0; 
+    float: none;
+}
+
+
+
+
+h2 { 
+    text-align: left;
+    font-weight: normal;
+    font-size: 14pt;
+    margin-bottom: 0pt;
+    border-bottom: thin solid #999;
+}
+h3 {
+    font-weight:normal;
+    margin-bottom:0;
+    font-size:12pt;
+}
+p { font-weight: normal;
+    font-size: 10pt;
+   
+    margin-left: 0pt;
+    margin-right: 0pt;
+    margin-top: 0pt;
+    margin-bottom: 12pt;
+}
+ol {
+    padding-left:1em;
+}
+
+ul {
+    padding-left:1em;
+}
+ul li {
+    list-style-type: none;
+}
+
+ol li {
+    list-style-type: none;
+}
+
+/* ==== HEADER SECTION ========= */
+#coName{/* i did not set any style for this*/}
+#education { margin-top: 12pt; }
+#profExperience {margin-top: 12pt;}
+#experience {margin-top: 12pt; clear: both;}
+#hcard-Samuel-Colburn {
+margin-bottom:10px;}
+#interests {margin-top: 12pt;}
+#name  { text-align: center;
+         color: #000000;
+         font-weight: normal;
+         font-size: 1.5em;
+         margin-bottom: 10pt;
+}
+/* ==== PROFESSIONAL EXPERIENCE SECTION ========= */
+#workExamples ul li{
+     
+}
+
+/* ==== SKILLS SECTION ========= */
+#skills ul {
+}
+#skills ul li{
+
+    display: inline;
+    padding-right: 0.2em;
+    font-size: 12pt;
+
+}
+
+#skills ul li:after{
+    content: ", ";
+}
+
+#skills ul li:last-child:after{
+    content: "";
+}
+
+
+#resume { margin-left: 12pt;
+          margin-right: 12pt;
+          margin-top: 12pt;
+          margin-bottom: 12pt;
+          font-size: 12pt;
+          width: 6.5in;
+         
+}
+
+#references { margin-top: 12pt; }
+
+
+/************************************************************* 
+Here are the various CSS classes that I have used. Several 
+classes have no style defined for them specfically and most 
+likly they were used for their microformat value.
+see: http://microformats.org.
+***************************************************************/
+.adr, .street-address, .email, .tel, .locality, .region, .postal-code, .country-name,.email{text-align: center;
+                                              
+                                                                                            
+                                                                                            font-weight: normal;
+                                                                                            font-size: 10pt;
+}
+
+.companyInfo{}
+.company{}
+
+.courses{ margin-top: 0pt;
+          display: block;
+          margin-left: 0em;
+          margin-bottom: 12pt;
+
+}
+
+.dates { text-align: right;
+
+         font-weight: normal;
+         font-size: 12pt;
+         float: right;
+}
+
+.description{
+
+    font-size: 10pt;
+}
+
+.gpa{display: block;
+     padding-left:1em;
+     font-size: 12pt;
+}
+
+.int{
+    margin-top: 6pt;
+	
+}
+
+.job{ display: block;
+      margin-top: 6pt;
+
+}
+
+.jobtitle {text-align: left;
+        
+          
+           font-style: italic;
+           font-size: 12pt;
+           display: block;
+}
+
+.location { text-align: left;
+           
+           
+            font-weight: normal;
+            font-size: 10pt;
+            display: inline;
+}
+
+/*list of your major classes that you have taken */
+.major{ margin-top: 0pt;
+        display: inline;
+        margin-left: 2em;
+        width: 50%;
+        float: left;
+        font-size:11pt;
+
+}
+
+/* what degree you are getting */
+.MajorDegree{display: block;
+             font-size: 12pt;
+             padding-left:1em;
+} 
+
+/* list of minor classes that you have taken */
+.minor{ margin-top: 0pt;
+        margin-left: 0em;
+        font-size:11pt;
+
+}
+
+/* your minor degree you are getting */
+.MinorDegree {display: block;
+              padding-left:1em;
+              font-size: 12pt;
+} 
+
+.ref{ margin-top: 6pt;
+
+      list-style-type: none;
+}
+
+.school{ display: block;
+         margin-top: 6pt;
+
+         clear:both;
+}
+
 

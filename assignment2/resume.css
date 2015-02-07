@@ -6,37 +6,99 @@ section of the resume. the second section is for the css classes.
 I have listed them alphabetically to make it easier for you to
 find them. This example is pretty plain by the way.
 ***************************************************************/
-
+/*
 #resume p#myImage{
-    /*background-image: url("http://www.uvm.edu/~cems/cs/gfx/erickson.jpg");*/
-    background-image: url("ME.JPG");
-    width: 100px;
-    height: 123px;
+    background-image: url("smcolbur.w3.uvm.edu/cs142/assignment2/profile.jpg");
+    background-image: url("profile.jpg"); 
+    width: 163px;
+    height: 198px;
     float: right;
     margin: 1em;
 }
+*/
+/* ==== GENERAL ==== */
+*{
+     font-family:"Century Gothic", sans-serif;
+     color:#222;
+}
+a:link{
+    color:#349033;
+    text-decoration: underline;
+}
 
+a:visited{
+    color:#034E03;
+    text-decoration: underline;
+}
+
+a:hover{ 
+    color:#349033;
+    text-decoration: underline;
+
+}
+
+h2 { 
+    text-align: left;
+    font-weight: normal;
+    font-size: 14pt;
+    margin-bottom: 0pt;
+    border-bottom: thin solid #999;
+}
+h3 {
+    font-weight:normal;
+    margin-bottom:0;
+    font-size:12pt;
+}
+p { font-weight: normal;
+    font-size: 10pt;
+   
+    margin-left: 0pt;
+    margin-right: 0pt;
+    margin-top: 0pt;
+    margin-bottom: 12pt;
+}
+ol {
+    padding-left:1em;
+}
+
+ul {
+    padding-left:1em;
+}
+ul li {
+    list-style-type: none;
+}
+
+ol li {
+    list-style-type: none;
+}
+
+/* ==== HEADER SECTION ========= */
 #coName{/* i did not set any style for this*/}
 #education { margin-top: 12pt; }
 #profExperience {margin-top: 12pt;}
 #experience {margin-top: 12pt; clear: both;}
-#hcard-Robert-Erickson { border-bottom: 2px solid black;}
+#hcard-Samuel-Colburn {
+margin-bottom:10px;}
 #interests {margin-top: 12pt;}
-#name  { text-align: left;
+#name  { text-align: center;
          color: #000000;
-         font-family: "sans-serif";
-         font-weight: bold;
-         font-size: 20pt;
-         margin-bottom: 0pt;
+         font-weight: normal;
+         font-size: 1.5em;
+         margin-bottom: 10pt;
 }
+/* ==== PROFESSIONAL EXPERIENCE SECTION ========= */
+#workExamples ul li{
+     
+}
+
+/* ==== SKILLS SECTION ========= */
 #skills ul {
-    margin-left:5em;
 }
 #skills ul li{
 
     display: inline;
-    list-style-type: none;
-    padding-right: 1em;
+    padding-right: 0.2em;
+    font-size: 12pt;
 
 }
 
@@ -53,14 +115,13 @@ find them. This example is pretty plain by the way.
           margin-right: 12pt;
           margin-top: 12pt;
           margin-bottom: 12pt;
-          font-family: "arial";
           font-size: 12pt;
           width: 6.5in;
+         
 }
 
 #references { margin-top: 12pt; }
 
-#workExamples{/* i did not set any style for this*/}
 
 /************************************************************* 
 Here are the various CSS classes that I have used. Several 
@@ -68,9 +129,9 @@ classes have no style defined for them specfically and most
 likly they were used for their microformat value.
 see: http://microformats.org.
 ***************************************************************/
-.adr, .street-address, .email, .tel, .locality, .region, .postal-code, .country-name,.email{text-align: right;
-                                                                                            color: #000000;
-                                                                                            font-family: "sans-serif";
+.adr, .street-address, .email, .tel, .locality, .region, .postal-code, .country-name,.email{text-align: center;
+                                              
+                                                                                            
                                                                                             font-weight: normal;
                                                                                             font-size: 10pt;
 }
@@ -82,51 +143,47 @@ see: http://microformats.org.
           display: block;
           margin-left: 0em;
           margin-bottom: 12pt;
-          border: 0px solid yellow;
+
 }
 
 .dates { text-align: right;
-         color: #000000;
-         font-family: arial;
+
          font-weight: normal;
          font-size: 12pt;
          float: right;
 }
 
 .description{
-    color: #000000;
-    font-family: "arial";
+
     font-size: 10pt;
 }
 
 .gpa{display: block;
-     color: #000000;
+     padding-left:1em;
      font-size: 12pt;
 }
 
 .int{
-    margin-top: 6pt;
-    margin-left: 5em;
-    list-style-type: none;		
+ 
+	
 }
 
 .job{ display: block;
       margin-top: 6pt;
-      margin-left: 5em;
-      list-style-type: none;
+
 }
 
 .jobtitle {text-align: left;
-           color: #000000;
-           font-family: "arial";
+        
+          
            font-style: italic;
            font-size: 12pt;
            display: block;
 }
 
 .location { text-align: left;
-            color: #000000;
-            font-family: "sans-serif";
+           
+           
             font-weight: normal;
             font-size: 10pt;
             display: inline;
@@ -135,61 +192,41 @@ see: http://microformats.org.
 /*list of your major classes that you have taken */
 .major{ margin-top: 0pt;
         display: inline;
-        margin-left: 1em;
+        margin-left: 2em;
         width: 50%;
         float: left;
-        border: 0px solid blue;
-        list-style-type: disc;
+        font-size:11pt;
+
 }
 
 /* what degree you are getting */
 .MajorDegree{display: block;
-             color: #000000;
              font-size: 12pt;
+             padding-left:1em;
 } 
 
 /* list of minor classes that you have taken */
 .minor{ margin-top: 0pt;
         margin-left: 0em;
-        border: 0px solid green;
-        list-style-type: none;
+        font-size:11pt;
+
 }
 
 /* your minor degree you are getting */
 .MinorDegree {display: block;
-              color: #000000;
+              padding-left:1em;
               font-size: 12pt;
 } 
 
 .ref{ margin-top: 6pt;
-      margin-left: 5em;
+
       list-style-type: none;
 }
 
 .school{ display: block;
          margin-top: 6pt;
-         margin-left: 5em;
-         list-style-type: none;
+
+         clear:both;
 }
 
 
-/************************************************************* 
-general element formats that i set
-***************************************************************/
-
-h2 { 
-    text-align: left;
-    color: #000000;
-    font-weight: bold;
-    font-size: 14pt;
-    margin-bottom: 0pt;
-}
-
-p { font-weight: normal;
-    font-size: 10pt;
-    font-family: "sans-serif";
-    margin-left: 0pt;
-    margin-right: 0pt;
-    margin-top: 0pt;
-    margin-bottom: 12pt;
-}

@@ -11,7 +11,7 @@
         <article>
 
             <ul>
-                <li>Assignment 2: Resume <a href="assignment2/resume.php">Resume </a> - <a href="assignment2/resume.css">Style Sheet</a> - <a href="assignment2/resume2.css">Alternate Style Sheet</a></li>
+                <li>Assignment 2: Resume <a href="assignment2/resume.php">Resume </a> - <a href="assignment2/resume.css">Style Sheet</a> - <a href="assignment2/resume2.css">Alternate Style Sheet</a> - <a href="assignment2/print.css">Print Style Sheet</a></li>
 
                 <li>Assignment 1: Style a Form <a href="assignment1/form.php">Form design </a> - <a href="assignment1/form.css">Style Sheet</a> - <a href="assignment1/form2.css">Alternate Style Sheet</a></li>
 
