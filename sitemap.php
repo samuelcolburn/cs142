@@ -9,10 +9,13 @@
     <body>
         <h1>Site Map</h1>
         <article>
-            <h2> ASSIGNMENT 1 IS READY TO BE GRADED</h2>
-        <ul>
-            <li>Assignment 1: Style a Form <a href="assignment1/form.php">Form design </a> - <a href="assignment1/form.css">Style Sheet</a> - <a href="assignment1/form2.css">Alternate Style Sheet</a></li>
-        </ul>
+
+            <ul>
+                <li>Assignment 2: Resume <a href="assignment2/resume.php">Resume </a> - <a href="assignment2/resume.css">Style Sheet</a> - <a href="assignment2/resume2.css">Alternate Style Sheet</a></li>
+
+                <li>Assignment 1: Style a Form <a href="assignment1/form.php">Form design </a> - <a href="assignment1/form.css">Style Sheet</a> - <a href="assignment1/form2.css">Alternate Style Sheet</a></li>
+
+            </ul>
         </article>
-</body>
+    </body>
 </html>

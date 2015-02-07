@@ -46,4 +46,41 @@
       <priority>0.1</priority>
 
    </url>
+   
+     </url>
+      <url>
+
+      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.php</loc>
+
+      <lastmod>2015-01-01</lastmod>
+
+      <changefreq>monthly</changefreq>
+
+      <priority>0.1</priority>
+
+   </url>
+     </url>
+      <url>
+
+      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.css</loc>
+
+      <lastmod>2015-01-01</lastmod>
+
+      <changefreq>monthly</changefreq>
+
+      <priority>0.1</priority>
+
+   </url>
+     </url>
+      <url>
+
+      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume2.css</loc>
+
+      <lastmod>2015-01-01</lastmod>
+
+      <changefreq>monthly</changefreq>
+
+      <priority>0.1</priority>
+
+   </url>
 </urlset>
