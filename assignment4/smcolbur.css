@@ -14,11 +14,10 @@ body {
     width:100%;
     background:#fff;
     min-width:600px;
-    font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+    font-family:"Century Gothic", sans-serif;
 }
 
 a{
-    border-width: .1em;
 }
 
 a[target="_blank"]{
@@ -108,7 +107,7 @@ strong{
 
 #topbox{
     padding: 1em 2em 0;
-    width: 74.3333%;
+    width: 100%;
 }
 #header {
     background-color: #3B5998;
@@ -177,7 +176,7 @@ strong{
     min-width: 50em;
     padding-bottom: 1.3em;
     text-align: center;
-    width: 90%;
+    width: 100%;
 }
 
 #mainMenu ol{
@@ -236,10 +235,9 @@ nav#mainMenu ol li.menuLink a:visited{
 #mainContent {
     background-color: #FEFEFE;
     border: 2px solid #FEFEFE;
-    border-radius: 0.5em;
     overflow: auto;
     padding: 2em 2em 50px;
-    width: 74.3333%;
+    width: 100%;
 }
 
 #mainContent a:visited{
