@@ -1,0 +1,60 @@
+/*
+Print Stylesheet for CS 142
+
+Designed by: Sam Colburn
+*/
+
+
+*{   
+    font-family:arial,sans-serif;
+    color:black;
+}
+
+/* Remove link styles */
+a:link{
+    color:#000;
+    text-decoration: none;
+}
+
+a:visited{
+    color:#000;
+    text-decoration: none;
+}
+
+a:hover{ 
+    color:#000;
+    text-decoration: none;
+
+}
+/* Remove menus etc */
+
+header{
+    display:none;
+}
+
+nav{
+    display:none;
+}
+
+#studentInfo {
+    display:none;
+}
+
+#upcoming{
+    display:none;
+}
+
+#otherMedia{
+    display:none;
+}
+
+footer{
+    display:none;
+}
+
+/* main content style */
+#mainContent {
+    width: 100%;
+    margin: 0; 
+    float: none;
+}

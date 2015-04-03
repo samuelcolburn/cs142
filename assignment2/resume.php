@@ -101,19 +101,6 @@ just comment this section out *********************
 
 
 
-<!-- Skill set section *********************************************-->
-<div id="skills">
-<h2>Skills</h2>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>PHP</li>
-        <li>MySQL</li>
-        <li>Python</li>
-        <li>Java</li>
-        <li>Excel</li>
-    </ul>
-</div> <!-- ends skill sets -->
 
 <!-- Education section *********************************************
 
@@ -129,7 +116,7 @@ change the id to the abbreviation for the school.
 
 <ol>
     <li class="school" id="uvm">
-    <span class="dates">2013 - present</span>
+    <span class="dates">2013 - 2016</span>
     <a href="http://www.uvm.edu" class="institution">University of Vermont</a>, 
     <a href="http://maps.google.com/maps?q=+colchester+ave%2C+Burlington%2C+VT+05401%2C+United+States&amp;l=explore&amp;utm_campaign=en&amp;utm_medium=ha&amp;utm_source=en-ha-na-us-gns-lt&amp;utm_term=searchbox&amp;submit.x=116&amp;submit.y=23&amp;submit=Explore+this+place" 
 class="location">Burlington, VT</a>
@@ -178,6 +165,19 @@ class="location">Washington, DC</a>
 </div> <!-- end education division -->
 
 
+<!-- Skill set section *********************************************-->
+<div id="skills">
+<h2>Skills</h2>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>PHP</li>
+        <li>MySQL</li>
+        <li>Python</li>
+        <li>Java</li>
+        <li>Excel</li>
+    </ul>
+</div> <!-- ends skill sets -->
 <!-- Work History ***************************************************
 This is just what you have been doing to make money, if it is related to your profession then it belongs up above in professional Experience.
 
@@ -220,7 +220,6 @@ You have to have something that interests you. This is to let everyone know that
 <div id="interests">
 <h2>Interests</h2>
 	<ul><li class="int">Hiking with my Dog</li>
-        <li class="int">Competitive Dota 2 Player</li>
         </ul>
 </div> <!-- ends interests -->
 

@@ -1,0 +1,86 @@
+
+/* ===================  General Section  ==================================== */
+
+* {
+    font-size: 100%;  /* sets the font size for all elements. */
+     font-family:"Century Gothic", sans-serif;
+     color:#222;
+}
+
+body {
+    background-color: #FFF;
+    margin: auto;
+    width: 98%;
+
+}
+
+
+a:link{
+    color:#222;
+    text-decoration: none;
+
+}
+a:visited{
+    color:#222;
+    text-decoration: none;
+}    
+
+
+a:hover{
+    text-decoration: underline;
+    color:#fff;
+}
+
+
+/* =================== TABLE SECTION ==================================== */
+
+caption {
+    text-align:left;
+    margin:1em;
+}
+
+table{
+
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 720px;
+    color: #222;
+    margin:auto;
+
+}
+th {
+   
+    padding: 0.2em;
+    padding-bottom:0.5em;
+    font-size:1.5em;
+    font-weight:normal;
+    color:#222;
+    background-color:#FFF;
+    
+
+
+}
+
+td {
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+tr:nth-child(even) {
+    background-color: #FFF;
+
+}
+
+tr:nth-child(odd){
+    background-color: #DCF3D6;
+
+}
+
+tr:hover{
+    background-color:#7fbfd6;
+
+}

@@ -916,111 +916,84 @@ nav ol li:nth-child(5) {
     position: absolute;
     top: 42px;
     left: 0px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 32px;
-    padding-right:8px;
-    width:58px;
-    background-color: #213633;
-    border-bottom:thin solid white;
-    transition:0.5s;
-
+    padding: 3px;
+    padding-right: 25px;
+    padding-left: 8px;
+    -webkit-transform: translateX(-40px);
+    -ms-transform: translateX(-40px);
+    transform: translateX(-40px);
+    background-color: rgba(0,0,0,0.5);
+    -webkit-transition: -webkit-transform 0.4s, border-radius 0.4s;
+    transition: transform 0.4s, border-radius 0.4s;
 }
 nav ol li:nth-child(5):hover {
-    background-color:black;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+    border-radius: 0px 0px 5px 0px;
 }
-
-
+nav ol li:nth-child(7) {
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    padding: 3px;
+    padding-right: 25px;
+    padding-left: 10px;
+    -webkit-transform: translateX(-136px);
+    -ms-transform: translateX(-136px);
+    transform: translateX(-136px);
+    background-color: rgba(0,0,0,0.5);
+    -webkit-transition: -webkit-transform 0.4s, border-radius 0.4s;
+    transition: transform 0.4s, border-radius 0.4s;
+    border-radius: 0px 0px 5px 0px;
+}
+nav ol li:nth-child(7):hover {
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+    border-radius: 0px 5px 5px 0px;
+}
 nav ol li:nth-child(5)::before {
     width: 2px;
     height: 12px;
     background-color: white;
     position: absolute;
-    left: 10px;
-    top: 12px;
+    right: 10px;
+    top: 5px;
     z-index: 99;
-    transition: transform 0.6s;
-    transform: rotate(-90deg);
 }
 nav ol li:nth-child(5)::after {
     width: 2px;
     height: 12px;
     background-color: white;
     position: absolute;
-    left: 10px;
-    top: 12px;
+    right: 10px;
+    top: 5px;
     z-index: 99;
-    transition: transform 0.6s;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
-
-nav ol li:nth-child(5):hover::before{
-    transform: rotate(-0deg);
-}
-
-nav ol li:nth-child(5):hover::after{
-    transform: rotate(180deg);
-
-}
-
-nav ol li:nth-child(7) {
-    position: absolute;
-    top: 75px;
-    left: 0px;
-    padding-top: 9px;
-    padding-left: 31px;
-    padding-bottom:12px;
-    padding-right:0px;
-    background-color: #213633;
-    border-radius: 0px 0px 5px 0px;
-    text-align:right;
-    width:67px;
-    transition:0.6s;
-}
-
-nav ol li:nth-child(7) a{
-    width: 43px;
-    overflow: hidden;
-    display: block;
-    text-overflow: clip;
-    height: 13px;
-}
-
-
-nav ol li:nth-child(7):hover {
-    background-color:black;
-}
-
 nav ol li:nth-child(7)::before {
     width: 2px;
     height: 12px;
     background-color: white;
     position: absolute;
-    left: 10px;
-    top: 12px;
+    right: 10px;
+    top: 6px;
     z-index: 99;
-    transition: transform 0.6s;
-    transform: rotate(-90deg);
-
 }
-
-nav ol li:nth-child(7):hover::before{
-    transform: rotate(-0deg);
-}
-
-
 nav ol li:nth-child(7)::after {
     width: 2px;
     height: 12px;
     background-color: white;
     position: absolute;
-    left: 10px;
-    top: 12px;
+    right: 10px;
+    top: 6px;
     z-index: 99;
-    transition: transform 0.6s;
-}
-nav ol li:nth-child(7):hover::after{
-    transform: rotate(180deg);
-
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 /* ~~~~~~~   HEADER   ~~~~~~~ */ 
@@ -1276,8 +1249,9 @@ article > li ol li {
 #upcoming {
     position: fixed;
     z-index: 12;
-    top: 41px;
+    top: 42px;
     right: 0px;
+
     background-color: #dbe2e9;
     -webkit-transform: translateX(100%);
     -ms-transform: translateX(100%);
@@ -1299,10 +1273,7 @@ article > li ol li {
     border-radius: 0px 0px 0px 0px;
     top: 0px;
     left: -98px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-right:1em;
-    padding-left: 1em;
+    padding: 1em;
     z-index: 12;
     -webkit-transition: -webkit-transform 0.4s 0.4s;
     transition: transform 0.4s 0.4s;
@@ -1373,7 +1344,7 @@ aside#upcoming div:nth-child(2){
 /* @@@@@@@@@@@@@@@@@@ Additional Resources @@@@@@@@@@@@@@@ */
 #otherMedia {
     position: fixed;
-    top: 75px;
+    top: 84px;
     right: 0px;
     color: white;
     z-index: 11;
@@ -1397,26 +1368,20 @@ aside#upcoming div:nth-child(2){
     left: -99px;
     color: white;
     background-color: grey;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left: 1.05em;
-    padding-right: 1.05em;
+    padding: 1.05em;
     border-radius: 0px 0px 0px 5px;
     -webkit-transition: -webkit-transform 0.4s 0.4s;
     transition: transform 0.4s 0.4s;
-    border-top:thin solid white;
 }
 #otherMedia:hover {
     -webkit-transform: translateX(0%);
     -ms-transform: translateX(0%);
     transform: translateX(0%);
-
 }
 #otherMedia:hover::before {
     -webkit-transform: translateY(-210%);
     -ms-transform: translateY(-210%);
     transform: translateY(-210%);
-    border:0;
 }
 #otherMedia h1 {
     display: none;
@@ -1510,37 +1475,24 @@ aside#upcoming div:nth-child(2){
         font-size: 11px;
     }
     nav ol li:nth-child(5) {
-
+        padding-left: 14px;
+        background-color: black;
     }
     nav ol li:nth-child(7) {
-        padding-left:26px;
-        padding-right:5px;
+        top: 61px;
+        padding-left: 30px;
+        background-color: black;
     }
-
-
     #mainContent {
         width: 100%;
     }
 }
-@media (max-width: 640px) {  
+@media (max-width: 640px) {
     #classtitle {
         font-size: 14px;
     }
     #classtitle a {
         font-size: 14px;
-    }
-}
-
-
-@media(max-width:600px){
-    span#studentName{
-        display:none;
-    }
-}
-
-@media(max-width:450px){
-    #studentInfo{
-        display:none;
     }
 }
 

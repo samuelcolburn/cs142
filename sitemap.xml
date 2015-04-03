@@ -2,85 +2,154 @@
 
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
-  <url>
+    <url>
       
-    <loc>https://smcolbur.w3.uvm.edu/cs142/sitemap.php</loc> 
+        <loc>https://smcolbur.w3.uvm.edu/cs142/sitemap.php</loc> 
     
-    <lastmod>2015-01-24</lastmod>
+        <lastmod>2015-01-24</lastmod>
     
-    <priority>1.0</priority>
+        <priority>1.0</priority>
 
-  </url>
-     <url>
+    </url>
+    <url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form.php</loc>
+        <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form.php</loc>
 
-      <lastmod>2015-01-24</lastmod>
+        <lastmod>2015-01-24</lastmod>
 
-      <changefreq>monthly</changefreq>
+        <changefreq>monthly</changefreq>
 
-      <priority>0.8</priority>
+        <priority>0.8</priority>
 
-   </url>
-      <url>
+    </url>
+    <url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form.css</loc>
+        <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form.css</loc>
 
-      <lastmod>2005-01-24</lastmod>
+        <lastmod>2005-01-24</lastmod>
 
-      <changefreq>monthly</changefreq>
+        <changefreq>monthly</changefreq>
 
-      <priority>0.1</priority>
+        <priority>0.1</priority>
 
-   </url>
+    </url>
   
-   </url>
-      <url>
+</url>
+<url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form2.css</loc>
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/form2.css</loc>
 
-      <lastmod>2015-01-01</lastmod>
+    <lastmod>2015-01-01</lastmod>
 
-      <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
 
-      <priority>0.1</priority>
+    <priority>0.1</priority>
 
-   </url>
+</url>
    
-     </url>
-      <url>
+</url>
+<url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.php</loc>
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.php</loc>
 
-      <lastmod>2015-01-01</lastmod>
+    <lastmod>2015-01-01</lastmod>
 
-      <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
 
-      <priority>0.1</priority>
+    <priority>0.1</priority>
 
-   </url>
-     </url>
-      <url>
+</url>
+</url>
+<url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.css</loc>
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume.css</loc>
 
-      <lastmod>2015-01-01</lastmod>
+    <lastmod>2015-01-01</lastmod>
 
-      <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
 
-      <priority>0.1</priority>
+    <priority>0.1</priority>
 
-   </url>
-     </url>
-      <url>
+</url>
+</url>
+<url>
 
-      <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume2.css</loc>
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment2/resume2.css</loc>
 
-      <lastmod>2015-01-01</lastmod>
+    <lastmod>2015-01-01</lastmod>
 
-      <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
 
-      <priority>0.1</priority>
+    <priority>0.1</priority>
 
-   </url>
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment3/table.php</loc>
+
+    <lastmod>2015-02-20</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.8</priority>
+
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment3/table.css</loc>
+
+    <lastmod>2005-02-19</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.1</priority>
+
+</url>
+  
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment1/table2.css</loc>
+
+    <lastmod>2015-02-19</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.1</priority>
+
+</url>
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment4/smcolbur.css</loc>
+
+    <lastmod>2015-03-13</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.8</priority>
+
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment4/print_smcolbur.css</loc>
+
+    <lastmod>2015-03-13</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.1</priority>
+
+</url>
+<url>
+
+    <loc>https://smcolbur.w3.uvm.edu/cs142/assignment4/cs142-layout-1.jpg</loc>
+
+    <lastmod>2015-03-13</lastmod>
+
+    <changefreq>never</changefreq>
+
+    <priority>0.1</priority>
+</url>
+   
 </urlset>

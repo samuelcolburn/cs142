@@ -987,7 +987,7 @@ nav ol li:nth-child(7) a{
 
 
 nav ol li:nth-child(7):hover {
-    background-color:black;
+        background-color:black;
 }
 
 nav ol li:nth-child(7)::before {
@@ -1510,37 +1510,24 @@ aside#upcoming div:nth-child(2){
         font-size: 11px;
     }
     nav ol li:nth-child(5) {
-
+        
     }
     nav ol li:nth-child(7) {
         padding-left:26px;
         padding-right:5px;
     }
-
-
+    
+    
     #mainContent {
         width: 100%;
     }
 }
-@media (max-width: 640px) {  
+@media (max-width: 640px) {
     #classtitle {
         font-size: 14px;
     }
     #classtitle a {
         font-size: 14px;
-    }
-}
-
-
-@media(max-width:600px){
-    span#studentName{
-        display:none;
-    }
-}
-
-@media(max-width:450px){
-    #studentInfo{
-        display:none;
     }
 }
 
