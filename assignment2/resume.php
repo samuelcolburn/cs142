@@ -121,16 +121,18 @@ change the id to the abbreviation for the school.
     <a href="http://maps.google.com/maps?q=+colchester+ave%2C+Burlington%2C+VT+05401%2C+United+States&amp;l=explore&amp;utm_campaign=en&amp;utm_medium=ha&amp;utm_source=en-ha-na-us-gns-lt&amp;utm_term=searchbox&amp;submit.x=116&amp;submit.y=23&amp;submit=Explore+this+place" 
 class="location">Burlington, VT</a>
 
-    <span class="MajorDegree">Business - Entrepreneurship</span>
+    <span class="MajorDegree">Business - Entrepreneurship & Analytics</span>
     <span class="MinorDegree">Computer Science</span>
+    <span class="MinorDegree">Mathematics</span>
     <span class="gpa">Cumulative GPA 3.62 (4.0)</span>
 
     <!-- List the most important courses for your major that you have taken (or will take). This gives you some common ground when interviewing and something to talk about. list the NAME not the number. If there is a link for your course put it in but be sure the link will always
     be available. -->
     <h3 class="subtitle">Course of Study </h3>
     <ul class="courses major">
-        <li>Linear Programming</li>
+        
         <li>Accounting</li>
+        <li>Managerial Finance</li>
         <li>Sustainable Business Strategy</li>
         <li>Entrepreneurial Leadership</li>
         <li>Business Information Systems</li>
@@ -143,6 +145,8 @@ class="location">Burlington, VT</a>
         <li>Database Design</li>
         <li>Web Design</li>
         <li>Software Design</li>
+        <li>Linear Algebra</li>
+        <li>Multivariable Vector Calculus</li>
     </ul>
     </li> <!-- end school  -->
 
@@ -174,8 +178,8 @@ class="location">Washington, DC</a>
         <li>PHP</li>
         <li>MySQL</li>
         <li>Python</li>
-        <li>Java</li>
-        <li>Excel</li>
+        <li>Javascript</li>
+        <li>Microsoft Office</li>
     </ul>
 </div> <!-- ends skill sets -->
 <!-- Work History ***************************************************
