@@ -11,6 +11,8 @@
         <article>
 
             <ul>
+               <li>Assignment 6: Web Usability Testing - <a href="assignment6/index.php">Index</a>  
+
                 <li>Assignment 5: Style Before and After - <a href="assignment5/index.php">Index</a> - <a href="assignment5/before/before.html">Before</a>- <a href="assignment5/after/after.php">After</a> - <a href="assignment5/after/after.css">After CSS</a> - <a href="assignment5/narrative.php">Narrative</a></li>
 
                 <li>Assignment 4: Redesign the Course Style - <a href="assignment4/smcolbur.css">Style Sheet</a>- <a href="assignment4/print_smcolbur.css">Print Style Sheet</a> - <a href="assignment4/cs142-layout-1.jpg">Layout Design</a></li>
