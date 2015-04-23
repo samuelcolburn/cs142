@@ -11,7 +11,9 @@
         <article>
 
             <ul>
-               <li>Assignment 6: Web Usability Testing - <a href="assignment6/index.php">Index</a>  
+                <li>Assignment 7: Final Project - <a href="assignment7/home.php">Home</a>  </li>
+                
+               <li>Assignment 6: Web Usability Testing - <a href="assignment6/index.php">Index</a>  </li>
 
                 <li>Assignment 5: Style Before and After - <a href="assignment5/index.php">Index</a> - <a href="assignment5/before/before.html">Before</a>- <a href="assignment5/after/after.php">After</a> - <a href="assignment5/after/after.css">After CSS</a> - <a href="assignment5/narrative.php">Narrative</a></li>
 

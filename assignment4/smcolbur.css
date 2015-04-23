@@ -679,80 +679,50 @@ ol.taVisists li.NoShow{
 /* Can't access iframe styling due to linked stylesheet closer to the element */
 
 /* @@@@@@@@@@@@@@@@@@@ grades @@@@@@@@@@@@@@@@@@@@@@@@   */
+/* -------------------------------- */ 
+#grades p, #grades .p{ 
+border: thin solid black; 
+border-radius: 0.7em; 
+padding: .8em 0 .8em .8em; 
+} 
 
-#grades a:hover{
-    text-decoration:underline;
-}
+#grades p a{ 
+text-decoration: none; 
+} 
+#grades .avggrade { 
+background-color: none; 
+font-size: small; 
+color: #ffcccc; 
+} 
+
+#grades .label{ 
+display: inline-block; 
+width: 50%; 
+} 
+#grades input#hypoGrade{ 
+width: 3em; 
+} 
+#grades .grade{ 
+width: 40%; 
+padding-left: 3em; 
+} 
+
+#grades .noWidth{ 
+width: 1em !important; 
+} 
 
 
-#grades table.standard {
-    background-color: white;
-    border-radius: 10px;
-}
+#grades .comments{ 
+display:none; 
+/* padding: .5em;*/ 
+} 
 
-#grades table.standard {
-    margin-top: 15px;
-    text-align:left;
-
-
-}
-
-#grades th {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    text-align: left;
-    padding: 10px;
-    background-color: #3399FF;
-    border-spacing: 10px;
-
-}
-#grades td {
-    border: 2px solid black;
-    text-align: left;
-    border-spacing: 10px;
-    padding: 10px;
-
-}
-
-#grades tr {
-    background-color: white;
-}
-
-#grades .GradesReleased {
-    background-color: #BDF8BD;
-}
-#grades .NotGraded {
-    background-color: #FFC89A;
-}
-
-#grades .GradingStarted {
-    background-color: #EABFFF
-}
-
-#grades .avggrade {
-    background-color: antiquewhite;
-}
-
-#grades tr:hover {
-    background-color: yellow;
-}
-
-td.category {
-    width:10%
-}
-
-td.grade {
-    width:10%;
-}
-
-td.comments {
-    width:70%;
-}
-
-td.avggrade {
-    width:10%;
-}
+#grades .hypo { 
+background-color: lightgreen !important; 
+border-radius: 0.3em; 
+padding-right: 3em; 
+} 
+/* -------------------------------- */
 /* @@@@@@@@@@@@@@@ Resources Page @@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #media article{

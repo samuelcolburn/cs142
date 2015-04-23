@@ -1,0 +1,585 @@
+/* website by: Sam Colburn, William Kniffin
+
+
+*/
+
+
+/* ==== INTIAL RESETS ===== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+footer {
+    display:none;
+}
+html body header{
+    z-index: 5 !important;
+}
+
+/* ====== BEGIN STYLESHEET =======*/
+
+
+/*****************     main layout section             ************************/
+
+/* ===================  General Section  ==================================== */
+
+
+body {
+    margin:0 auto;
+     font-size: 100%;  /* sets the font size for all elements. */
+    font-family:Arial, Helvetica, sans-serif;
+    color: #222;
+
+}
+
+/* h1 in header section */
+
+h2 {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+h3 {
+
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom:0.2em;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration:underline;
+    margin-bottom:0.25em;
+    text-indent:2em;
+}
+
+h5 { 
+    color: #000000;
+    font-family: "sansserif";
+    font-weight: bold;
+    font-size: .6em;	
+}
+
+h6 {
+    color: #000000;
+    font-family: "sansserif";
+    font-weight: bold;
+    font-size: .5em;	
+}
+
+ol ol ol li {
+    list-style: lower-alpha
+}
+
+ol ol li {
+    font-weight: normal;
+    list-style: decimal;
+    padding-top: 0em
+}
+
+ol li {
+    font-weight: bold;
+    list-style: upper-roman;
+    padding-top: 1em
+}
+
+ul ul ul li { 
+    list-style: circle;
+}
+
+ul ul li { 
+    list-style: square;
+}
+
+ul li { 
+    list-style: disc;
+    padding-bottom:0.4em;
+    margin-left:1em;
+}
+
+
+a:link{
+    text-decoration: underline;
+
+}
+a:visited{
+    text-decoration: none;
+}    
+
+
+a:hover{
+    text-decoration: underline;
+
+}
+
+
+/*****************     header section             *****************************/
+
+header {
+    box-shadow : 0 1px 1px rgba(0, 0, 0, 0);
+    width:100%;
+}
+
+h1 {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size: 3em;
+    height:100px;
+
+}
+
+header a:link{
+    text-decoration:none;
+}
+
+header a:visited{
+    color:#222;
+}
+
+header a:hover{
+    cursor:pointer;
+}
+
+/*****************    Login Section             *****************************/
+.toolbar{
+    position:fixed;
+    right:0;
+    top:5px;
+}
+
+.toolbar a:link{
+    color:#222;
+}
+.toolbar a:visited{
+    color:#222;
+}
+
+.toolbar a:hover{
+    text-decoration:underline;
+}
+
+.login {
+    padding-right:5px;
+    border-right:thin solid black;
+}
+
+.logout {
+    padding-right:10px;
+    padding-left:5px;
+}
+/* ===================  Navigation Section  ================================= */
+
+nav {
+    height:30px;
+    margin-bottom:30px;
+    width:100%;
+    
+
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   
+   
+   
+    border-top: solid 3px #999;  
+    border-bottom: solid 3px #999; 
+    background-color:#233d4b;
+    
+
+}
+
+nav ol{
+    font-size:0px;
+    padding-left:0em;
+
+}
+
+nav ol li{
+    display:inline-block;
+    padding-top:0.5em;
+    padding-right:1em;
+    padding-bottom:0.5em;
+    list-style-type: none;
+    font-size:16px;
+}
+
+li.activePage{
+    color:#Green;
+}
+
+li.inactivePage{
+
+}
+
+li.inactivePage:hover{
+
+}
+
+nav a:link{
+    color:white;
+    text-decoration: none;
+}
+
+nav a:visited{
+    color:white;
+    text-decoration: none;
+}
+
+nav a:hover{ 
+    text-decoration: none;
+    border-bottom: medium white solid;
+}
+
+/*JS classes*/
+
+
+.is-visible{
+    transition: 0.6s;
+    transform:translateX(-0%);
+}
+
+
+.fixed-nav{
+    position:fixed;
+    top:0px;
+}
+
+/*MENU BUTTON*/
+.menu-button {
+    display:flex;
+    justify-content:center;
+    position: absolute;
+    top: 66px;
+    left: 0px;
+    height: 30px;
+    color: #9A99B0;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    padding:2px;
+    transition: transform 0.6s;
+    background-color:black;
+    transform:translateX(-100%);
+}
+
+.menu-button:hover .panel-button {
+    transform: rotate(90deg);
+}
+.nav-button{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+.bars {
+    height: 3px;
+    width:20px;
+    background-color: white;
+    margin: 2px 0;
+    transition: transform 0.4s;
+}
+
+.menu-button:hover {
+    transform:rotate(180deg);
+}
+.menu-button:hover .bars {
+    background-color:#999;
+}
+
+.fixed-button{
+    top:0;
+}
+/* ===================  Footer Section  ==================================== */
+
+
+footer {
+    border-top:thin solid #999;
+    font-size: x-small;
+    text-align: center;
+    margin-top:1em;
+    color:#222;
+    clear: both;
+    padding: 0.8em 5.33333333%;  /* 48px / 900px */
+}
+
+footer a:link{
+    color:#222;
+    text-decoration: none;
+    font-size: x-small;
+
+}
+
+footer a:visited{
+    color:#222;
+    text-decoration: none;
+    font-size: x-small;
+}    
+
+footer a:hover{
+    color:#222; 
+    text-decoration: none;
+    font-size: x-small;
+
+}
+.footer {
+    color:#222;
+}
+
+/*****************     article section             ****************************/
+/* un comment and see what happens */
+
+article{
+}
+
+#main {
+
+}
+
+article h1 {
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
+    margin-left:3em;
+}
+
+
+/*****************     aside section              *****************************/
+aside {
+    margin: 0 auto;
+    width: 69.7885196%; /* 231px / 331px */
+}
+aside h2, aside p{
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
+}
+
+
+
+/*****************     form section                ****************************/
+#form article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    width: 600px; /* not repsonive but fixed */
+}
+
+/* need to clear any floats that may exist */
+fieldset{
+    display:block;
+    clear: both;
+    padding: 1em;
+    margin:auto;
+    text-align:center;
+    width:30em;
+
+}
+/* just pushes content to left side of the box. */
+fieldset.contact{
+    float: left;
+    border:none;
+    margin-left:2em;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.contact label{
+    display: block;
+    text-align: right;
+    /* pushes the text to the right where they line up */
+    /* the float left above pushes everything back to the left*/
+}
+
+fieldset.contact input{
+    width: 20em;
+    /* works with above to be the same size for the boxes */
+}
+
+
+fieldset.contact select{
+    width: 18em;
+    margin-left:3em;/* works with above to be the same size for the boxes */
+}
+
+
+fieldset.buttons{
+    border: none;
+}
+
+fieldset.wrapper {
+    border:none;
+}
+fieldset.wrapperTwo {
+    border:0.2em solid #FFF;
+}
+fieldset.wrapper legend {
+    //   color: #FFF;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+fieldset.wrapper > legend {
+    /* i only want the first legend ie if it follows the class wrapper */
+    font-size: 2em;
+}
+
+label {
+    //   color: #FFF;
+    display: block;
+    font-size: .9em;
+    font-weight: bold;
+    padding:1em;
+}
+
+
+
+input {
+    color:#FFF;
+    background-color:#253939;
+    border:0.2em solid #FFF;
+    padding:0.2em;
+
+}
+/* style the errors in the form so they are visible */
+.mistake {
+    //  color: #fff;
+    background-color:rgba(255, 85, 85, 0.5);
+    border: 0.2em solid #FFF;
+}
+
+/* style the list of errors that will show before the form */
+#errors ol li{
+    color: #ff5555;
+    text-align:center;
+    list-style: none;
+}
+
+#btnSubmit{
+    background-image:none;
+    background-color:#233d4b;
+    cursor: pointer; 
+    cursor: hand; 
+
+}
+
+div#form{
+    float:left;
+}
+/* MAIL MESSAGE RESPONSE FORMATTING */
+div.message{
+    border:thin solid #a8a8a8;
+    background-color:#FFF;
+    color:#000;
+    margin-left:9em;
+    margin-right: 9em;
+}
+
+
+/* MEMBER LIST TABLE SETTINGS */
+
+#memberlist h2 {
+    text-align:left;
+    font-size:1.5em;
+}
+
+table{
+
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    color: #d1d1d1;
+
+}
+th {
+    border-bottom: thick #f5f5f5 solid;
+    font-weight: bold;
+    padding: 0.2em;
+    padding-bottom:0.3em;
+    color:#FFF;
+
+
+}
+td {
+    border-collapse: collapse;
+    padding:.2em;
+    text-align: center;
+
+}
+
+
+tr:nth-child(even) {
+    background-color: #253939;
+
+}
+
+tr:nth-child(odd){
+    background-color: #25242C;
+
+}
+
+tr:hover{
+    background-color:#558C89;
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
+#tableheader {
+    background-color:#558C89;
+}
+
+
+/* ===================  PET LIST PAGE  =================== */
+
+#petlist article{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+}
+
+#petlist section{
+    padding:10px;
+}
+
+#petlist section:hover {
+  cursor:pointer;
+  background-color: rgba(100,100,100,0.05);
+}

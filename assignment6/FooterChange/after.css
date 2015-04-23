@@ -1,0 +1,39 @@
+#footer-links-leftID{
+    float:left;
+    clear:both;
+    padding-left:30px;
+}
+
+.footer-links left{
+    display:block;
+    padding-left:30px;
+}
+
+
+.teardowns a{
+    position:relative;
+    width:236px;
+    top:10px;
+}
+.blog a{
+    position:relative;
+    width:236px;
+    top:-30px;
+    left:246px;
+}
+.donate a{
+    position:relative;
+    width:236px;
+    top:-70px;
+    left:492px;
+}
+.manifesto a{
+    position:relative;
+    width:236px;
+    top:-110px;
+    left:736px;
+}
+
+.feature{
+    margin-top:100px;
+}
