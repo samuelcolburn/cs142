@@ -202,13 +202,14 @@ header a:hover{
 }
 
 .login {
-    padding-right:5px;
-    border-right:thin solid black;
+      padding-right:10px;
+    padding-left:5px;
+
 }
 
-.logout {
-    padding-right:10px;
-    padding-left:5px;
+.register {
+      padding-right:5px;
+    border-right:thin solid black;
 }
 /* ===================  Navigation Section  ================================= */
 
@@ -572,14 +573,23 @@ tr:hover{
 #petlist article{
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-around;
+    justify-content:center;
 }
 
 #petlist section{
     padding:10px;
+    margin:5px;
 }
 
 #petlist section:hover {
   cursor:pointer;
   background-color: rgba(100,100,100,0.05);
+}
+
+.dog {
+    background-color:#d2ebf8;
+}
+
+.cat{
+   background-color: #f8d2eb;
 }

@@ -24,5 +24,8 @@ function verifyPhone ($testString) {
 
 	return (preg_match($regex, $testString));
 }
-
+function verifyAlphaNum2 ($testString) {
+	// Check for letters, numbers and dash, period, and single quote only. 
+	return (preg_match ("/^([[:alnum:]]|-|\.||')+$/", $testString));
+}
 ?>

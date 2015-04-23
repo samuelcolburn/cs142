@@ -138,7 +138,7 @@ if (isset($_POST["btnSubmit"])) {
     $age = htmlentities($_POST["lstAge"], ENT_QUOTES, "UTF-8");
 
     $AboutMe = htmlentities($_POST["AboutMe"], ENT_QUOTES, "UTF-8");
-    
+
     if ($debug) {
         print"<p>sanitize pass</p>";
     }
@@ -161,7 +161,9 @@ if (isset($_POST["btnSubmit"])) {
         $emailERROR = true;
     }
 
-
+    if ($debug) {
+        print"<p>email pass</p>";
+    }
     //~~~~~~~~~~~~~USERNAME VALIDATION~~~~~~~~~~~
     $usernamecheck = "SELECT fldUsername FROM tblUsers WHERE fldUsername = ? ";
     $data = array($Username);
@@ -183,7 +185,9 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = 'That username is already in use. Please choose a different username.';
         $UsernameERROR = true;
     }
-
+    if ($debug) {
+        print"<p>username pass</p>";
+    }
     //~~~~~~PASSWORD VALIDATION~~~~~~~~~~~
     if ($password == '') {
         $errorMsg[] = "Please enter a password";
@@ -212,22 +216,21 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your last name appears to not be a name!";
         $lastNameERROR = true;
     }
- 
-    
-       //~~~~~~~~~~ ABOUT ME ~~~~~~~~~~~~
 
-    if(strlen($AboutMe) > $ABOUTME_MAX_LENGTH){
-        $errorMsg[] = "Your description is too long!";
-        $AboutMeERROR = true;
+
+    //~~~~~~~~~~ ABOUT ME ~~~~~~~~~~~~
+
+    if (!empty($AboutMe)) {
+        if (strlen($AboutMe) > $ABOUTME_MAX_LENGTH) {
+            $errorMsg[] = "Your description is too long!";
+            $AboutMeERROR = true;
+        } elseif (!verifyAlphaNum($AboutMe)) {
+            $errorMsg[] = "Your personal description appears to contain characters other than those accepted. Please make sure to only use basic text.";
+            $AboutMeERROR = true;
+        }
     }
-    elseif (!verifyAlphaNum($AboutMe)) {
-        $errorMsg[] = "Your personal description appears to contain characters other than those accepted. Please make sure to only use basic text.";
-        $AboutMeERROR = true;
-    }
-    
-    
-    
-       if ($debug) {
+
+    if ($debug) {
         print"<p>validation pass</p>";
     }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -280,7 +283,7 @@ if (isset($_POST["btnSubmit"])) {
         try {
             $thisDatabase->db->beginTransaction();
             $query = "INSERT INTO tblProfile SET fnkUserId = ? ,  fldFirstName = ? , fldLastName = ? , fldGender = ? , fldAge = ? ,fldAboutMe = ? ";
-            $data = array($primaryKey, $firstName, $lastName, $gender, $age , $AboutMe);
+            $data = array($primaryKey, $firstName, $lastName, $gender, $age, $AboutMe);
             if ($debug) {
                 print "<p>sql " . $query;
                 print"<p><pre>";
@@ -364,7 +367,7 @@ if (isset($_POST["btnSubmit"])) {
 //
 ?>
 <article id="main">
-    <?php
+<?php
 //####################################
 //
 // SECTION 3a.
@@ -374,49 +377,49 @@ if (isset($_POST["btnSubmit"])) {
 //
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
-    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-        print "<h2>Your Request has ";
-        if (!$mailed) {
-            print "not ";
-        }
-        print "been processed</h2>";
-        print "<p>An email with your registration information has ";
-        if (!$mailed) {
-            print "not ";
-        }
-        print "been sent";
-        print " to " . $email . " requesting confirmation. Please check your email to confirm your registration.</p>";
-    } else {
+if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+    print "<h2>Your Request has ";
+    if (!$mailed) {
+        print "not ";
+    }
+    print "been processed</h2>";
+    print "<p>An email with your registration information has ";
+    if (!$mailed) {
+        print "not ";
+    }
+    print "been sent";
+    print " to " . $email . " requesting confirmation. Please check your email to confirm your registration.</p>";
+} else {
 //####################################
 //
 // SECTION 3b Error Messages
 //
 // display any error messages before we print out the form
-        if ($errorMsg) {
-            print '<div id="errors">';
-            print "<ol>\n";
-            foreach ($errorMsg as $err) {
-                print "<li>" . $err . "</li>\n";
-            }
-            print "</ol>\n";
-            print '</div>';
+    if ($errorMsg) {
+        print '<div id="errors">';
+        print "<ol>\n";
+        foreach ($errorMsg as $err) {
+            print "<li>" . $err . "</li>\n";
         }
+        print "</ol>\n";
+        print '</div>';
+    }
 //####################################
 //
 // SECTION 3c html Form
 //
-        /* Display the HTML form. note that the action is to this same page. $phpSelf
-          is defined in top.php
-          NOTE the line:
-          value="<?php print $email; ?>
-          this makes the form sticky by displaying either the initial default value (line 35)
-          or the value they typed in (line 84)
-          NOTE this line:
-          <?php if($emailERROR) print 'class="mistake"'; ?>
-          this prints out a css class so that we can highlight the background etc. to
-          make it stand out that a mistake happened here.
-         */
-        ?>
+    /* Display the HTML form. note that the action is to this same page. $phpSelf
+      is defined in top.php
+      NOTE the line:
+      value="<?php print $email; ?>
+      this makes the form sticky by displaying either the initial default value (line 35)
+      or the value they typed in (line 84)
+      NOTE this line:
+      <?php if($emailERROR) print 'class="mistake"'; ?>
+      this prints out a css class so that we can highlight the background etc. to
+      make it stand out that a mistake happened here.
+     */
+    ?>
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
@@ -432,7 +435,7 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="text" id="txtUsername" name="txtUsername"
                                    value="<?php print $Username; ?>"
                                    tabindex="100" maxlength="16" placeholder="Enter a username"
-                                   <?php if ($UsernameERROR) print 'class="mistake"'; ?>>
+    <?php if ($UsernameERROR) print 'class="mistake"'; ?>>
 
                         </label>
 
@@ -440,7 +443,7 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="password" id="Password" name="Password"
                                    value=""
                                    tabindex="110" maxlength="16" placeholder="Enter a password"
-                                   <?php if ($passwordERROR) print 'class="mistake"'; ?>
+    <?php if ($passwordERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
@@ -450,7 +453,7 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="text" id="txtEmail" name="txtEmail"
                                    value="<?php print $email; ?>"
                                    tabindex="120" maxlength="45" placeholder="Enter a valid email address"
-                                   <?php if ($emailERROR) print 'class="mistake"'; ?>
+    <?php if ($emailERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
                         </label>
@@ -469,7 +472,7 @@ if (isset($_POST["btnSubmit"])) {
                         <input type="text" id="txtFirstName" name="txtfirstName"
                                value="<?php print $firstName; ?>"
                                tabindex="200" maxlength="45" placeholder="ex. Billy"
-                               <?php if ($firstNameERROR) print 'class="mistake"'; ?>
+    <?php if ($firstNameERROR) print 'class="mistake"'; ?>
 
                                >
                     </label>
@@ -478,7 +481,7 @@ if (isset($_POST["btnSubmit"])) {
                         <input type="text" id="txtLastName" name="txtlastName"
                                value="<?php print $lastName; ?>"
                                tabindex="210" maxlength="45" placeholder="ex. Bob"
-                               <?php if ($lastNameERROR) print 'class="mistake"'; ?>
+    <?php if ($lastNameERROR) print 'class="mistake"'; ?>
 
                                >
                     </label>
@@ -487,31 +490,31 @@ if (isset($_POST["btnSubmit"])) {
                               >   <!-- START gender radio -->
                         <legend>Gender</legend>
                         <label  <?php
-                        if ($genderERROR)
-                            print 'class="mistake"';
-                        ?>><input type="radio" 
+    if ($genderERROR)
+        print 'class="mistake"';
+    ?>><input type="radio" 
                                 id="radGenderMale" 
                                 name="radGender" 
                                 value="Male"
-                                <?php if ($gender == "Male") print 'checked="checked"'; ?>
+    <?php if ($gender == "Male") print 'checked="checked"'; ?>
                                 tabindex="210">Male</label>
                         <label <?php
-                        if ($genderERROR)
-                            print 'class="mistake"';
-                        ?>><input type="radio" 
+    if ($genderERROR)
+        print 'class="mistake"';
+    ?>><input type="radio" 
                                 id="radGenderFemale" 
                                 name="radGender" 
                                 value="Female"
-                                <?php if ($gender == "Female") print 'checked="checked"' ?>
+    <?php if ($gender == "Female") print 'checked="checked"' ?>
                                 tabindex="220">Female</label>
                         <label <?php
-                        if ($genderERROR)
-                            print 'class="mistake"';
-                        ?>><input type="radio" 
+    if ($genderERROR)
+        print 'class="mistake"';
+    ?>><input type="radio" 
                                 id="radGenderOther" 
                                 name="radGender" 
                                 value="Other"
-                                <?php if ($gender == "Other") print 'checked="checked"'; ?>
+    <?php if ($gender == "Other") print 'checked="checked"'; ?>
                                 tabindex="230">Other</label>
                     </fieldset> <!-- end gender radio -->
                     <label id="lstBuilding">Age</label>               
@@ -535,9 +538,12 @@ if (isset($_POST["btnSubmit"])) {
 
                     </select>
                     <label id ="AboutMe">About Me</label>
-                    <textarea id=tAboutMe name=AboutMe rows=5 maxlength= <?php print "'$ABOUTME_MAX_LENGTH'";
-                    if ($AboutMeERROR){ print 'class = "mistake"';}
-                    ?>></textarea>
+                    <textarea id=tAboutMe name=AboutMe rows=5 maxlength= <?php
+    print "'$ABOUTME_MAX_LENGTH'";
+    if ($AboutMeERROR) {
+        print 'class = "mistake"';
+    }
+    ?>></textarea>
                 </fieldset> <!-- End Profile -->
                 <fieldset class="buttons">
                     <legend></legend>

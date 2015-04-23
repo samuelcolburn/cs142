@@ -74,7 +74,8 @@
 
         $thisDatabase = new myDatabase($dbUserName, $whichPass, $dbName);
         
-     
+    
+        
 
         // CHECK USER SESSION
         if ($debug) {
@@ -99,7 +100,7 @@
                 print_r($data);
                 print "sql = " . $query;
                 print"<p> results = </p>";
-                print_r($results);
+                print_r($session_results);
             }
         }
         ?>	

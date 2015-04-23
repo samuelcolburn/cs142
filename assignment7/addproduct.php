@@ -200,11 +200,15 @@ if (isset($_POST["btnSubmit"])) {
     if ($Description == "") {
         $errorMsg[] = "Please enter a description for the product";
         $DescriptionERROR = true;
-    } elseif (!verifyAlphaNum($Description)) {
+        
+        
+    } 
+    /*
+    elseif (!verifyAlphaNum($Description)) {
         $errorMsg[] = "Your description is invalid. Be sure to only use basic characters.";
         $DescriptionERROR = true;
     }
-
+*/
     //~~~~~~PRICE VALIDATION~~~~~~~~~~~
     if ($Price == "") {
         $errorMsg[] = "Please enter a price";

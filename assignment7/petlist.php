@@ -81,7 +81,7 @@ foreach ($results as $pet) {
             if ($key == "Image") {
                 print "<img src='" . $value . "' height=200 width=266>";
             } 
-          
+            
             
             else {
                 print $value . "\n";

@@ -4,7 +4,7 @@ include "top.php";
 
 
 
-$debug = false;
+$debug = true;
 
 if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
     $debug = true;
@@ -55,7 +55,7 @@ if (isset($_GET["id"])) {
     if ($_SESSION["admin"]) {
         print"<p><a href = addproduct.php?id=" . $pmkProductID . ">Edit</a></p>";
 
-        print"<p><a href = 'delete.php?id=" . $pmkProductID ."&amp;table=tblProducts'>DELETE</a></p>";
+        print"<p><a href = 'delete.php?id=" . $pmkProductID . "&amp;table=tblProducts'>DELETE</a></p>";
     }
 
 
@@ -73,24 +73,34 @@ if (isset($_GET["id"])) {
 
 
 
-    print "<table class = userinfo>";
-    foreach ($results as $row) {
-        foreach ($row as $field => $value) {
+    print "<section class = petinfo>";
+    foreach ($results as $key => $value) {
 
-            if (!is_int($field)) {
-                print "<tr>";
-                $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
+        //indexed array skips the int value doubling   
+        if (!is_int($key) && $key != "ID" && $key != "Category") {
 
-                print "<td>" . $field /*  comment out added spaces . "&emsp;&emsp;" */ . "</td>";
-                print "<td>" . $value . "</td>";
-                print"</tr>\n";
+            //create a div for each field/value pair with class of the field
+            print "<div class='" . $key . "'>\n";
+
+            //image check
+            if ($key == "fldImage") {
+                print "<img src='" . $value . "' height=200 width=266>";
+            } 
+            
+            
+            else {
+                print $value . "\n";
             }
+
+            print "</div>\n";
+            
         }
+        
     }
+    print "</section>\n";
 
-    print"</table>";
 
-//@@@@@@@@ PRODUCT COMMENTS @@@@@@@@@
+//@@@@@@@@ PET COMMENTS @@@@@@@@@
     print"<h3>Comments</h3>\n";
 
     //create data array
@@ -104,61 +114,56 @@ if (isset($_GET["id"])) {
     $query .=" ORDER BY fldDateSubmitted ";
 
     //execute query
-    $results = $thisDatabase->select($query, $data);
+    $comments = $thisDatabase->select($query, $data);
 
-    if(!empty($results)){
-    if ($debug) {
+    if (!empty($comments)) {
+        
+        //@@@@ DEBUG
+        if ($debug) {
 
-        print "<p>Product:</p>";
-        print_r($data);
-        print "<p>query:" . $query . "</p>";
-        print_r($results);
-    }
-    //Display results
-    print "<table>\n";
-    $firstTime = true;
-    foreach ($results as $row) {       
-        if ($firstTime) {
-            print '<thead><tr id = "tableheader">';
-            $keys = array_keys($row);
-            foreach ($keys as $key) {
-
-                if (!is_int($key)) {
-                    $key = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($key, 3));
-                    print "<th>" . $key . "</th>";
-                }
-            }
-            print "</tr>";
-            print "</thead>";
-            $firstTime = false;
+            print "<p>Product:</p>";
+            print_r($data);
+            print "<p>query:" . $query . "</p>";
+            print_r($results);
         }
         
-        print "<tr>\n";
-        foreach ($row as $field => $value) {
-
-
-            if (!is_int($field)) {
-                // print "<tr>\n";
-                $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
-
-                print "<td>" . $value . "</td>\n";
-                // print"</tr>\n";
+        //@@@@ COMMENTS
+        foreach ($comments as $comment) {
+            if ($debug) {
+                print_r($comment);
             }
-        }
-        print "</tr>\n";
-    }
 
-    print"</table>\n";
-    }else{
+            $CommentID = $comment[0];
+
+            //make each pet section clickable, with class as their species
+            print ' <section class =" ' . $pet[5] . '" >';
+
+            foreach ($comment as $key => $value) {
+
+                //indexed array skips the int value doubling   
+                if (!is_int($key)) {
+                    $key = substr($key, 3);
+                    //create a div for each field/value pair with class of the field
+                    print "<div class='" . $key . "'>\n";
+
+                    print "<p>" . $key . ":</p>";
+                    print "<p>" . $value . "</p>";
+
+
+                    print "</div>\n";
+                }
+            }
+
+            print "</section>\n";
+        }
+    } else {
         print"<p>No comments yet!</p>";
     }
     if ($_SESSION["user"]) {
         include "comment.php";
-    }
-    else{
+    } else {
         print"<p><a href='login.php'>Login</a> or <a href='register.php'>Register</a> to Comment!</p>";
     }
-    
 } else {
     print "<p>Sorry, that product cannot be found.</p>";
 }
