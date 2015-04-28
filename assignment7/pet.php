@@ -144,7 +144,7 @@ if (isset($_GET["id"])) {
 
         //image div
         print "<div class = '" . $key[5] . "'>";
-        print "<img src='" . $pet[5] . "' height=200 width=266 alt ='" . $pet[1] . "'>";
+        print "<img src='" . $pet[5] . "' height=400 width=532 alt ='" . $pet[1] . "'>";
         print "</div>";
 
 
