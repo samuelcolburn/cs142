@@ -49,7 +49,7 @@ session_destroy();
 <script type="text/javascript">
 <!--
 function delayer(){
-    window.location = "home.php"
+    window.location = window.history.back(1);
 }
 //-->
 </script>

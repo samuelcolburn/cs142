@@ -24,7 +24,7 @@ if (isset($_GET["id"])) {
 //Select product from tblProducts with the given productID
     $data = array($pmkProductID);
 
-    $query = "SELECT pmkProductID , fldProductName , fldImage, fldDob as 'fldAge' , fldDescription , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
+    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldImage, fldDob as 'fldAge' , fldDescription , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
 
 //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
@@ -93,22 +93,22 @@ if (isset($_GET["id"])) {
 
         //get all key values
         $petkeys = array_keys($pet);
-        
-        
+
+        if($debug){
         print_r($petkeys);
-        
-        //intialize final key array
-        $keys = array();
-        
-        //loop through data array to create a key array, removing all doubling and database naming conventions
-        foreach ($keys as $key => $value) {
-            if(!is_int($key)){
-                $key = substr($key, 3);
-                $keys [] = $key;
-            }            
         }
         
-        print_r($keys);
+        $key = array();
+        foreach($petkeys as $index => $value){
+            if(!is_int($value)){
+            $key[] = substr($value,3);
+            }
+        }
+        
+        if($debug){
+        print_r($key);
+        }
+
         //create pet page
         //title of the page is the name of the pet
         print "<h2>" . $pet[1] . "</h2>";
@@ -116,18 +116,16 @@ if (isset($_GET["id"])) {
         print ' <section class ="petinfo" >';
         
         //image column
+        print "<main>";
         print "<div class = ".$key[2].">";
-        print "<img src='" . $pet[4] . "' height=200 width=266 alt ='" . $pet[1] . "'>";
+        print "<img src='" . $pet[2] . "' height=200 width=266 alt ='" . $pet[1] . "'>";
         print "</div>";
-        
-        //description column
-        print "<aside>";
-        
-        //age div
+                //age div
         print "<div class = ".$key[3].">";
                     //get age from birthdate
-                    $birthDate = $pet[6];
-                    $birthDate = explode("-", $value);
+                    $birthDate = $pet[3];
+
+                    $birthDate = explode("-", $birthDate);
 
                     if ($birthDate[0] >= date("Y")) {
                         $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
@@ -136,28 +134,37 @@ if (isset($_GET["id"])) {
                         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
                         print $age . " years old";
                     }
+                    
         print "</div>";
+        print "</main>";
+        //description column
+        print "<aside>";
+        
+
         
         //description div
         print "<div class = ".$key[4].">";
         
         print "<p>";
         
-        print $pet[8];
+        print $pet[4];
         
         print "</p>";
         
         print "</div>";
-        print "</aside>";       
-
-        print "</section>\n";
-    }
-    //ADOPTION BUTTON
+        
+        
+          //ADOPTION BUTTON
     //make each pet section clickable, with class as their species
     print ' <p class ="AdoptMe" onclick="location.href= ';
     print " 'adopt.php?id=" . $pmkProductID . "' ";
     print ' " >Adopt Me!</p>';
 
+        print "</aside>";       
+
+        print "</section>\n";
+    }
+  
 //@@@@@@@@ PET COMMENTS @@@@@@@@@
     print"<h3>Comments</h3>\n";
     print "<section class = Comments>";

@@ -80,7 +80,11 @@ body {
     font-size: 100%;  /* sets the font size for all elements. */
     font-family:"Century Gothic" , sans-serif;
     color: #222;
-      background-color: #fefefe;
+    background-color: #fefefe;
+
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
 
 }
 
@@ -103,47 +107,33 @@ h4 {
 }
 
 h5 { 
-    color: #000000;
-    font-family: "sansserif";
-    font-weight: bold;
-    font-size: .6em;	
+	
 }
 
 h6 {
-    color: #000000;
-    font-family: "sansserif";
-    font-weight: bold;
-    font-size: .5em;	
+	
 }
 
 ol ol ol li {
-    list-style: lower-alpha
 }
 
 ol ol li {
-    font-weight: normal;
-    list-style: decimal;
-    padding-top: 0em
+
 }
 
 ol li {
-    font-weight: bold;
-    list-style: upper-roman;
-    padding-top: 1em
+
 }
 
 ul ul ul li { 
-    list-style: circle;
+   
 }
 
 ul ul li { 
-    list-style: square;
 }
 
 ul li { 
-    list-style: disc;
-    padding-bottom:0.4em;
-    margin-left:1em;
+
 }
 
 
@@ -219,7 +209,7 @@ TOOLBAR SECTION
     border-bottom-left-radius:5px;
     background-color:#222;
     font-size:small;
-    
+
     display:flex;
     justify-content:center;
     align-content:center;
@@ -277,7 +267,7 @@ nav {
 }
 
 nav ol{
-  
+
 }
 
 nav ol li{
@@ -427,27 +417,15 @@ ARTICLE SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 article{
+    flex:1;
 }
 
 #main {
-    width:80%;
-    margin:0 auto;
 }
 
 article h1 {
-    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
-    margin-left:3em;
 }
 
-
-/*****************     aside section              *****************************/
-aside {
-    margin: 0 auto;
-    width: 69.7885196%; /* 231px / 331px */
-}
-aside h2, aside p{
-    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
-}
 
 
 
@@ -858,28 +836,67 @@ INDIVIDUAL PET SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 #pet article {
-    width:80%;
     margin:0 auto;
+      margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
 }
 
-#pet section {
-}
+
 
 #pet h2{
-    padding-left:15px;
+    margin-bottom:20px;
 }
 
-.petinfo{
-    padding:10px;
+#pet main{
+    background-color:#eee;
+
+    padding:20px;
+    display:flex;
+
+    border-radius:5px;
+}
+#pet main section {
+    flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.petinfo div{
-    padding:10px;
+#pet .Image{
+  height: 200px;
+  width: 266px;
 }
 
-.Description{
-    max-width:400px;
+#pet main ol{
+     list-style-type: none;
+  background-color: wheat;
+  padding: 10px;
+  width: 246px;
 }
+
+#pet main ol li{
+  font-weight: normal;
+  list-style: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#pet li span {
+     font-weight: bold;
+  padding-right: 10px; 
+}
+
+#pet aside{
+    padding: 20px;
+    flex:3 1 60%;   
+    background-color:#eee;
+}
+
+
+
 
 .Description p{
     padding:0;
@@ -888,12 +905,14 @@ INDIVIDUAL PET SECTION
 
 #pet h3 {
     margin-top: 50px;
-    margin-bottom: 20px;
     font-size: 20px;
 }
 
+.Comments{
+    max-width:766px;
+}
 .comment {
-    margin:10px 10px 10px 0px;
+    margin:10px 0px 10px 0px;
     border:thin solid black;
     border-radius:3px;
 }
@@ -906,23 +925,26 @@ INDIVIDUAL PET SECTION
 .CommentInfo{
     font-size:small;
     border-top:thin solid black;
-    padding:10px;
+    padding:5px;
     margin:0;
-    
+}
+
+.Username{
+    margin-right:20px;
 }
 
 .CommentEdit , .CommentDelete{
-      float: right;
-  margin: 0px 5px 0px 5px;
+    float: right;
+    margin: 0px 5px 0px 5px;
 }
 
 .AdoptMe {
     padding:10px;
-    margin: 5px;
+    margin: 15px 15px 15px 0px;
     border-radius:5px;
     background-color:#DCF3D6;
     box-shadow: 2px 2px 2px #888888;
-    
+
     text-align:center;
     width:90px;
 }
@@ -934,6 +956,61 @@ p.AdoptMe:hover{
     text-decoration:underline;
 }
 
+/* ======================================== MEDIA QUERIES ======================================== */
+
+@media (max-width: 750px) {
+
+    #pet article{
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .petinfo{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    #pet aside{
+        margin-top:20px;
+        margin-left:0px;
+        width:80%;
+
+    }
+
+    #pet main{
+        flex:initial;
+        width:80%;
+
+    }
+
+
+
+}
+@media (max-width: 550px) {
+
+    #pet article{
+        width:100%;
+    }
+    #pet aside{
+
+        width:100%;
+    }
+
+    #pet main{
+
+        width:100%;
+    }
+
+    .Comments{
+        margin-left:0px;
+    }
+
+
+
+}
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -946,7 +1023,6 @@ ADMIN BUTTONS SECTION
     display:flex;
     flex-wrap:wrap;
     align-content:center;
-    margin:10px;  
 }
 
 .edit {
