@@ -1,1006 +1,297 @@
-/* CSS designed by Robert M. Erickson */
+/* CSS designed by  Sam Colburn 
 
-/* ===================  General Section  ==================================== */
-@import url('reset.css');
+to understand the comments like 900px / 960px
+   read http://alistapart.com/article/responsive-web-design/
 
-* {
- 
+*/
+/*****************     main layout section             ************************/
+body{
+    margin: 36px auto;
+    width: 90%;
+    font-family:"Century Gothic", sans-serif;
 }
 
-.printonly{}
-html, body {}
+#page{
+    margin: 0 auto 53px;
+    width: 93.75%; /* 900px / 960px  */
+    border: 1px solid black;
+    border-radius: 15px;
+}
 
-body {
+#main{
+    float: left;
+    width: 62.8888889%; /* 566px / 900px */
+}
+
+#other{
+    float: right;
+    width: 36.7777778%; /* 331px / 900px */
+}
+
+h2 {
+    font-weight:normal;
+    margin-left:6%;
+}
+
+/*****************     header section             *****************************/
+header h1 {
+    padding: 0.8em 5.33333333%;  /* 48px / 900px */
+    font-weight:normal;
 
 }
 
-a{
+
+/*****************     navigation section         *****************************/
+nav ol {
+    padding-left: 5.33333333%;  /* 48px / 900px */
+    background-color:#0078D7;
+    color:#FFF;
+}
+nav ol li{
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 3em;
+}
+
+nav a:link{
+    color:#FFF;
+    text-decoration: none;
+}
+
+nav a:visited{
+    color:#FFF;
+    text-decoration: none;
+}
+
+nav a:hover{ 
+    text-decoration: none;
 
 }
 
-a[target="_blank"]{
- 
+
+/*****************     article section             ****************************/
+/* un comment and see what happens */
+/*
+article{
+    height: 200px;
+    overflow: auto;
+}
+*/
+
+article h1, article p, article table{
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
 }
 
-a:link{
+
+/*****************     aside section              *****************************/
+aside {
+    margin: 0 auto;
+    width: 69.7885196%; /* 231px / 331px */
+}
+aside h2, aside p{
+    padding: .2em 8.48056537% .2em 8.48056537%; /* 48px / 566px */
+}
+
+
+/*****************     footer section              ****************************/
+/* ===================  Footer Section  ==================================== */
+
+
+footer {
+    font-size: small;
+    text-align: center;
+    margin-top:1em;
+    color:#FFF;
+    clear: both;
+    background-color:#0078D7;
+}
+
+footer a:link{
+    color:#FFF;
+    text-decoration: none;
+    font-size:medium;
 
 }
-a:visited{
+
+footer a:visited{
+    color:#FFF;
+    text-decoration: none;
+    font-size:medium;
+}    
+
+footer a:hover{
+    color:#FFF; 
+    text-decoration: none;
+    font-size: medium;
 
 }
-a:hover {
+.footer {
+    color:#FFF;
+}
+
+
+/*****************     form section                ****************************/
+#form article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    width: 600px; /* not repsonive but fixed */
+}
+
+/*need to clear any floats that may exist */
+
+fieldset{
+    border-top:thin solid #0078D7;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    margin: 1em;
+    clear: both;  
+}
+
+
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+}
+
+fieldset.wrapper legend {
+    margin-left:5%
+}
+
+fieldset.intro{
+    border-top: medium solid #349033;
+}
+
+label {
+    color: #0F527A;
+    display: block;
+    font-size: .9em;
 
 }
 
-code{
+label:hover {
+    background-color: #F5F5F5;
+}
+input {
+    color:#000;
+    border:0;
+    background-color:#F5F5F5;
+    border-radius:3px;
+
+}
+
+/*~~~ CONTACT ~~~~~~~~~~ */
+fieldset.contactwrapper{
+    float:none;
+}
+
+/* just pushes content to left side of the box. */
+fieldset.contact{
+    float: left;
+    margin:0;
+    padding:0;
+    border:0;
    
 }
-h1, h2, h3 {
- 
+legend.contact {
+    font-weight: normal;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.contact label{
+    display: block;
+    text-align: right;/* pushes the text to the right where they line up */
+     padding-top:0.5em;
+       
 }
 
-h1{
-
+fieldset.contact input{
+    width: 27em; /* works with above to be the same size for the boxes */
+    padding-left:1em;
+     font-family:"Century Gothic", sans-serif;
 }
 
-h2, h2 a{
-   
+
+
+/* ~~~ RADIO ~~~*/ 
+fieldset.radiowrapper {
+    float:none;
+}
+fieldset.radio {
+    float:left;
+    margin:0;
+    padding:0;
+    border:0;
 }
 
-h3{
-    
+fieldset.radio label {
+    width:32em;
+    padding-top:0.1em;
+}
+/* ~~~ CHECKBOX ~~~*/ 
+fieldset.checklist label {
+    padding-top:0.1em;
+}
+/* ~~~ List Box ~~~*/ 
+
+select#lstMountains{
+    background-color:#F5F5F5;
+    border:0;
+    border-radius:3px;
+    color:#0F527A;
+    font-family:"Century Gothic", sans-serif;
+}
+/* Style the comment box*/
+
+fieldset.textarea label {
+    display:none;
+}
+textarea#txtComments{
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+    width:20em;
+    border-radius:3px;
+      overflow: auto;
+        resize: none;
 }
 
-img {
-   
 
-}
-#slide img {
-
-    
-}
-
-p {
- 
-}
-ol li {
-  
-}
-ol ol li {
-  
-
+/* changes button style*/
+fieldset.buttons{
+    border: none;
+    margin-top:0;
+    margin-left:5%;
+    margin-right:0;
+    margin-bottom:0;
+    padding:0;
 }
 
-strong{
-   
-}
-.firstLine{
-    
-}
+input#btnSubmit{
+    background-color: #349033;
+    color: #FFF;
+    border: 0;
+    padding:0.5em;
 
+}
+input#btnSubmit:hover{
+    background-color: #69227B;
+
+}
 /* style the errors in the form so they are visible */
 .mistake {
- 
+    color: #fff;
+    background-color:#ff5555;
+    border: 0;
 }
 
 /* style the list of errors that will show before the form */
+
+#errors ol {
+    margin-top:5%;
+}
 #errors ol li{
-  
-}
-
-
-/* ===================  Header  Section  ==================================== */
-
-#topbox{
-
-}
-#header {
-
-}
-
-#header a:link{
-}
-
-#header a:hover{
-
-}
-
-#classtitle{
-}
-
-.todaysdate{
-}
-
-#toolmenu{
-}
-
-/* ===================  Student Info Section  =============================== */
-#studentInfo{  
-}
-
-#studentGrade{
-}	
-
-#studentGrade a:visited{
-}	
-
-#classRank{
-}
-
-.noticeMe{ /* -------    for guests who are not registered , not accpeted submission */ 
-}
-
-/* ===================  Main Navigation Section  ============================ */
-#mainMenu{
-}
-
-#mainMenu ol{
-
-}
-
-#mainMenu .activeLink a{
-}
-
-#mainMenu a{
-}
-
-.menuLink{
-}
-.menuLink a{	
- 
-}
-
-.menuLink a:link{
-
-}
-
-nav#mainMenu ol li.menuLink a:visited{
- 
-}
-.menuLink a:hover{
-	
-}
-
-/* ===================  Main Content Section  =============================== */
-#mainContent {
- 
-}
-
-#mainContent a:visited{
-
-}
-
-
-/*hilite me div goes out of bounds :( */
-div[style*="background"], .code{
-
-}
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Student Grade Page    ------------------------------- */
-
-/* -------------------------- Grades ---------------------------------------- */
-
-/* -- used for automatic grading -- */
-.certain{
-   
-}
-
-.uncertain{
-   
-}
-/* -------------------------------- */
-.newCriteria{
-  
-}
-
-.oldCriteria{
-  
-}
-.wrongCriteria{
-   
-}
-
-.zeroPoints {
-    
-}
-.bonusPoints{
-   
-}
-.avggrade {
-
-}
-
-.failing {
-   
-}
-
-.hypo {
-  
-}
-.percent{
-
-}
-#GradeCriteria{
- 
-}
-
-.GradesReleased {
- 
-}
-.GradesReleased a:visited, .GradesReleased a:link{
-   
-}
-.GradesReleased .highlight {
-
-}
-
-.GradingStarted {
-  
-}
-
-.NotGraded {
-  
-}
-#listStudents span.NotGraded {
-   
-}
-
-#listStudents span.notSubmitted:before{
-  
-}
-#listStudents span.notSubmitted{
- 
-}
-table#grading{
- 
-}
-
-table#grading, table#grading td, table#grading th{
- 
-}
-
-.standard {
-
-}
-
-.standard th {
-
-}
-
-.standard td {
-  
-}
-
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  layout                ------------------------ */
-
-
-#slide{
-    /*	float: left;
-            width: 57.8888889%;/* 566px / 900px less some padding
-            padding: 0 1em 2em 0;
-            border-right: dashed thin #999;*/
-}
-
-#lectureSlide #otherMedia, #displayAssign #otherMedia, #lecture #otherMedia{
-    /*	float: right;
-            width: 17%; /* 331px / 900px */
-}
-
-#lecture #studentComments, #lectureSlide #studentComments, #displayAssign #studentComments{
-
-    /*width: 36.7777778%; /* 331px / 900px */
-}
-
-#txtComments{
-
-}
-/* -------------------  Assignment / Lectures pages  ------------------------ */
-.assignment a{
-   
-}
-
-ol.webReviewList li{
-
-}
-
-ol.webReviewList li.hidden{
-
-}
-
-ol.webReviewList li.tentative{
-
-}
-
-ol.webReviewList li.tentative:before{
- 
-}
-
-.current{
-
-}
-
-/* the perr grading page to highlight the current student you are working on */
-#peerGrade .current{
-
-}
-#peerGrade ol li{
-    
-
-}
-.notStudentLink{ /* for instructor to see link is not avaliable to students */
-   
-}
-
-.summary{
-    
-}
-
-.title{
-   
-}
-
-
-.small{
-  
-}
-.fifty{
-   
-}
-.onehundred{
-    
-}
-figure.img-left{
- 
-}
-figcaption{
-   
-}
-
-.LecturesLink{ /* also used on calendar */  
- 
-}
-
-.lectureLeftPicture{
- 
-}
-
-.lectureRightPicture{
-   
-}
-
-.videoList li{
-   	
-}
-
-#otherMedia ol li{
-
-}
-
-#otherMedia ol li a[href*="http://"]{
-
-
-}
-
-
-#otherMedia ol li audio{
- 
-}
-#otherMedia ol li img{
-  
-}
-
-.groupMembers li{
-  
-}
-
-
-
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Calendar page         ------------------------------- */
-.Absent{
-  
-}
-
-.assignment{
-   
-}
-
-.callInSick{
-
-}
-
-div.date{
-
-}
-
-.Excused{
-  
-}
-
-#fullCalendar{
-  
-}
-
-.labComplete{
-  
-}
-
-.FreeDay{
- 
-}
-
-.Late{
- 
-}
-
-.Personal{
-
-}
-
-.Present{
-   
-}
-
-.presentation{
-  
-}
-.Sick{
- 
-}
-
-.submitted{
-    
-}
-
-.notSubmitted{
-
-}
-.TOPIC { 
- 
-}
-
-.VACA {
-
-}
-
-ol.taVisists li{
- 
-}
-
-ol.taVisists li.null{
-   
-}
-ol.taVisists li.null:before{
-  
-}
-
-ol.taVisists li.Show{
-  
-}
-ol.taVisists li.NoShow{
-  
-}
-
-tr.days{
-    
-}
-
-tr.days th.sat, tr.days th.sun {
- 
-}
-
-#calendar table tr.days th,  table tr.days th {
-
-}
-
-#calendar table tr#title th {
-  
-}
-
-#calendar table td {
-
-}
-
-#calendar table td.Sat {
- 
-}
-
-#calendar table a {
- 
-}
-
-td.Sat div.date, td.Sun div.date{
-    
-}
-
-td.Jun div.date, td.Aug div.date{
-  
-}	
-
-#calendar table td.Sat, #calendar table td.Sun {
-
-}
-
-#calendar table td.lastMonth, #calendar table td.nextMonth, #calendar table td.prevMonth {
-   
-}
-
-#calendar table tr#lastweek td {
- 
-}
-
-#calendar table td.atoday {
-  
-}
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Call in sick Page     ------------------------------- */
-
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Syllabus Page         ------------------------------- */
-.noBorder{}
-
-.hideText{ 
-  
-}
-
-.emailText{
-   
-}
-.highlightRed{ 
-  
-}
-
-#syllabus table, #syllabus table td, #syllabus table th{
- 
-}
-#tahours .hourBox:hover{
- 
-}
-#tahours .hourBox{
-
-}
-
-#tahours span{
-   
-}
-#tahours .dayColumn{
- 
-}
-#tahours .header{
-   
-}
-#tahours a:hover{
-  
-
-}
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Submit Assignment Page  ----------------------------- */
-#filesSubmited{
-  
-}
-#submitAssignment iframe{ 
-  
-}
-
-.left {
- 
-}
-
-.submith1{
-}
-
-#submitAssignments{
-  
-}
-
-
-#txtDateRequest{
-   
-}
-
-/* ===================  Main Content Section  =============================== */
-/* -------------------  Lecture Page          ------------------------------- */
-#frmDemo{
-
-}
-
-
-#frmDemo pre, #tblValidation pre {
- 
-}
-
-#frmDemo table, #tblValidation {
- 
-}
-
-#frmDemo table td, #frmDemo table th, #tblValidation td, #tblValidation th { }
-#frmDemo table th , #tblValidation th{
-   
-}
-#frmDemo table td, #tblValidation td { 
-  ; 
-}
-
-#frmDemo, #tblValidation .odd {}
-#frmDemo, #tblValidation .even {}
-
-#sampleData table, #sampleData td, #sampleData th {
-
-}
-
-#sampleData td:first-child + td + td, #sampleData td:first-child + td + td + td {
-  
-}
-
-#tablestructure, #tablestructure td, #tablestructure th{
-   
-}
-
-/* comment section */
-div #studentComments{
-    /* clear: all;*/
-}
-#studentComments {
-  
-}
-
-#commentHeader{
- 
-}
-
-#addComment{
-  
-}
-
-.postedDate{
-  
-}
-
-#studentComments article{
-   
-
-}
-
-.poster{
-  
-}
-
-.comment{
-   
-}
-
-#studentComments img{
-
-}
-/* -------------------  lecture slide page   ------------------------------- */
-
-#otherMedia{
- 
-}
-
-#media #otherMedia{
-
-}
-
-#media #otherMedia > h1{
-}
-#media #otherMedia ol li {
-}
-/* -------------------upcoming aside  ------------------------------- */
-
-aside#upcoming{
-
-}
-#upcoming div.box{
-   
-}
-
-#upcoming h2{
- 
-}
-
-#upcoming ol li{
-  
-}
-
-#upcoming ol.LecturesLink, #upcoming ol.AssignmentLink, #upcoming ol.examLink{
-   
-}
-
-/* ===================  Footer Section        =============================== */
-footer{
-  
-}
-
-footer p{
- 
-}
-
-/* -------  i put this here so you can have your name show up  -------------- */
-footer #author:after{
-    
-}
-
-#ProcessingTime{
-  
-}
-
-/* ===================  Non validating Section  ============================= */
-pre { 
- 
-}
-
-code{ 
-  
-}
-
-/* ===================  Testing New Items Section  ========================== */
-/* used for grading page */
-/* slider  page css*/
-/*body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}*/
-.demoHeaders {}
-
-#dialog_link {}
-
-#dialog_link span.ui-icon {}
-
-ul#icons {}
-
-ul#icons li {}
-
-ul#icons span.ui-icon {}
-
-body{
-
-}
-#toolmenu:before {
- 
-}
-
-h1{
-
-}
-
-
-/* ===================  Header  Section  ==================================== */
-#header {
-   
-}
-
-#header a:link, #header a:visited{
- 
-}
-
-#header a:hover{
-   
-}
-
-#classtitle{
-    
-}
-
-#toolmenu{
- 
-}
-#toolmenu ol li{
-   
-}
-
-
-#termOfSubmission ol li li{
-   	
-}
-
-table#asciiTable, table#asciiTable td{
-
-}
-
-/*
-media query templates
-
-    Created on : May 12, 2014, 8:37:00 PM
-    Author     : robert erickson
-*/
-
-/* ================================ */
-
-
-/* ===================  Gradeing criteria pages  ============================= */
-#peerCriteria article section{
-
-}
-
-#peerCriteria article section .percent{
- 
-}
-
-#peerCriteria article section h2, 
-#peerCriteris article section p{
-
-}
-#peerCriteria article section#peer{
-
-}
-
-
-@media screen and (max-width: 480px){
-    body{
- 
-    }
-
-    #toolmenu{
-
-    }
-    #toolmenu:before {
-    
-    }
-}
-
-@media screen and (max-width: 520px){
-    body{
-    
-    }	
-    #toolmenu{
-   
-    }
-    #toolmenu:before {
-     
-    }	
-}
-
-@media screen and (max-width: 768px){
-    body{
- 
-    }	
-    #toolmenu:before {
-     
-    }	
-}
-
-/**************************************************/
-@media screen and (max-width: 520px){
-    /* ===================  Main Navigation Section  ============================ */
-    #mainMenu{
-    	
-    }
-
-    #mainMenu a, #adminMenu a{
-     
-    }
-
-    .menuLink{
-   
-    }
-    .menuLink a{	
-   
-    }
-
-    .menuLink a:link{
-
-       
-    }
-
-    .menuLink a:visited{
-
-    }
-    .menuLink a:hover{
-
-    
-    }
-
-    /* ------------------  admin menu  ------------------------------------------ */
-    #adminMenu{
-
-
-
-    }
-
-
-}
-/*************************************************/
-@media screen and (min-width: 1200px){
-    body{
-
-    }
-    #toolmenu:before {
-   
-    }
-
-    .menuLink a:link{
-
-    }
-
-    .menuLink a:visited{
-
-    }
-    .menuLink a:hover{
-
-    }
-}
-
-/*====== ASSIGNMENT LIST STYLE =======*/
-
-/*      general list style      */
-ol.AssignmentsLink{
-    list-style-type:none;
-    padding:0;
-    margin:0;
-    width:100%
-}
-
-/* li element style       */
-ol.AssignmentsLink li.title.summary{
-    font-family:"Century Gothic", sans-serif;
-    color:#fff;
-    background-color:#0078D7;
-    margin:10px;
-    padding:5px;
-    border:thin solid transparent;
-    border-radius:5px;
-    position:relative;
-    padding-left:48px;
-    width:500px;
-}
-/* LINK STYLE */
-.AssignmentsLink li.title.summary a.url{
-    color:#d1d1d1;
-}
-
-.AssignmentsLink li.title.summary a.url:hover{
-    color:#FFF;
-}
-.AssignmentsLink li.title.summary:hover {
-    background-color:#0F527A;
-}
-
-.AssignmentsLink li.title.summary:hover a.url{
-  color:#ff5555;
-}
-
-/* button style */
-ol.AssignmentsLink li.title.summary::before{
-     
-    content:"";
-  position: absolute;
-  top: 13px;
-  left: 16px;
-  height: 3px;
-  width: 16px;
-  background-color: #424f5c;
-  transform: rotate(-90deg);
-
-  /* this fixes a bug where pseudo elements are slighty off position */
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-}
-ol.AssignmentsLink li.title.summary::after{
-  content:"";
-  position: absolute;
-  top: 13px;
-  left: 16px;
-  height: 3px;
-  width: 16px;
-  background-color: #424f5c;
-//  transform: rotate(-45deg);
-
-  /* this fixes a bug where pseudo elements are slighty off position */
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-  
-}
-ol.AssignmentsLink li.title.summary:hover::before {
-  background-color: white;
-  transform: rotate(-0deg);
-}
-
-
-ol.AssignmentsLink li.title.summary:hover::after {
-  background-color: white;
-  transform: rotate(180deg);
+    color: #ff5555;
+    margin-top:0.2em;
 }
