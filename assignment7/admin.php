@@ -20,23 +20,20 @@ print '<article>';
 if ($_SESSION["admin"]) {
 
     $message = "<p><a href = 'userlist.php'>User List</a></p>";
-    $message .= " <p><a href = 'products.php'>Product List</a></p>";
+    $message .= " <p><a href = 'petlist.php'>Pet List</a></p>";
  //   $message .="<p><a href = 'addproduct.php'>Add a Product</a></p>";
  //   $message .="<p><a href = 'addcategory.php'>Add a Product Category</a></p>";
-    $message .="<p><a href = 'categorylist.php'>Product Categories</a></p>";
+    $message .="<p><a href = 'categorylist.php'>Pet Types</a></p>";
 }//ending if admin else clause
 //
 //~~~~~~ print relevant message
 print $message;
 
-//@@ FOOTER @@
-
-
-include "footer.php";
 
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

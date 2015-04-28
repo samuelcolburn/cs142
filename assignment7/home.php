@@ -5,7 +5,8 @@ include "top.php";
 
     <p><a href ="register.php">Register</a></p>
      <p><a href ="petlist.php">Products</a></p>
-<?php include "footer.php"; ?>
+
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

@@ -53,17 +53,17 @@ if (isset($_GET["id"])) {
     $data = array($pmkProductID);
 
     // select the product from the product table
-    $query = "SELECT pmkProductID , fldProductName , fldDescription , fldPrice , fldImage, fnkCategoryID FROM tblProducts WHERE pmkProductID = ?";
+    $query = "SELECT pmkProductID , fldProductName , fldDescription , fldDob , fldImage, fnkCategoryID FROM tblProducts WHERE pmkProductID = ?";
 
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
     $ProductName = $results[0]["fldProductName"];
     $Description = $results[0]["fldDescription"];
-    $Price = $results[0]["fldPrice"];
-    $Image = $results[0]["fldImage"];
+    $DoB = $results[0]["fldDob"];
     $CategoryID = $results[0]["fnkCategoryID"];
-    
-   if ($debug) {
+    $fldImage = $results[0]["fldImage"];
+
+    if ($debug) {
 
         print "<p>Product:</p>";
         print_r($data);
@@ -92,13 +92,15 @@ if (isset($_GET["id"])) {
     $pmkProductID = -1;
     $ProductName = "";
     $Description = '';
-    $Price = "";
-    $Image = "";
+    $DoB = "";
+    $target_filename = "";
+
 
 // Category Variable
     $Category = "Any";
 }
 
+$update = false;
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -108,7 +110,7 @@ if (isset($_GET["id"])) {
 //Product Flags
 $ProductNameERROR = false;
 $DescrptionERROR = false;
-$PriceERROR = false;
+$DoBERROR = false;
 $ImageERROR = false;
 
 //Category Flag
@@ -147,12 +149,14 @@ if (isset($_POST["btnSubmit"])) {
      */
 
 
+
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
 // remove any potential JavaScript or html code from users input on the
 // form. Note it is best to follow the same order as declared in section 1c.
-    // - --- PRODUCT SANITIZE
+    // - --- PET SANITIZE
     $pmkProductID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
 
     if ($pmkProductID > 0) {
@@ -163,17 +167,21 @@ if (isset($_POST["btnSubmit"])) {
 
     $Description = htmlentities($_POST["txtDescription"], ENT_QUOTES, "UTF-8");
 
-    $Price = htmlentities($_POST["numPrice"], ENT_QUOTES, "UTF-8");
+    $DoB = htmlentities($_POST["dateDoB"], ENT_QUOTES, "UTF-8");
 
-
+    //IMAGE VARIABLES
+    $target_dir = "pics/";
+    $target_filename = basename($_FILES["fileToUpload"]["name"]);
+    $target_file = $target_dir . $target_filename;
+    $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
 
     //--- CATEGORY SANITIZE ---
     $Category = htmlentities($_POST["lstCategory"], ENT_QUOTES, "UTF-8");
 
     if ($debug) {
-        print "<p>update = ".$update."</p>";
-        print"<p>pmk = ".$pmkProductID."</p>";
+        print "<p>update = " . $update . "</p>";
+        print"<p>pmk = " . $pmkProductID . "</p>";
         print"<p>sanitize pass</p>";
     }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -200,26 +208,58 @@ if (isset($_POST["btnSubmit"])) {
     if ($Description == "") {
         $errorMsg[] = "Please enter a description for the product";
         $DescriptionERROR = true;
-        
-        
-    } 
-    /*
-    elseif (!verifyAlphaNum($Description)) {
-        $errorMsg[] = "Your description is invalid. Be sure to only use basic characters.";
-        $DescriptionERROR = true;
     }
-*/
+    /*
+      elseif (!verifyAlphaNum($Description)) {
+      $errorMsg[] = "Your description is invalid. Be sure to only use basic characters.";
+      $DescriptionERROR = true;
+      }
+     */
     //~~~~~~PRICE VALIDATION~~~~~~~~~~~
-    if ($Price == "") {
-        $errorMsg[] = "Please enter a price";
-        $PriceERROR = true;
-    } elseif (!verifyNumeric($Price)) {
-        $errorMsg[] = "Please enter a valid price eg. 42.50";
-        $PriceERROR = true;
+    if ($DoB == "") {
+        $errorMsg[] = "Please enter a Date of Birth";
+        $DoBERROR = true;
     }
 
     //~~~~~~~~ IMAGE VALIDATION ~~~~~~~~~~~~~~
-    //
+
+
+    if ($debug) {
+        print $target_file;
+    }
+
+    if ($target_filename != "") {
+
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $ImageERROR = false;
+        } else {
+            $errorMsg[] = "File is not an image.";
+            $ImageERROR = true;
+        }
+        // Check if file already exists
+        if (file_exists($target_file) && $target_file != $fldImage) {
+            $errorMsg[] = "Sorry, file already exists.";
+            $ImageERROR = true;
+        }
+// Check file size
+        elseif ($_FILES["fileToUpload"]["size"] > 5000000) {
+            $errorMsg[] = "Sorry, your file is too large.";
+            $ImageERROR = true;
+        }
+// Allow certain file formats
+        elseif ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $errorMsg[] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $ImageERROR = true;
+        }
+    } else {
+        
+    }
+
+
     //
     //++++++ CATEGORY VALIDATION ++++++++++
     if ($Category == "") {
@@ -243,19 +283,30 @@ if (isset($_POST["btnSubmit"])) {
         if ($debug)
             print "<p>Form is valid</p>";
 
+
+        if (!empty($target_filename)) {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file " . $target_filename . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
         //@@@@@@ 
         //SQL To get category ID to insert into product target
         $data = array($Category);
-        
+
         $query = "SELECT  pmkCategoryID from tblCategories WHERE fldCategoryName = ? ";
-        
-        $results = $thisDatabase->select($query, $data); 
+
+        $results = $thisDatabase->select($query, $data);
         $CategoryID = $results[0]['pmkCategoryID'];
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         // Product DATA SQL
         //
-        $data = array($ProductName, $Description, $Price , $CategoryID );
+        $data = array($ProductName, $Description, $DoB, $CategoryID);
+
+
 
         $primaryKey = "";
         $dataEntered = false;
@@ -267,15 +318,20 @@ if (isset($_POST["btnSubmit"])) {
             } else {
                 $query = "INSERT INTO tblProducts SET ";
             }
-            $query .= " fldProductName = ? , fldDescription = ? , fldPrice = ? , fnkCategoryID = ? ";
+            $query .= " fldProductName = ? , fldDescription = ? , fldDob = ? , fnkCategoryID = ?  ";
 
+            if ($target_filename != "") {
+                $data[] = $target_file;
+                $query .= " , fldImage = ? ";
+            }
+            
             if ($update) {
                 $query .= " WHERE pmkProductID = ? ";
                 $data[] = $pmkProductID;
                 $results = $thisDatabase->update($query, $data);
             } else {
                 $results = $thisDatabase->insert($query, $data);
-                
+
                 $primaryKey = $thisDatabase->lastInsert();
                 if ($debug)
                     print "<p>pmk= " . $primaryKey;
@@ -304,9 +360,6 @@ if (isset($_POST["btnSubmit"])) {
                 print "Error!: " . $e->getMessage() . "</br>";
             $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
         }
-
-  
-
     } // end form is valid
 } // ends if form was submitted.
 //#############################################################################
@@ -326,13 +379,12 @@ if (isset($_POST["btnSubmit"])) {
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
     if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-        print "<h2>Product ";
-        if($update){
+        print "<h2>Animal ";
+        if ($update) {
             print" updated</h2>";
+        } else {
+            print" added</h2>";
         }
-        else{
-           print" added</h2>";
-                }
     } else {
 //####################################
 //
@@ -366,7 +418,8 @@ if (isset($_POST["btnSubmit"])) {
         ?>
         <form action="<?php print $phpSelf; ?>"
               method="post"
-              id="frmRegister">
+              id="frmRegister"
+              enctype="multipart/form-data">
             <fieldset class="wrapper">
 
                 <legend><?php print $ProductName; ?></legend>
@@ -375,24 +428,24 @@ if (isset($_POST["btnSubmit"])) {
                     <legend>Required Information</legend>
                     <fieldset class="contact">
                         <legend></legend>
-                            <input type="hidden" id="hidProductID" name="hidProductID"
+                        <input type="hidden" id="hidProductID" name="hidProductID"
                                value="<?php print $pmkProductID; ?>"
                                >
                         <label  class="required">Product Name
                             <input type="text" id="txtProductName" name="txtProductName"
                                    value="<?php print $ProductName; ?>"
-                                   tabindex="100" maxlength="16" placeholder="Enter a product name"
+                                   tabindex="100" maxlength="16" placeholder="Enter a pet name"
                                    <?php if ($ProductNameERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
 
-                        <label  class="required">Price
-                            <input type="quantity" id="numPrice" name="numPrice"
-                                   value="<?php print $Price;?>"
-                                   tabindex="110" maxlength="16" placeholder="Enter a price"
-                                   min ="0" max ="99999" step="any"
-                                   <?php if ($PriceERROR) print 'class="mistake"'; ?>
+                        <label  class="required">Date of Birth
+                            <input type="date" id="numDoB" name="dateDoB"
+                                   value="<?php print $DoB; ?>"
+                                   tabindex="110" placeholder="mm/dd/yyyy"
+
+                                   <?php if ($DoBERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
@@ -400,16 +453,16 @@ if (isset($_POST["btnSubmit"])) {
 
                         <label  class="required">Description
                             <textarea id="txtDescription" name="txtDescription"
-                                   tabindex="120" maxlength="500" rows="10"
-                                   
-                                   <?php 
-                                   if ($DescriptionERROR) {
-                                       print 'class="mistake"';                                  
-                                }
-                                ?>
-                                   ><?php print $Description; ?></textarea>
+                                      tabindex="120" maxlength="500" rows="10"
+
+                                      <?php
+                                      if ($DescriptionERROR) {
+                                          print 'class="mistake"';
+                                      }
+                                      ?>
+                                      ><?php print $Description; ?></textarea>
                         </label>
-                       <!-- START Listbox -->
+                        <!-- START Listbox -->
                         <label id="lstCategory">Category</label>
                         <?php
                         $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
@@ -433,21 +486,30 @@ if (isset($_POST["btnSubmit"])) {
 
                         <!-- End ListBox -->
                     </fieldset>
+                    <!-- START IMAGEBOX -->
+                    <fieldset class="image">
+                        <label>Select an Image to Upload</label>
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                    </fieldset>
+
+
+                    <!-- END IMAGEBOX -->
+
                     <!-- ends User Form -->
                 </fieldset> 
 
                 <!-- ends wrapper Two -->
 
-   
+
                 <fieldset class="buttons">
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="
-                        <?php
-                        if($update){
-                            print "Update";
-                        }else{
-                            print "Submit";
-                        }
+                    <?php
+                    if ($update) {
+                        print "Update";
+                    } else {
+                        print "Submit";
+                    }
                     ?>" tabindex="900" class="button">
                 </fieldset> <!-- ends buttons -->
             </fieldset> <!-- Ends Wrapper -->

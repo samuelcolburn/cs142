@@ -156,10 +156,11 @@ if (isset($_GET["q"])) {
 
 
 <?php
-include "footer.php";
+
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

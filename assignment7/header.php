@@ -3,16 +3,17 @@
     <div class =toolbar>
         <?php
         if ($_SESSION["user"]){
-            print'<span class="register"> <a href = "user.php?user='.$session_username.' ">'.$session_username.'</a></span>';
-            print'<span class="login"><a href = "logout.php">Logout</a></span>';
+            print'<span class="login"><a href = "user.php?user='.$session_username.' ">'.$session_username.'</a></span>';
+            print'<span class="register"><a href = "logout.php">Logout</a></span>';
         }
         else{ ?>
-                <span class="register"><a href ='register.php'>Register</a></span>
+                
         <span class="login"><a href ='login.php'>Login</a></span>
-            
+        <span class="register"><a href ='register.php'>Register</a></span>  
             <?php
         }       ?>
 
     </div>
-    <h1><a href = 'home.php'>Adopt a Pet</a></h1>
+    <h1><a href = 'home.php'>Burlington Animal Shelter</a></h1>
+    <h4>Adopt a Pet Today!</h4>
 </header>

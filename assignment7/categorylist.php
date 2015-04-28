@@ -91,10 +91,10 @@ print "</table>\n";
 else{
     print "<h2>ACCESS DENIED</h2>";
 }
-include "footer.php";
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

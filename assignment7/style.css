@@ -49,26 +49,38 @@ table {
     border-spacing: 0;
 }
 
-footer {
-    display:none;
-}
+
 html body header{
     z-index: 5 !important;
 }
 
-/* ====== BEGIN STYLESHEET =======*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+BEGIN STYLESHEET 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 
 
 /*****************     main layout section             ************************/
 
-/* ===================  General Section  ==================================== */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+GENERAL SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 
 body {
     margin:0 auto;
-     font-size: 100%;  /* sets the font size for all elements. */
-    font-family:Arial, Helvetica, sans-serif;
+    font-size: 100%;  /* sets the font size for all elements. */
+    font-family:"Century Gothic" , sans-serif;
     color: #222;
+      background-color: #fefefe;
 
 }
 
@@ -87,10 +99,6 @@ h3 {
 }
 
 h4 {
-    font-weight: bold;
-    font-size: 1.1em;
-    text-decoration:underline;
-    margin-bottom:0.25em;
     text-indent:2em;
 }
 
@@ -153,8 +161,19 @@ a:hover{
 
 }
 
+p{
+    margin:10px;
+}
 
-/*****************     header section             *****************************/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+HEADER SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
 
 header {
     box-shadow : 0 1px 1px rgba(0, 0, 0, 0);
@@ -165,9 +184,9 @@ h1 {
     display:flex;
     justify-content:center;
     align-items:center;
-    font-weight:bold;
+    font-weight:normal;
     font-size: 3em;
-    height:100px;
+    height:120px;
 
 }
 
@@ -183,18 +202,34 @@ header a:hover{
     cursor:pointer;
 }
 
-/*****************    Login Section             *****************************/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+TOOLBAR SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
 .toolbar{
     position:fixed;
     right:0;
-    top:5px;
+    top:0;
+    padding:10px;
+    border-bottom-left-radius:5px;
+    background-color:#222;
+    font-size:small;
+    
+    display:flex;
+    justify-content:center;
+    align-content:center;
 }
 
 .toolbar a:link{
-    color:#222;
+    color:white;
 }
 .toolbar a:visited{
-    color:#222;
+    color:white;
 }
 
 .toolbar a:hover{
@@ -202,49 +237,57 @@ header a:hover{
 }
 
 .login {
-      padding-right:10px;
-    padding-left:5px;
+    padding-right:5px;
+    border-right:thin solid white;
 
 }
-
 .register {
-      padding-right:5px;
-    border-right:thin solid black;
+    padding-left:5px;
+    display:flex;
+    justify-content:center;
+    align-content:center;
 }
-/* ===================  Navigation Section  ================================= */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+NAVIGATION SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 
 nav {
     height:30px;
     margin-bottom:30px;
     width:100%;
-    
+    min-width:500px;
 
-   display:flex;
-   align-items:center;
-   justify-content:center;
-   
-   
-   
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+
+
     border-top: solid 3px #999;  
     border-bottom: solid 3px #999; 
     background-color:#233d4b;
-    
+
 
 }
 
 nav ol{
-    font-size:0px;
-    padding-left:0em;
-
+  
 }
 
 nav ol li{
     display:inline-block;
     padding-top:0.5em;
-    padding-right:1em;
+    padding-right:5em;
     padding-bottom:0.5em;
     list-style-type: none;
     font-size:16px;
+    font-weight:normal;
 }
 
 li.activePage{
@@ -332,8 +375,16 @@ nav a:hover{
 .fixed-button{
     top:0;
 }
-/* ===================  Footer Section  ==================================== */
 
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+FOOTER SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 
 footer {
     border-top:thin solid #999;
@@ -341,8 +392,7 @@ footer {
     text-align: center;
     margin-top:1em;
     color:#222;
-    clear: both;
-    padding: 0.8em 5.33333333%;  /* 48px / 900px */
+    width:100%;
 }
 
 footer a:link{
@@ -368,14 +418,20 @@ footer a:hover{
     color:#222;
 }
 
-/*****************     article section             ****************************/
-/* un comment and see what happens */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+ARTICLE SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 article{
 }
 
 #main {
-
+    width:80%;
+    margin:0 auto;
 }
 
 article h1 {
@@ -395,115 +451,246 @@ aside h2, aside p{
 
 
 
-/*****************     form section                ****************************/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+FORMS SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 #form article#main{
     float: none;
-    margin: auto; /* because of the fixed width this centers the form */
     text-align: left;
-    width: 600px; /* not repsonive but fixed */
+    width:100%;
 }
 
-/* need to clear any floats that may exist */
-fieldset{
-    display:block;
-    clear: both;
-    padding: 1em;
-    margin:auto;
-    text-align:center;
-    width:30em;
+/*need to clear any floats that may exist */
 
+fieldset{
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    margin: 0;
+    padding:0;
+    padding-bottom:3em;
+    width:80%;
+    max-width:450px;
+}
+
+legend {
+    margin-left:1%;
+    font-size:16px;
+}
+
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+}
+
+fieldset.wrapper > legend{
+    font-size:1.8em;
+    margin-bottom:30px;
+}
+
+
+label {
+    color: #222;
+    display: block;
+    font-size: medium;
+
+}
+
+label:hover {
+    background-color: #FFF;
+} 
+
+input {
+    color:#000;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+
+}
+
+/*~~~ CONTACT ~~~~~~~~~~ */
+fieldset.contactwrapper{
+    float:none;
+    padding-right:10%;
+
+
+
+}
+fieldset.contactwrapper legend{
+    display:inline;
 }
 /* just pushes content to left side of the box. */
 fieldset.contact{
     float: left;
-    border:none;
-    margin-left:2em;
+    margin:0;
+    padding:0;
+    border:0;
+    width:100%;
+
 }
+
 /* when you look at the labels this pushes then next to the input and right
 aligns them. Display block means they are each on their own line. */
 fieldset.contact label{
     display: block;
-    text-align: right;
-    /* pushes the text to the right where they line up */
-    /* the float left above pushes everything back to the left*/
+    text-align: right;/* pushes the text to the right where they line up */
+    padding-top:0.5em;
+    font-size:0;
+
 }
 
 fieldset.contact input{
-    width: 20em;
-    /* works with above to be the same size for the boxes */
+    width: 100%; 
+    font-size:medium;
+    height:2em;
+    padding-left:2em;
+    border-radius:3px;
+    margin-top:1em;
+}
+input#txtFirstName {
+    margin-top:0.5em;
+}
+
+/* ======================== OPTIONAL PROFILE ================ */
+
+/* ~~~~~~~  First and Last Name    ~~~~~~~~~~~~~~~*/
+
+fieldset.Profile input{
+    width: 100%; 
+    font-size:medium;
+    height:2em;
+    padding-left:2em;
+    border-radius:3px;
+    margin-top:1em;
+}
+/* ~~~ RADIO ~~~*/ 
+fieldset.radiowrapper {
+    float:left;
+    width:30%;
+
+}
+
+fieldset.radiowrapper legend{
+    display:block;
+}
+fieldset.radio {
+    float:left;
+    margin:20px 20px 20px 0px;
+    padding:0;
+    border:0;
+    clear:both;
+    width:40%;
+    width:calc (50% - 20px);
+    max-width:300px;
+
+}
+
+fieldset.radio label {
+    width:100%;
+    font-size:medium;
+    margin:5px;
+}
+
+fieldset.radio input {
+    margin-top:0;
+    margin-right:1em;
+    height:15px;
+    width:15px;
+}
+
+/* ~~~ List Box ~~~*/ 
+fieldset.listbox {
+    width:40%;
+    width:calc (50%- 40px);
+    margin:20px;
+    float:right;
+}
+
+fieldset.listbox legend{
+    display:inline;
+}
+select#lstAge{
+    background-color:#F5F5F5;
+    border:0;
+    border-radius:3px;
+    color:#222;
+    font-family:"Century Gothic", sans-serif;
+    font-size:medium;
+    margin-top:10px;
+    padding:5px;
+
+
+}
+/* Style the comment box*/
+
+fieldset.textarea {
+    padding-bottom:0;
+    clear:both;
+    width:100%;
+}
+
+fieldset.textarea legend{
+    display:block;
+}
+fieldset.textarea label {
+}
+
+textarea#AboutMe{
+    margin-top: 0.5em;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+    width: calc(100% + 2em);
+    border-radius:3px;
+    overflow: auto;
+    resize:both;
+    font-size:medium;
+
 }
 
 
-fieldset.contact select{
-    width: 18em;
-    margin-left:3em;/* works with above to be the same size for the boxes */
-}
-
-
+/* changes button style*/
 fieldset.buttons{
     border: none;
+    margin-top:0;
+    margin-left:5%;
+    margin-right:0;
+    margin-bottom:0;
+    padding:0;
 }
 
-fieldset.wrapper {
-    border:none;
-}
-fieldset.wrapperTwo {
-    border:0.2em solid #FFF;
-}
-fieldset.wrapper legend {
-    //   color: #FFF;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-fieldset.wrapper > legend {
-    /* i only want the first legend ie if it follows the class wrapper */
-    font-size: 2em;
-}
-
-label {
-    //   color: #FFF;
-    display: block;
-    font-size: .9em;
-    font-weight: bold;
-    padding:1em;
-}
-
-
-
-input {
-    color:#FFF;
-    background-color:#253939;
-    border:0.2em solid #FFF;
-    padding:0.2em;
+input#btnSubmit{
+    background-color: #222;
+    color: #FFF;
+    border: 0;
+    padding:0.5em;
+    font-size:large;
+    border:thin solid #222;
+    border-radius:3px;
 
 }
+input#btnSubmit:hover{
+    background-color: #444;
+    font-size:large;
+    border:thin solid #222;
+    cursor:pointer;
+}
+
 /* style the errors in the form so they are visible */
 .mistake {
-    //  color: #fff;
-    background-color:rgba(255, 85, 85, 0.5);
-    border: 0.2em solid #FFF;
+    color: #fff;
+    background-color:#ff5555;
+    border: 0;
 }
 
-/* style the list of errors that will show before the form */
-#errors ol li{
-    color: #ff5555;
-    text-align:center;
-    list-style: none;
-}
 
-#btnSubmit{
-    background-image:none;
-    background-color:#233d4b;
-    cursor: pointer; 
-    cursor: hand; 
 
-}
-
-div#form{
-    float:left;
-}
 /* MAIL MESSAGE RESPONSE FORMATTING */
 div.message{
     border:thin solid #a8a8a8;
@@ -514,7 +701,39 @@ div.message{
 }
 
 
-/* MEMBER LIST TABLE SETTINGS */
+
+
+/* ======================== COMMENT BOX ================ */
+
+form#frmComment fieldset{
+    margin:0;
+}
+
+form#frmComment fieldset.wrapper{
+}
+
+form#frmComment fieldset.wrapperTwo{
+    padding-bottom:10px;
+}
+
+lael#txtText {
+    margin-bottom:10px;  
+}
+
+textarea#txtText{
+    margin-top: 0.5em;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+    width: calc(100% + 2em);
+    border-radius:3px;
+    overflow: auto;
+    resize:both;
+    font-size:medium;
+}
+}
+
+/*  TABLE SETTINGS */
 
 #memberlist h2 {
     text-align:left;
@@ -526,64 +745,100 @@ table{
     border-collapse: collapse;
     width: 90%;
     max-width: 1000px;
-    color: #d1d1d1;
+    min-width: 720px;
+    color: #222;
+    margin:auto;
 
 }
 th {
-    border-bottom: thick #f5f5f5 solid;
-    font-weight: bold;
+
     padding: 0.2em;
-    padding-bottom:0.3em;
-    color:#FFF;
+    padding-bottom:0.5em;
+    font-size:1.5em;
+    font-weight:normal;
+    color:#222;
+    background-color:#FFF;
+
 
 
 }
+
 td {
     border-collapse: collapse;
-    padding:.2em;
+    padding: 10px;
     text-align: center;
 
 }
 
 
 tr:nth-child(even) {
-    background-color: #253939;
+    background-color: #FFF;
 
 }
 
 tr:nth-child(odd){
-    background-color: #25242C;
+    background-color: #DCF3D6;
 
 }
 
 tr:hover{
-    background-color:#558C89;
-    cursor: pointer;
-    text-decoration: underline;
-
+    background-color:#7fbfd6;
+    cursor:pointer;
 }
 
-#tableheader {
-    background-color:#558C89;
+#tableheader:hover {
+    background-color: #FFF;
+    cursor: default;
 }
 
-
-/* ===================  PET LIST PAGE  =================== */
-
-#petlist article{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+table a:hover{
+    color:white;
 }
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PET LIST  SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
 
 #petlist section{
-    padding:10px;
-    margin:5px;
+    display:flex;
+    flex-wrap:wrap;
 }
 
-#petlist section:hover {
-  cursor:pointer;
-  background-color: rgba(100,100,100,0.05);
+#petlist section section{
+    padding:10px;
+    margin:5px;
+    display:flex;
+    flex-direction:column;
+
+}
+#petlist .Description {
+}
+
+.Name {
+    order:-2;
+    text-align:center;
+    margin-bottom:5px;
+    font-weight:bold;
+
+}
+
+.Image {
+    order:-1;
+    margin-bottom:5px;
+}
+
+.Dob {
+    margin-bottom:5px;
+}
+
+#petlist section section:hover {
+    cursor:pointer;
+    background-color: rgba(100,100,100,0.05);
 }
 
 .dog {
@@ -591,5 +846,169 @@ tr:hover{
 }
 
 .cat{
-   background-color: #f8d2eb;
+    background-color: #f8d2eb;
 }
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+INDIVIDUAL PET SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+#pet article {
+    width:80%;
+    margin:0 auto;
+}
+
+#pet section {
+}
+
+#pet h2{
+    padding-left:15px;
+}
+
+.petinfo{
+    padding:10px;
+}
+
+.petinfo div{
+    padding:10px;
+}
+
+.Description{
+    max-width:400px;
+}
+
+.Description p{
+    padding:0;
+    margin:0;
+}
+
+#pet h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.comment {
+    margin:10px 10px 10px 0px;
+    border:thin solid black;
+    border-radius:3px;
+}
+
+
+.Text {
+    padding:20px;
+}
+
+.CommentInfo{
+    font-size:small;
+    border-top:thin solid black;
+    padding:10px;
+    margin:0;
+    
+}
+
+.CommentEdit , .CommentDelete{
+      float: right;
+  margin: 0px 5px 0px 5px;
+}
+
+.AdoptMe {
+    padding:10px;
+    margin: 5px;
+    border-radius:5px;
+    background-color:#DCF3D6;
+    box-shadow: 2px 2px 2px #888888;
+    
+    text-align:center;
+    width:90px;
+}
+
+p.AdoptMe:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+ADMIN BUTTONS SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+.adminoptions {
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+    margin:10px;  
+}
+
+.edit {
+    padding:10px;
+    margin: 5px;
+    border-radius:5px;
+    background-color:#DCF3D6;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.edit a:link{
+    color:#222;
+    text-decoration:none;
+}
+
+.edit a:visited{
+    color:#222;
+    text-decoration:none;
+}
+
+.edit a:hover{
+    text-decoration:underline;
+    color:white;
+}
+
+.edit:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+
+.delete {
+    padding:10px;
+    margin: 5px;
+    border-radius:5px;
+    background-color:#F3D6DC;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.delete a:link{
+    color:#222;
+    text-decoration:none;
+}
+
+.delete a:visited{
+    color:#222;
+    text-decoration:none;
+}
+
+.delete a:hover{
+    text-decoration:underline;
+    color:white;
+}
+
+.delete:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+

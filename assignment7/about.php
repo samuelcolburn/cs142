@@ -4,7 +4,8 @@ include "top.php";
 <article id="main">
 
 
-<?php include "footer.php"; ?>
+
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

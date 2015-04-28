@@ -86,10 +86,10 @@ else{
     print"<h2>ACESS DENIED</h2>";
 }
 
-include "footer.php";
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

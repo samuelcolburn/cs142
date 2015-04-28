@@ -122,12 +122,10 @@ else{
     }
 
 }
-//@@ FOOTER @@
-include "footer.php";
-
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
 </article>
+<?php include "footer.php"; ?>
 </body>
 </html>

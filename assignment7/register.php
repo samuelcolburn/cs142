@@ -425,7 +425,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
               id="frmRegister">
             <fieldset class="wrapper">
 
-                <legend>Register Today</legend>
+                <legend>Register</legend>
                 <!-- Start User Form -->
                 <fieldset class="wrapperTwo">
                     <legend>Required Information</legend>
@@ -434,7 +434,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         <label class="required">Username
                             <input type="text" id="txtUsername" name="txtUsername"
                                    value="<?php print $Username; ?>"
-                                   tabindex="100" maxlength="16" placeholder="Enter a username"
+                                   tabindex="100" maxlength="16" placeholder="Username"
     <?php if ($UsernameERROR) print 'class="mistake"'; ?>>
 
                         </label>
@@ -442,7 +442,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         <label  class="required">Password
                             <input type="password" id="Password" name="Password"
                                    value=""
-                                   tabindex="110" maxlength="16" placeholder="Enter a password"
+                                   tabindex="110" maxlength="16" placeholder="Password"
     <?php if ($passwordERROR) print 'class="mistake"'; ?>
                                    >
 
@@ -452,7 +452,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         <label  class="required">Email
                             <input type="text" id="txtEmail" name="txtEmail"
                                    value="<?php print $email; ?>"
-                                   tabindex="120" maxlength="45" placeholder="Enter a valid email address"
+                                   tabindex="120" maxlength="45" placeholder="Email"
     <?php if ($emailERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    >
@@ -468,24 +468,25 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                 <fieldset class ="Profile">
                     <legend>Optional Profile</legend>
 
-                    <label class="required">First Name
+                    <label class="required">
                         <input type="text" id="txtFirstName" name="txtfirstName"
                                value="<?php print $firstName; ?>"
-                               tabindex="200" maxlength="45" placeholder="ex. Billy"
+                               tabindex="200" maxlength="45" placeholder="First Name"
     <?php if ($firstNameERROR) print 'class="mistake"'; ?>
 
                                >
                     </label>
 
-                    <label class="required">Last Name
+                    <label class="required">
                         <input type="text" id="txtLastName" name="txtlastName"
                                value="<?php print $lastName; ?>"
-                               tabindex="210" maxlength="45" placeholder="ex. Bob"
+                               tabindex="210" maxlength="45" placeholder="Last Name"
     <?php if ($lastNameERROR) print 'class="mistake"'; ?>
 
                                >
                     </label>
 
+                  
                     <fieldset class="radio"
                               >   <!-- START gender radio -->
                         <legend>Gender</legend>
@@ -517,6 +518,8 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
     <?php if ($gender == "Other") print 'checked="checked"'; ?>
                                 tabindex="230">Other</label>
                     </fieldset> <!-- end gender radio -->
+                    
+                    <fieldset class="listbox">
                     <label id="lstBuilding">Age</label>               
                     <select id="lstAge" 
                             name="lstAge" 
@@ -537,13 +540,17 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             value="Over51" >Over 51</option>
 
                     </select>
+                    </fieldset>
+                    
+                    <fieldset class="textarea">
                     <label id ="AboutMe">About Me</label>
-                    <textarea id=tAboutMe name=AboutMe rows=5 maxlength= <?php
+                    <textarea id=AboutMe name=AboutMe rows=5 maxlength= <?php
     print "'$ABOUTME_MAX_LENGTH'";
     if ($AboutMeERROR) {
         print 'class = "mistake"';
     }
     ?>></textarea>
+                    </fieldset>
                 </fieldset> <!-- End Profile -->
                 <fieldset class="buttons">
                     <legend></legend>

@@ -14,14 +14,15 @@ $yourURL = $domain . $phpSelf;
 // Initialize variables one for each form element
 // in the order they appear on the form
 //If the id is set, it will be a product edit. Get previous values for the product, and store them in the form for editing.
- if (($_SESSION["user"])) {
-$UserID = $session_pmkUserID;
-$ProductID = $pmkProductID;
-$text = "";
-$rating = 0;
-   if($debug){
-       print "<p>pmkUseriD =".$session_pmkUserID."</p>";
-        print "<p>pmkUseriD =".$UserID."</p>";
+if (($_SESSION["user"])) {
+    $UserID = $session_pmkUserID;
+    $ProductID = $pmkProductID;
+    
+    $text = "";
+
+    if ($debug) {
+        print "<p>pmkUseriD =" . $session_pmkUserID . "</p>";
+        print "<p>pmkUseriD =" . $UserID . "</p>";
     }
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -31,41 +32,40 @@ $rating = 0;
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
 //Product Flags
-$textERROR = false;
-$ratingERROR = false;
+    $textERROR = false;
 
-$TEXT_MAX_LENGTH = 200;
+    $TEXT_MAX_LENGTH = 2000;
 //ERROR CONSTANTS
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1e misc variables
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
-$errorMsg = array();
+    $errorMsg = array();
 
 // used for building email message to be sent and displayed
-/* NO MAILING FOR PRODUCTS
-  $mailed = false;
-  $messageA = "";
-  $messageB = "";
-  $messageC = "";
- */
+    /* NO MAILING FOR PRODUCTS
+      $mailed = false;
+      $messageA = "";
+      $messageB = "";
+      $messageC = "";
+     */
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2 Process for when the form is submitted
 //
-if (isset($_POST["btnSubmit"])) {
+    if (isset($_POST["btnSubmit"])) {
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2a Security
 ///
-    /* REMOVED SECURITY CHECK
-      if (!securityCheck(true)) {
-      $msg = "<p>Sorry you cannot access this page. ";
-      $msg.= "Security breach detected and reported</p>";
-      die($msg);
-      }
-     */
+        /* REMOVED SECURITY CHECK
+          if (!securityCheck(true)) {
+          $msg = "<p>Sorry you cannot access this page. ";
+          $msg.= "Security breach detected and reported</p>";
+          die($msg);
+          }
+         */
 
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -73,18 +73,17 @@ if (isset($_POST["btnSubmit"])) {
 // SECTION: 2b Sanitize (clean) data
 // remove any potential JavaScript or html code from users input on the
 // form. Note it is best to follow the same order as declared in section 1c.
-    // - --- PRODUCT SANITIZE
-    $UserID = htmlentities($_POST["hidUserID"], ENT_QUOTES, "UTF-8");
-    
-    if($debug){
-        print "<p>pmkUseriD =".$UserID."</p>";
-    }
+        // - --- PRODUCT SANITIZE
+        $UserID = htmlentities($_POST["hidUserID"], ENT_QUOTES, "UTF-8");
 
-    $ProductID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
+        if ($debug) {
+            print "<p>pmkUserID =" . $UserID . "</p>";
+        }
 
-    $text = htmlentities($_POST["txtText"], ENT_QUOTES, "UTF-8");
+        $ProductID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
 
-    $rating = htmlentities($_POST["numRating"], ENT_QUOTES, "UTF-8");
+        $text = htmlentities($_POST["txtText"], ENT_QUOTES, "UTF-8");
+
 
 
 
@@ -98,98 +97,85 @@ if (isset($_POST["btnSubmit"])) {
 // order that the elements appear on your form so that the error messages
 // will be in the order they appear. errorMsg will be displayed on the form
 // see section 3b. The error flag ($emailERROR) will be used in section 3c.
-    //~~~~~~~~~~ TEXT ~~~~~~~~~~~~
+        //~~~~~~~~~~ TEXT ~~~~~~~~~~~~
 
-    if (strlen($text) > $TEXT_MAX_LENGTH) {
-        $errorMsg[] = "Your comment is too long!";
-        $textERROR = true;
-    } elseif ($text == '') {
-        $errorMsg[] = "Please enter a comment";
-        $textERROR = true;
-    } elseif (!verifyAlphaNum($text)) {
-        $errorMsg[] = "Your comment appears to contain malicious characters. Please make sure to only use basic text.";
-        $textERROR = true;
-    }
-    //~~~~~~RATING VALIDATION~~~~~~~~~~~
-    if ($rating == "") {
-        $errorMsg[] = "Please enter a rating";
-        $ratingERROR = true;
-    } elseif (!verifyNumeric($rating)) {
-        $errorMsg[] = "Please enter a rating from 1 to 5";
-        $ratingERROR = true;
-    }
-    elseif($rating > 5 or $rating < 1){
-        $errorMsg[] = "Please enter a rating from 1 to 5";
-        $ratingERROR = true;
-    }
+        if (strlen($text) > $TEXT_MAX_LENGTH) {
+            $errorMsg[] = "Your comment is too long!";
+            $textERROR = true;
+        } elseif ($text == '') {
+            $errorMsg[] = "Please enter a comment";
+            $textERROR = true;
+        }
 
-    if ($debug) {
-        print"<p>validation pass</p>";
-    }
+
+
+        if ($debug) {
+            print"<p>validation pass</p>";
+        }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2d Process Form - Passed Validation
 //
 // Process for when the form passes validation (the errorMsg array is empty)
 //
-    if (!$errorMsg) {
-        if ($debug)
-            print "<p>Form is valid</p>";
+        if (!$errorMsg) {
+            if ($debug)
+                print "<p>Form is valid</p>";
 
 
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        //
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //
         // Category DATA SQL
-        //
-        $data = array($UserID,$ProductID,$text,$rating);
+            //
+        $data = array($UserID, $ProductID, $text);
 
-        $primaryKey = "";
-        $dataEntered = false;
-        try {
-            $thisDatabase->db->beginTransaction();
-
-
-            $query = "INSERT INTO tblComments SET ";
-
-            $query .= " fnkUserID = ? , fnkProductID = ? , fldText = ? , fldRating = ? ";
+            $primaryKey = "";
+            $dataEntered = false;
+            try {
+                $thisDatabase->db->beginTransaction();
 
 
-            $results = $thisDatabase->insert($query, $data);
+                $query = "INSERT INTO tblComments SET ";
+
+                $query .= " fnkUserID = ? , fnkProductID = ? , fldText = ? ";
+
+
+                $results = $thisDatabase->insert($query, $data);
 
 
 
 
-            if ($debug) {
-                print "<p>sql " . $query;
-                print"<p><pre>";
-                print_r($data);
-                print"</pre></p>";
-            }
+                if ($debug) {
+                    print "<p>sql " . $query;
+                    print"<p><pre>";
+                    print_r($data);
+                    print"</pre></p>";
+                }
 
 
 
 
 
 // all sql statements are done so lets commit to our changes
-            $dataEntered = $thisDatabase->db->commit();
-            $dataEntered = true;
-            if ($debug)
-                print "<p>transaction complete ";
-        } catch (PDOExecption $e) {
-            $thisDatabase->db->rollback();
-            if ($debug)
-                print "Error!: " . $e->getMessage() . "</br>";
-            $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
-        }
-    } // end form is valid
-} // ends if form was submitted.
+                $dataEntered = $thisDatabase->db->commit();
+                $dataEntered = true;
+                if ($debug)
+                    print "<p>transaction complete ";
+            } catch (PDOExecption $e) {
+                $thisDatabase->db->rollback();
+                if ($debug)
+                    print "Error!: " . $e->getMessage() . "</br>";
+                $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
+            }
+        } // end form is valid
+    } // ends if form was submitted.
 //#############################################################################
 //
 // SECTION 3 Display Form
 //
-?>
-<div id='form'>
-    <?php
+    ?>
+    <div id='form'>
+        <?php
 //####################################
 //
 // SECTION 3a.
@@ -199,117 +185,107 @@ if (isset($_POST["btnSubmit"])) {
 //
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
-    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-        print "<h2>Comment ";
-?>
-    
-     <!--- Javascript to redirect to the homepage after logins -->
-   <script type="text/javascript">
-<!--
-function delayer(){
-    window.location = "product.php?id=<?php print $ProductID; ?>"
-}
-//-->
-</script>
-<!--TIMER -->
-<body onLoad="setTimeout('delayer()', 0000)"> 
-<h2>You're comment as been submitted!.</h2>
-<p>You should be redirected to the product page.</p>
+        if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+            print "<h2>Comment ";
+            ?>
 
-    
-<?php
-        print" Submitted!</h2>";
-    } else {
+            <!--- Javascript to redirect to the pet page after submitted -->
+            <script type="text/javascript">
+         <!--
+                function delayer() {
+                    window.location = "pet.php?id=<?php print $ProductID; ?>"
+                }
+         //-->
+            </script>
+            <!--TIMER -->
+            <body onLoad="setTimeout('delayer()', 0000)"> 
+                <h2>You're comment as been submitted!.</h2>
+                <p>You should be redirected to the product page.</p>
+
+
+                <?php
+                print" Submitted!</h2>";
+            } else {
 //####################################
 //
 // SECTION 3b Error Messages
 //
 // display any error messages before we print out the form
-        if ($errorMsg) {
-            print '<div id="errors">';
-            print "<ol>\n";
-            foreach ($errorMsg as $err) {
-                print "<li>" . $err . "</li>\n";
-            }
-            print "</ol>\n";
-            print '</div>';
-        }
+                if ($errorMsg) {
+                    print '<div id="errors">';
+                    print "<ol>\n";
+                    foreach ($errorMsg as $err) {
+                        print "<li>" . $err . "</li>\n";
+                    }
+                    print "</ol>\n";
+                    print '</div>';
+                }
 //####################################
 //
 // SECTION 3c html Form
 //
-        /* Display the HTML form. note that the action is to this same page. $phpSelf
-          is defined in top.php
-          NOTE the line:
-          value="<?php print $email; ?>
-          this makes the form sticky by displaying either the initial default value (line 35)
-          or the value they typed in (line 84)
-          NOTE this line:
-          <?php if($emailERROR) print 'class="mistake"'; ?>
-          this prints out a css class so that we can highlight the background etc. to
-          make it stand out that a mistake happened here.
-         */
-        ?>
-        <form action="<?php print $phpSelf."?id=".$ProductID; ?>"
-              method="post"
-              id="frmComment">
-            <fieldset class="wrapper">
+                /* Display the HTML form. note that the action is to this same page. $phpSelf
+                  is defined in top.php
+                  NOTE the line:
+                  value="<?php print $email; ?>
+                  this makes the form sticky by displaying either the initial default value (line 35)
+                  or the value they typed in (line 84)
+                  NOTE this line:
+                  <?php if($emailERROR) print 'class="mistake"'; ?>
+                  this prints out a css class so that we can highlight the background etc. to
+                  make it stand out that a mistake happened here.
+                 */
+                ?>
+                <form action="<?php print $phpSelf . "?id=" . $ProductID; ?>"
+                      method="post"
+                      id="frmComment">
+                    <fieldset class="wrapper">
 
-                <legend></legend>
-                <!-- Start User Form -->
-                <fieldset class="wrapperTwo">
-                    <legend>Leave a comment!</legend>
-                    <fieldset class="contact">
                         <legend></legend>
-                        <!-- Hidden variables -->
-                        <input type="hidden" id="hidProductID" name="hidProductID"
-                               value="<?php print $ProductID; ?>"
-                               >
-                        
-                        <input type="hidden" id="hidUserID" name="hidUserID"
-                               value="<?php print $UserID; ?>"
-                               >
-                        
-                        <!-- Comment box -->
-                        <label id ="txtText" >Comment</label>
-                        <textarea id=txtText name=txtText rows=5 onfocus="this.select()" maxlength= 
-                        <?php
-                        print "'$TEXT_MAX_LENGTH'";
-                        if ($textMeERROR) {
-                            print 'class = "mistake"';
-                        }
-                        ?>><?php
-                                      print$text;
-                                      ?></textarea>
-                        
-                        <!-- Rating -->
-                             <label  class="required">Rating
-                            <input type="quantity" id="numRating" name="numRating"
-                                   value="<?php print $rating;?>"
-                                   tabindex="110"  placeholder="Enter a rating"
-                                   min ="1" max ="5"  
-                                   <?php if ($ratingERROR) print 'class="mistake"'; ?>
-                                   >
+                        <!-- Start User Form -->
+                        <fieldset class="wrapperTwo">
+                            <legend>Leave a comment!</legend>
+                            <fieldset class="contact">
+                                <legend></legend>
+                                <!-- Hidden variables -->
+                                <input type="hidden" id="hidProductID" name="hidProductID"
+                                       value="<?php print $ProductID; ?>"
+                                       >
 
-                        </label>
+                                <input type="hidden" id="hidUserID" name="hidUserID"
+                                       value="<?php print $UserID; ?>"
+                                       >
 
-                    </fieldset>
-                    <!-- ends User Form -->
-                </fieldset> 
-
-                <!-- ends wrapper Two -->
+                                <!-- Comment box -->
+                                <label id ="txtText" >Comment</label>
+                                <textarea id=txtText name=txtText rows=5 onfocus="this.select()" maxlength= 
+                                <?php
+                                print "'$TEXT_MAX_LENGTH'";
+                                if ($textMeERROR) {
+                                    print 'class = "mistake"';
+                                }
+                                ?>><?php
+                                              print$text;
+                                              ?></textarea>
 
 
-                <fieldset class="buttons">
-                    <legend></legend>
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Comment" tabindex="900" class="button">
-                </fieldset> <!-- ends buttons -->
-            </fieldset> <!-- Ends Wrapper -->
-        </form>
-</div>
-     <?php 
+                            </fieldset>
+                            <!-- ends User Form -->
+                        </fieldset> 
+
+                        <!-- ends wrapper Two -->
+
+
+                        <fieldset class="buttons">
+                            <legend></legend>
+                            <input type="submit" id="btnSubmit" name="btnSubmit" value="Comment" tabindex="900" class="button">
+                        </fieldset> <!-- ends buttons -->
+                    </fieldset> <!-- Ends Wrapper -->
+                </form>
+        </div>
+        <?php
     } // end body submit
- }else{
-     print"<p>Login to leave comments!</p>";
- }
-    ?>
+} else {
+    print"<p>Login to leave comments!</p>";
+}
+?>
