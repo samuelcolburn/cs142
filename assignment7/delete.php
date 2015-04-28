@@ -75,7 +75,7 @@ if ($_SESSION["admin"]) {
 
     if ($table == 'tblProducts') {
 
-        $query .= " pmkProductID , fldProductName , fldDescription , fldDateSubmitted , fldPrice , fldImage, fldCategoryName ";
+        $query .= " pmkProductID , fldProductName , fldDescription , fldDateSubmitted , fldPrice , fldImages, fldCategoryName ";
         $query .= "FROM tblProducts , tblCategories ";
         $query .= " WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
     } elseif ($table == 'tblUsers') {

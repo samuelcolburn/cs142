@@ -24,7 +24,7 @@ if (isset($_GET["id"])) {
 //Select product from tblProducts with the given productID
     $data = array($pmkProductID);
 
-    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldDob as 'fldAge' , fldBreed , fldGender ,  fldImage , fldDescription , fldSize , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
+    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldDob as 'fldAge' , fldBreed , fldGender ,  fldImages , fldDescription , fldSize , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
 
 //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
@@ -33,7 +33,7 @@ if (isset($_GET["id"])) {
       $Description = $results[0]["fldDescription"];
       $DateSubmitted = $results[0]["fldDateSubmitted"];
       $Dob = $results[0]["fldDob"];
-      $Image = $results[0]["fldImage"];
+      $Image = $results[0]["fldImages"];
       $CategoryID = $results[0]["fnkCategoryID"];
       $CategoryName = $results[0]["fldCategoryName"];
      */
@@ -116,23 +116,23 @@ if (isset($_GET["id"])) {
         foreach ($petdata as $field => $value) {
 
             if (!is_int($field)) {
-                
-                if($field == "fldImage" && empty($value)){
+
+                if ($field == "fldImages" && empty($value)) {
                     $pet[] = 'pics/dog-silhouette-hi.png';
                 }
                 //if its empty, add a placeholder
-                elseif(empty($value)) {
+                elseif (empty($value)) {
                     $pet[] = "Unknown";
                 } else {
                     $pet[] = $value;
                 }
             }
         }
-        
+
         if ($debug) {
             print_r($pet);
         }
-        
+
         //create pet page
         //title of the page is the name of the pet
         print "<h2>" . $pet[1] . "</h2>";
@@ -142,10 +142,23 @@ if (isset($_GET["id"])) {
         //Images and facts column
         print "<section>";
 
-        //image div
+        /*image div
         print "<div class = '" . $key[5] . "'>";
         print "<img src='" . $pet[5] . "' height=400 width=532 alt ='" . $pet[1] . "'>";
         print "</div>";
+
+*/
+        
+        if ($handle = opendir($pet[5])) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+                    $img = $pet[5].$entry;
+                    list($width, $height) = getimagesize($img);
+                    print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
+                }
+            }
+            closedir($handle);
+        }
 
 
         //Facts section

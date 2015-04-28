@@ -24,7 +24,7 @@ if (isset($_GET["id"])) {
 //Select product from tblProducts with the given productID
     $data = array($pmkProductID);
 
-    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldImage, fldDob as 'fldAge' , fldDescription , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
+    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldImages, fldDob as 'fldAge' , fldDescription , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
 
 //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
@@ -33,7 +33,7 @@ if (isset($_GET["id"])) {
       $Description = $results[0]["fldDescription"];
       $DateSubmitted = $results[0]["fldDateSubmitted"];
       $Dob = $results[0]["fldDob"];
-      $Image = $results[0]["fldImage"];
+      $Image = $results[0]["fldImages"];
       $CategoryID = $results[0]["fnkCategoryID"];
       $CategoryName = $results[0]["fldCategoryName"];
      */

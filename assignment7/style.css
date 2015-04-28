@@ -266,7 +266,7 @@ nav {
   //  border-bottom: solid 3px #999; 
   // background-color:#233d4b;
 
-      background-color: #5CE1E1;
+      background-color: #1e90ff;
 
 
 }
@@ -650,19 +650,16 @@ fieldset.buttons{
 }
 
 input#btnSubmit{
-    background-color: #222;
+    background-color: #349033;
     color: #FFF;
     border: 0;
     padding:0.5em;
     font-size:large;
-    border:thin solid #222;
     border-radius:3px;
 
 }
 input#btnSubmit:hover{
-    background-color: #444;
-    font-size:large;
-    border:thin solid #222;
+    background-color: #69227B;
     cursor:pointer;
 }
 
@@ -712,6 +709,7 @@ textarea#txtText{
     font-family:"Century Gothic", sans-serif;
     width: calc(100% + 2em);
     border-radius:3px;
+    border: thin solid #222;
     overflow: auto;
     resize:both;
     font-size:medium;
@@ -923,7 +921,7 @@ main li:nth-child(odd) {
 }
 .comment {
   margin: 10px 0px 10px 0px;
-  border: thin solid black;
+  border: thin solid #222;
   border-radius: 3px;
   background: white;
 }
@@ -935,7 +933,7 @@ main li:nth-child(odd) {
 
 .CommentInfo{
     font-size: small;
-  border-top: thin solid black;
+  border-top: thin solid #999;
   padding: 5px;
   margin: 0;
   background-color: #5ce19f;

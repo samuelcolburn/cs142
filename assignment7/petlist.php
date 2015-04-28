@@ -22,7 +22,7 @@ $yourURL = $domain . $phpSelf;
 
 
 //Get all product data to be displayed
-$query = "SELECT pmkProductID as 'ID' , fldProductName as 'Name' , fldDob as 'Age' , fldDescription as 'Description' , fldImage as 'Image' , fldCategoryName as 'Category' FROM tblProducts,tblCategories WHERE fnkCategoryID = pmkCategoryID ";
+$query = "SELECT pmkProductID as 'ID' , fldProductName as 'Name' , fldDob as 'Age' , fldDescription as 'Description' , fldImages as 'Image' , fldCategoryName as 'Category' FROM tblProducts,tblCategories WHERE fnkCategoryID = pmkCategoryID ";
 $data = array();
 $results = $thisDatabase->select($query, $data);
 

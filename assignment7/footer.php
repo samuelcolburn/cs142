@@ -7,5 +7,5 @@
         echo date('l jS \of F Y h:i:s A');
         
    ?>
-    |<span class="footer"> Author: Sam Colburn </span>|<span><a href="http://icons8.com">Icon pack by Icons8</a></span>
+    |<span class="footer"> Author: Sam Colburn </span>
 </footer>

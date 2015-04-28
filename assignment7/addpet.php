@@ -53,7 +53,7 @@ if (isset($_GET["id"])) {
     $data = array($pmkProductID);
 
     // select the product from the product table
-    $query = "SELECT pmkProductID , fldProductName , fldDescription , fldDob , fldImage, fnkCategoryID FROM tblProducts WHERE pmkProductID = ?";
+    $query = "SELECT pmkProductID , fldProductName , fldDescription , fldDob , fldImages, fnkCategoryID FROM tblProducts WHERE pmkProductID = ?";
 
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
@@ -61,7 +61,7 @@ if (isset($_GET["id"])) {
     $Description = $results[0]["fldDescription"];
     $DoB = $results[0]["fldDob"];
     $CategoryID = $results[0]["fnkCategoryID"];
-    $fldImage = $results[0]["fldImage"];
+    $fldImages = $results[0]["fldImages"];
 
     if ($debug) {
 
@@ -241,7 +241,7 @@ if (isset($_POST["btnSubmit"])) {
             $ImageERROR = true;
         }
         // Check if file already exists
-        if (file_exists($target_file) && $target_file != $fldImage) {
+        if (file_exists($target_file) && $target_file != $fldImages) {
             $errorMsg[] = "Sorry, file already exists.";
             $ImageERROR = true;
         }
@@ -322,7 +322,7 @@ if (isset($_POST["btnSubmit"])) {
 
             if ($target_filename != "") {
                 $data[] = $target_file;
-                $query .= " , fldImage = ? ";
+                $query .= " , fldImages = ? ";
             }
             
             if ($update) {
