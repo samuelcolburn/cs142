@@ -170,7 +170,7 @@ if (isset($_POST["btnSubmit"])) {
     $DoB = htmlentities($_POST["dateDoB"], ENT_QUOTES, "UTF-8");
 
     //IMAGE VARIABLES
-    $target_dir = "pics/";
+    $target_dir = "pics/" . $ProductName . "/";
     $target_filename = basename($_FILES["fileToUpload"]["name"]);
     $target_file = $target_dir . $target_filename;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -283,8 +283,19 @@ if (isset($_POST["btnSubmit"])) {
         if ($debug)
             print "<p>Form is valid</p>";
 
+        
+        function makeDir($target_dir) {
+            return is_dir($target_dir) || mkdir($target_dir);
+        }
+        
+        
+       
 
+        
         if (!empty($target_filename)) {
+            
+            MakeDir($target_dir);
+            
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . $target_filename . " has been uploaded.";
             } else {
@@ -321,10 +332,10 @@ if (isset($_POST["btnSubmit"])) {
             $query .= " fldProductName = ? , fldDescription = ? , fldDob = ? , fnkCategoryID = ?  ";
 
             if ($target_filename != "") {
-                $data[] = $target_file;
+                $data[] = $target_dir;
                 $query .= " , fldImages = ? ";
             }
-            
+
             if ($update) {
                 $query .= " WHERE pmkProductID = ? ";
                 $data[] = $pmkProductID;
@@ -425,7 +436,7 @@ if (isset($_POST["btnSubmit"])) {
                 <legend><?php print $ProductName; ?></legend>
                 <!-- Start User Form -->
                 <fieldset class="wrapperTwo">
-                    <legend>Required Information</legend>
+                    <legend></legend>
                     <fieldset class="contact">
                         <legend></legend>
                         <input type="hidden" id="hidProductID" name="hidProductID"
@@ -434,7 +445,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label  class="required">Product Name
                             <input type="text" id="txtProductName" name="txtProductName"
                                    value="<?php print $ProductName; ?>"
-                                   tabindex="100" maxlength="16" placeholder="Enter a pet name"
+                                   tabindex="100" maxlength="16" placeholder="Pet Name"
                                    <?php if ($ProductNameERROR) print 'class="mistake"'; ?>
                                    >
 
@@ -453,7 +464,7 @@ if (isset($_POST["btnSubmit"])) {
 
                         <label  class="required">Description
                             <textarea id="txtDescription" name="txtDescription"
-                                      tabindex="120" maxlength="500" rows="10"
+                                      tabindex="120" maxlength="500" rows="5"
 
                                       <?php
                                       if ($DescriptionERROR) {
@@ -488,8 +499,14 @@ if (isset($_POST["btnSubmit"])) {
                     </fieldset>
                     <!-- START IMAGEBOX -->
                     <fieldset class="image">
-                        <label>Select an Image to Upload</label>
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <label class = "required">Select an Image to Upload</label>
+                        <input type="file" name="fileToUpload" id="fileToUpload"
+                                   <?php
+                                      if ($DescriptionERROR) {
+                                          print 'class="mistake"';
+                                      }
+                                      ?>
+                               >
                     </fieldset>
 
 

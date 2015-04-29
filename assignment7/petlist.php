@@ -90,7 +90,7 @@ foreach ($results as $pet) {
             if ($key == "Image") {
                 if ($handle = opendir($value)) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry == "profile.png") {
+                if ($entry != "." && $entry != "..") {
                     $img = $value . $entry;
                     list($width, $height) = getimagesize($img);
                     print "<img src='" . $img . "' height=200 width=266 alt ='" . $pet[1] . "'>";

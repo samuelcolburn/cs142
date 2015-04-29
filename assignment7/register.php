@@ -544,7 +544,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     
                     <fieldset class="textarea">
                     <label id ="AboutMe">About Me</label>
-                    <textarea id=AboutMe name=AboutMe rows=5 maxlength= <?php
+                    <textarea id="AboutMe" name="AboutMe" rows=5 maxlength= <?php
     print "'$ABOUTME_MAX_LENGTH'";
     if ($AboutMeERROR) {
         print 'class = "mistake"';
