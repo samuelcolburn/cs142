@@ -12,11 +12,26 @@
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-        
-        <script type="text/javascript" src=" //ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
+        <!-- Important Owl stylesheet -->
+        <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+
+        <!-- Default Theme -->
+        <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+
+        <!-- Jquery Library -->
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+        <!-- Include js plugin -->
+        <script src="assets/owl-carousel/owl.carousel.js"></script>
+
+ <!-- Include javascript file -->
         <script src="javascript.js"></script>
+
+
 
         <?php
         // Start the session
@@ -73,9 +88,9 @@
 
 
         $thisDatabase = new myDatabase($dbUserName, $whichPass, $dbName);
-        
-    
-        
+
+
+
 
         // CHECK USER SESSION
         if ($debug) {
@@ -83,14 +98,14 @@
         }
 
         if (!empty($_SESSION["user"])) {
-            
+
             $user = htmlentities($_SESSION["user"], ENT_QUOTES, "UTF-8");
 
             $data = array($user);
 
             $query = "SELECT fldUsername , pmkUserId FROM tblUsers  WHERE fldUsername = ? ";
 
-            $session_results = $thisDatabase->select($query , $data);
+            $session_results = $thisDatabase->select($query, $data);
 
             $session_username = $session_results[0]['fldUsername'];
             $session_pmkUserID = $session_results[0]['pmkUserId'];

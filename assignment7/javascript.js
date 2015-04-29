@@ -1,28 +1,22 @@
 $(document).ready(function() {
-//side panel for nav
-    $(".menu-button").click(function() {
-        $("nav").toggleClass("is-visible");
-        $("article").toggleClass("menu-visible");
-        $("header").toggleClass("menu-visible");
-    });
-
-    $(window).resize(function() {
-        $("nav").removeClass("is-visible");
-        $("article").removeClass("menu-visible");
-        $("header").removeClass("menu-visible");
-    });
-
-// Scrolling adjust nav position
-    var secondaryHead = $('nav'),
-            secondaryHeadTopPosition = secondaryHead.offset().top;
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > secondaryHeadTopPosition) {
-            secondaryHead.addClass("fixed-nav");
-            $(".menu-button").addClass("fixed-button");
-        }
-        else {
-            secondaryHead.removeClass('fixed-nav');
-            $(".menu-button").removeClass("fixed-button");
-        }
-    });
+ 
+  $("#owl-demo").owlCarousel({
+ 
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:false,
+      itemsCustom:[[0,1],[2,1],[200,1],[400,1],[600,1]]
+      
+      
+ 
+      // "singleItem:true" is a shortcut for:
+      // items : 5, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+ 
+  });
+ 
 });

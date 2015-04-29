@@ -88,7 +88,16 @@ foreach ($results as $pet) {
 
             //image check
             if ($key == "Image") {
-                print "<img src='" . $value . "' height=200 width=266>";
+                if ($handle = opendir($value)) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry == "profile.png") {
+                    $img = $value . $entry;
+                    list($width, $height) = getimagesize($img);
+                    print "<img src='" . $img . "' height=200 width=266 alt ='" . $pet[1] . "'>";
+                }
+            }
+            closedir($handle);
+        }
             }
 
             //Date of birth check
@@ -109,7 +118,8 @@ foreach ($results as $pet) {
                     $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
                     print $age . " years old";
                 }
-            } else {
+            } 
+            else {
                 print $value . "\n";
             }
 

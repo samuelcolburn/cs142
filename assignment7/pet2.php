@@ -24,7 +24,7 @@ if (isset($_GET["id"])) {
 //Select product from tblProducts with the given productID
     $data = array($pmkProductID);
 
-    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldImages, fldDob as 'fldAge' , fldDescription , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
+    $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldDob as 'fldAge' , fldBreed , fldGender ,  fldImages , fldDescription , fldSize , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
 
 //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
@@ -68,8 +68,6 @@ if (isset($_GET["id"])) {
         print " 'delete.php?id=" . $pmkProductID . "' ";
         print ' " >Delete</p>';
 
-
-
         print "</div>";
     }
 
@@ -86,85 +84,173 @@ if (isset($_GET["id"])) {
 // check if their username is the same as the person logged in, or if admin.
 // only display account information if its the user or the admin.
 // PET INFO LOOP
-    foreach ($results as $pet) {
-        if ($debug) {
-            print_r($pet);
-        }
-
+    foreach ($results as $petdata) {
+        /*
+          if ($debug) {
+          print_r($pet);
+          }
+         */
         //get all key values
-        $petkeys = array_keys($pet);
+        $petkeys = array_keys($petdata);
 
-        if($debug){
-        print_r($petkeys);
-        }
-        
+        /*
+          if ($debug) {
+          print_r($petkeys);
+          }
+         * 
+         */
+
         $key = array();
-        foreach($petkeys as $index => $value){
-            if(!is_int($value)){
-            $key[] = substr($value,3);
+        foreach ($petkeys as $index => $value) {
+            if (!is_int($value)) {
+                $key[] = substr($value, 3);
             }
         }
-        
-        if($debug){
-        print_r($key);
+
+        if ($debug) {
+            print_r($key);
+            print_r($petdata);
+        }
+
+        //make array of valid pet data
+        foreach ($petdata as $field => $value) {
+
+            if (!is_int($field)) {
+
+                if ($field == "fldImages" && empty($value)) {
+                    $pet[] = 'pics/dog-silhouette-hi.png';
+                }
+                //if its empty, add a placeholder
+                elseif (empty($value)) {
+                    $pet[] = "Unknown";
+                } else {
+                    $pet[] = $value;
+                }
+            }
+        }
+
+        if ($debug) {
+            print_r($pet);
         }
 
         //create pet page
         //title of the page is the name of the pet
         print "<h2>" . $pet[1] . "</h2>";
-        
-        print ' <section class ="petinfo" >';
-        
-        //image column
-        print "<main>";
-        print "<div class = ".$key[2].">";
-        print "<img src='" . $pet[2] . "' height=200 width=266 alt ='" . $pet[1] . "'>";
-        print "</div>";
-                //age div
-        print "<div class = ".$key[3].">";
-                    //get age from birthdate
-                    $birthDate = $pet[3];
 
-                    $birthDate = explode("-", $birthDate);
+        print ' <main class = petinfo >';
 
-                    if ($birthDate[0] >= date("Y")) {
-                        $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
-                        print $age . " weeks old.";
-                    } elseif ($birthDate[2] < date("Y")) {
-                        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
-                        print $age . " years old";
-                    }
-                    
+        //Images and facts column
+        print "<section>";
+
+        /*
+         * 
+         * image div
+        
+        print "<div class = '" . $key[5] . "'>";
+        print "<img src='" . $pet[5] . "' height=400 width=532 alt ='" . $pet[1] . "'>";
         print "</div>";
-        print "</main>";
+
+
+        
+        if ($handle = opendir($pet[5])) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+                    $img = $pet[5].$entry;
+                    list($width, $height) = getimagesize($img);
+                    print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
+                }
+            }
+            closedir($handle);
+        }
+         * */
+         
+?>
+<div id ="owlWrapper">
+ <div id="owl-demo" class="owl-carousel owl-theme">
+      <div class="item"><img src="pics/Revy/dog1_600_450.png" alt="Ball of Fur"></div>
+  <div class="item"><img src="pics/Revy/henry_600_450.png"" alt="Henry"></div>
+  <div class="item"><img src="pics/Revy/hugs_600_450.png"" alt="Stella"></div>
+</div>
+</div>
+    <?php
+
+        //Facts section
+        print "<ol class ='PetFacts' >";
+
+
+        //age div
+        print "<li class = '" . $key[2] . "'>";
+        //get age from birthdate
+        print "<span>" . $key[2] . "</span>";
+
+        $birthDate = $pet[2];
+
+        $birthDate = explode("-", $birthDate);
+
+        if ($birthDate[0] >= date("Y")) {
+            $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
+            print $age . " weeks";
+        } elseif ($birthDate[2] < date("Y")) {
+            $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+            print $age . " years";
+        }
+        print "</li>";
+
+        //breed
+        print "<li class = '" . $key[3] . "'>";
+        print "<span>" . $key[3] . "</span>" . $pet[3];
+        print "</li>";
+
+
+        //gender
+        print "<li class = '" . $key[4] . "'>";
+        print "<span>" . $key[4] . "</span>";
+        if ($pet[4]) {
+            print "Male";
+        } else {
+            print "Female";
+        }
+
+        print "</li>";
+
+
+        //size
+        print "<li class = '" . $key[7] . "'>";
+        print "<span>" . $key[7] . "</span> " . $pet[7] . " lbs";
+        print "</li>";
+
+
+        print "</ol>";
+
+        print "</section>";
+
+
         //description column
         print "<aside>";
-        
 
-        
         //description div
-        print "<div class = ".$key[4].">";
-        
+        print "<div class = '" . $key[6] . "'>";
+
         print "<p>";
-        
-        print $pet[4];
-        
+
+        print $pet[6];
+
         print "</p>";
-        
+
         print "</div>";
-        
-        
-          //ADOPTION BUTTON
-    //make each pet section clickable, with class as their species
-    print ' <p class ="AdoptMe" onclick="location.href= ';
-    print " 'adopt.php?id=" . $pmkProductID . "' ";
-    print ' " >Adopt Me!</p>';
 
-        print "</aside>";       
 
-        print "</section>\n";
+        //ADOPTION BUTTON
+        //make each pet section clickable, with class as their species
+        print ' <p class ="AdoptMe" onclick="location.href= ';
+        print " 'adopt.php?id=" . $pmkProductID . "' ";
+        print ' " >Adopt Me!</p>';
+
+        print "</aside>";
+
+        print "</main>\n";
     }
-  
+
 //@@@@@@@@ PET COMMENTS @@@@@@@@@
     print"<h3>Comments</h3>\n";
     print "<section class = Comments>";

@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-      background-color: #f9fefe;
+    background-color: #f9fefe;
 }
 ol, ul {
     list-style: none;
@@ -108,11 +108,11 @@ h4 {
 }
 
 h5 { 
-	
+
 }
 
 h6 {
-	
+
 }
 
 ol ol ol li {
@@ -127,7 +127,7 @@ ol li {
 }
 
 ul ul ul li { 
-   
+
 }
 
 ul ul li { 
@@ -167,9 +167,9 @@ HEADER SECTION
 
 
 header {
- 
+
     width:100%;
-      background-color: white;
+    background-color: white;
 
 }
 
@@ -180,6 +180,7 @@ h1 {
     font-weight:normal;
     font-size: 3em;
     height:120px;
+    letter-spacing: 0.2em;
 
 }
 
@@ -262,11 +263,11 @@ nav {
 
 
 
-  //  border-top: solid 3px #999;  
-  //  border-bottom: solid 3px #999; 
-  // background-color:#233d4b;
+    //  border-top: solid 3px #999;  
+    //  border-bottom: solid 3px #999; 
+    // background-color:#233d4b;
 
-      background-color: #1e90ff;
+    background-color: #8ec7ff;
 
 
 }
@@ -841,71 +842,116 @@ INDIVIDUAL PET SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 #pet article {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 
 
 #pet h2{
-    margin-bottom:20px;
+    margin-left:5%;
 }
 
 #pet main{
-  background-color: white;
   padding: 20px;
   border-radius: 10px;
-  border: thin solid #888;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 #pet main section {
- 
+      display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
 }
 
 #pet .Image{
- display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
+#pet aside{
+   padding: 0px 20px 20px 10px;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+
 }
 
 #pet main ol{
   list-style-type: none;
-  background-color: wheat;
   float: left;
   margin: 10px;
   border-radius: 5px;
-  width: calc(40% - 20px)
+  flex: 1 1;
+  min-width: 200px;
+  max-width: 350px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  border: thin solid #999;
+  margin: 0 0 20px 20px;
 }
 
 #pet main ol li{
-font-weight: normal;
-  list-style: none;
-  padding-top: 10px;
-  padding: 10px;
-  text-align: right;
-}
-main li:nth-child(odd) {
-  background-color: antiquewhite;
+    font-weight: normal;
+    list-style: none;
+    padding-top: 10px;
+    padding: 10px;
+    text-align: right;
 }
 
 #pet li span {
-   font-weight: bold;
-  padding-right: 10px;
-  float: left;
+    font-weight: bold;
+    padding-right: 10px;
+    float: left;
 }
 
-#pet aside{
-   padding: 10px 20px 20px 10px;
-  background-color: white;
-  float: right;
-  width: calc(60% - 40px);
+.Description{
+   margin: 0 20px 20px 20px;
+  max-width: 350px;
+  flex: 3 1;
 }
 
+.Description p{
+      padding: 0;
+  margin: 0;
+  line-height: 140%;
+  text-indent:1em;
+}
 
+/* ========== SLIDER ===================== */
+#owl-demo{
+    width:600px;
+    height:550px;
+    max-height:600px;
+}
+#owl-demo .item img{
+    display: block;
+    width:100%;
+    height: auto;
+}
 
+.owl-item{
+    min-width:600px;
+}
+
+.owl-theme .owl-controls{
+    margin-top:5px;
+}
+
+.owl-theme .owl-controls .owl-buttons div{
+    padding:5px 10px;
+    margin:0 5px 0 5px;
+    font-size:16px;
+}
 
 .Description p{
     padding:0;
@@ -920,10 +966,10 @@ main li:nth-child(odd) {
 .Comments{
 }
 .comment {
-  margin: 10px 0px 10px 0px;
-  border: thin solid #222;
-  border-radius: 3px;
-  background: white;
+    margin: 10px 0px 10px 0px;
+    border: thin solid #222;
+    border-radius: 3px;
+    background: white;
 }
 
 
@@ -933,11 +979,11 @@ main li:nth-child(odd) {
 
 .CommentInfo{
     font-size: small;
-  border-top: thin solid #999;
-  padding: 5px;
-  margin: 0;
-  background-color: #5ce19f;
-  color: white;
+    border-top: thin solid #999;
+    padding: 5px;
+    margin: 0;
+    background-color: #5ce19f;
+    color: white;
 }
 
 .Username{
@@ -968,60 +1014,39 @@ p.AdoptMe:hover{
 }
 
 /* ======================================== MEDIA QUERIES ======================================== */
-
-@media (max-width: 750px) {
-
-    #pet article{
-        margin: 0 auto;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+@media screen and (max-width: 1000px) {
+    #pet main section {
+        flex-wrap:wrap;
     }
-
-    .petinfo{
-        flex-direction:column;
-        align-items:center;
-    }
-
+    
     #pet aside{
-        margin-top:20px;
-        margin-left:0px;
-        width:80%;
-
+        flex-direction:row;
     }
-
-    #pet main{
-        flex:initial;
-        width:80%;
-
-    }
-
-
-
+    
+    
 }
-@media (max-width: 550px) {
 
+@media screen and (max-width: 750px) {
     #pet article{
-        width:100%;
+        margin:0;
     }
-    #pet aside{
-
-        width:100%;
-    }
-
-    #pet main{
-
-        width:100%;
-    }
-
-    .Comments{
-        margin-left:0px;
-    }
-
-
-
+ 
 }
+@media screen and (max-width: 635px) {
+    #pet article{
+        width: 100%
+    }
+    
+    #pet main{
+        padding:0px;
+    }
+ 
+    #pet ol{
+        margin:0;
+    }
+    
+}
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 

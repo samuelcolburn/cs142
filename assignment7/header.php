@@ -15,5 +15,5 @@
 
     </div>
     <h1><a href = 'home.php'>Burlington Animal Shelter</a></h1>
-    <h4>Adopt a Pet Today!</h4>
+    <h4>Suck a Dick!</h4>
 </header>

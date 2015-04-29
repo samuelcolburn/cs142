@@ -142,26 +142,24 @@ if (isset($_GET["id"])) {
         //Images and facts column
         print "<section>";
 
-        /*image div
-        print "<div class = '" . $key[5] . "'>";
-        print "<img src='" . $pet[5] . "' height=400 width=532 alt ='" . $pet[1] . "'>";
-        print "</div>";
 
-*/
+        print '<div id="owl-demo" class="owl-carousel owl-theme">';
         
         if ($handle = opendir($pet[5])) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != "..") {
-                    $img = $pet[5].$entry;
+                    $img = $pet[5] . $entry;
                     list($width, $height) = getimagesize($img);
-                    print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
+                    print "<div class ='item'><img src='" . $img . "' alt ='" . $pet[1] . "'></div>";
                 }
             }
             closedir($handle);
         }
 
-
-        //Facts section
+         
+        print "</div>";
+     //Facts section
+         print"<aside>";
         print "<ol class ='PetFacts' >";
 
 
@@ -190,7 +188,6 @@ if (isset($_GET["id"])) {
 
 
         //gender
-
         print "<li class = '" . $key[4] . "'>";
         print "<span>" . $key[4] . "</span>";
         if ($pet[4]) {
@@ -209,14 +206,7 @@ if (isset($_GET["id"])) {
 
 
         print "</ol>";
-
-        print "</section>";
-
-
-        //description column
-        print "<aside>";
-
-        //description div
+         //description div
         print "<div class = '" . $key[6] . "'>";
 
         print "<p>";
@@ -228,14 +218,20 @@ if (isset($_GET["id"])) {
         print "</div>";
 
 
+
+        print "</aside>";
+
+        print "</section>";
+
+       
+   
+
+       
         //ADOPTION BUTTON
         //make each pet section clickable, with class as their species
         print ' <p class ="AdoptMe" onclick="location.href= ';
         print " 'adopt.php?id=" . $pmkProductID . "' ";
         print ' " >Adopt Me!</p>';
-
-        print "</aside>";
-
         print "</main>\n";
     }
 
