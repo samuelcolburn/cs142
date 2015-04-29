@@ -2,11 +2,18 @@ $(document).ready(function() {
  
   $("#owl-demo").owlCarousel({
  
-      navigation : true, // Show next and prev buttons
+      navigation : false, // Show next and prev buttons
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:false,
-      itemsCustom:[[0,1],[2,1],[200,1],[400,1],[600,1]]
+      items:3,
+      autoPlay: true,
+      autoHeight : true,
+      transitionStyle:"fade",
+    goToFirstSpeed : 2000,
+          stopOnHover : true,
+          itemsScaleUp:false
+
       
       
  

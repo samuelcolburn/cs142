@@ -883,7 +883,7 @@ INDIVIDUAL PET SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 #pet article {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -892,20 +892,27 @@ INDIVIDUAL PET SECTION
 
 
 #pet h2{
-    margin-left:5%;
+    width:80%;
+    margin:0 auto;
 }
 
 #pet main{
-    padding: 20px;
+   // padding: 20px;
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    width:100%;
+    align-items:center;
 }
 #pet main section {
     display: flex;
     justify-content: space-around;
-    max-width: 1200px;
+    flex-direction:column;
+    width:80%;
+    align-items:center;
+    margin:0 auto;
+ //   max-width: 1200px;
 }
 
 #pet .Image{
@@ -917,10 +924,12 @@ INDIVIDUAL PET SECTION
 
 
 #pet aside{
-    padding: 0px 20px 20px 10px;
+    padding: 50px 0 0 0;
     flex: 1 1;
     display: flex;
-    flex-direction: column;
+    justify-content:space-around;
+    width:100%;
+    max-width:1200px;
 
 }
 
@@ -957,23 +966,23 @@ INDIVIDUAL PET SECTION
 
 .Description{
     margin: 0 20px 20px 20px;
-    max-width: 350px;
+    max-width: 450px;
+    min-width: 300px;
     flex: 3 1;
 }
 
 .Description p{
     padding: 0;
     margin: 0;
-    line-height: 140%;
-    text-indent:1em;
+    line-height: 200%;
+    text-indent:2em;
 }
 
 /* ========== SLIDER ===================== */
-#owl-demo{
-    width:600px;
-    height:550px;
-    max-height:600px;
+#owl-demo .item{
+    margin:5px;
 }
+
 #owl-demo .item img{
     display: block;
     width:100%;
@@ -981,7 +990,7 @@ INDIVIDUAL PET SECTION
 }
 
 .owl-item{
-    min-width:600px;
+ //   min-width:600px;
 }
 
 .owl-theme .owl-controls{
@@ -1000,12 +1009,13 @@ INDIVIDUAL PET SECTION
 }
 
 #pet h3 {
-    margin-top: 50px;
-    font-size: 20px;
 }
 
-.Comments{
+.Comments , #pet h3{
+    width:70%;
+    margin:0 auto;
 }
+
 .comment {
     margin: 10px 0px 10px 0px;
     border: thin solid #222;
@@ -1055,13 +1065,16 @@ p.AdoptMe:hover{
 }
 
 /* ======================================== MEDIA QUERIES ======================================== */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
     #pet main section {
-        flex-wrap:wrap;
+       
     }
 
     #pet aside{
-        flex-direction:row;
+
+    }
+    
+    #pet main ol{
     }
 
 
@@ -1075,7 +1088,6 @@ p.AdoptMe:hover{
 }
 @media screen and (max-width: 635px) {
     #pet article{
-        width: 100%
     }
 
     #pet main{
@@ -1085,7 +1097,18 @@ p.AdoptMe:hover{
     #pet ol{
         margin:0;
     }
+    
+    #pet aside{
+        flex-direction:column;
+    }
+    
+    .Description{
+       padding-top:20px; 
+    }
 
+    .Description p {
+        line-height:140%;
+    }
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
