@@ -289,13 +289,7 @@ if (isset($_GET["id"])) {
 
             //if the same user as logged in, added edit/delete buttons
             if ($session_username == $comment[1]) {
-                print "<span class = 'CommentDelete' >";
-                print "<a href=''>Delete</a>";
-                print "</span>";
 
-                print "<span class = 'CommentEdit' >";
-                print "Edit";
-                print "</span>";
             }
 
 

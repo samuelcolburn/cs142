@@ -461,7 +461,7 @@ fieldset{
     padding:0;
     padding-bottom:3em;
     width:80%;
-    max-width:450px;
+    max-width:800px;
 }
 
 legend {
@@ -482,8 +482,8 @@ fieldset.wrapper > legend{
 
 label {
     color: #222;
-    display: block;
-    font-size: medium;
+    display: flex;
+    flex-direction:column;
 
 }
 
@@ -512,7 +512,6 @@ fieldset.contactwrapper legend{
 }
 /* just pushes content to left side of the box. */
 fieldset.contact{
-    float: left;
     margin:0;
     padding:0;
     border:0;
@@ -523,10 +522,7 @@ fieldset.contact{
 /* when you look at the labels this pushes then next to the input and right
 aligns them. Display block means they are each on their own line. */
 fieldset.contact label{
-    display: block;
-    text-align: right;/* pushes the text to the right where they line up */
-    padding-top:0.5em;
-    font-size:0;
+
 
 }
 
@@ -554,6 +550,13 @@ fieldset.Profile input{
     border-radius:3px;
     margin-top:1em;
 }
+
+/*Gender and Age*/
+section.SmallFormItems{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
 /* ~~~ RADIO ~~~*/ 
 fieldset.radiowrapper {
     float:left;
@@ -564,25 +567,21 @@ fieldset.radiowrapper {
 fieldset.radiowrapper legend{
     display:block;
 }
-fieldset.radio {
-    float:left;
+section.radio {
     margin:20px 20px 20px 0px;
     padding:0;
     border:0;
-    clear:both;
-    width:40%;
-    width:calc (50% - 20px);
-    max-width:300px;
 
 }
 
-fieldset.radio label {
+section.radio label {
     width:100%;
     font-size:medium;
-    margin:5px;
+    margin:10px;
+    flex-direction:row;
 }
 
-fieldset.radio input {
+section.radio input {
     margin-top:0;
     margin-right:1em;
     height:15px;
@@ -590,11 +589,8 @@ fieldset.radio input {
 }
 
 /* ~~~ List Box ~~~*/ 
-fieldset.listbox {
-    width:40%;
-    width:calc (50%- 40px);
-    margin:20px;
-    float:right;
+section.listbox {
+
 }
 
 fieldset.listbox legend{
@@ -631,7 +627,7 @@ textarea#AboutMe{
     border:0;
     background-color:#F5F5F5;
     font-family:"Century Gothic", sans-serif;
-    width: calc(100% + 2em);
+    width: calc(100% - 4px);
     border-radius:3px;
     overflow: auto;
     resize:both;
@@ -784,7 +780,7 @@ table a:hover{
     padding-left:10px;
 }
 
-#txtDescription{
+textarea#txtDescription{
     margin: 20px 0 20px 0;
     border:0;
     background-color:#F5F5F5;
@@ -795,6 +791,7 @@ table a:hover{
     resize:both;
     font-size:medium;
     padding: 10px 0 10px 10px;
+    text-align:left;
 }
 
 #addpet select{
@@ -809,6 +806,17 @@ table a:hover{
     width: calc(100% + 10px);
 }
 
+
+
+#addpet label{
+    text-align:left;
+}
+section.image {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
 #addpet input[type="button"]{
     font-size: large;
     font-family: "century gothic" , sans-serif;
@@ -816,7 +824,22 @@ table a:hover{
 
 input#fileToUpload{ 
     padding: 10px 20px 10px 20px;
-    width: calc(100% + 2em + 40px);
+    width: calc(100% - 30px);
+}
+
+#addpet .YourImage{
+    transition:0.5s;
+    transform:translateX(-100%);
+    position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#addpet .image-visible{
+    transform:translateX(0%);
+    position:inherit;
+    padding:20px;
+
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -978,6 +1001,10 @@ INDIVIDUAL PET SECTION
     text-indent:2em;
 }
 
+.Description p::first-line {
+  line-height: 50%;
+}
+
 /* ========== SLIDER ===================== */
 #owl-demo .item{
     margin:5px;
@@ -1035,30 +1062,34 @@ INDIVIDUAL PET SECTION
     margin: 0;
     background-color: #5ce19f;
     color: white;
+    display:flex;
+    align-items:center;
+}
+span.CommentButtons {
+  align-self: flex-end;
+  flex: 1 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .Username{
     margin-right:20px;
 }
 
-.CommentEdit , .CommentDelete{
-    float: right;
-    margin: 0px 5px 0px 5px;
-}
+
 
 .AdoptMe {
     padding:10px;
     margin: 15px 15px 15px 0px;
     border-radius:5px;
-    background-color:#DCF3D6;
-    box-shadow: 2px 2px 2px #888888;
-
+    background-color:#7fbfd6;
     text-align:center;
     width:90px;
+    color:white;
 }
 
 p.AdoptMe:hover{
-    background-color:#7fbfd6;
+    background-color:#588595;
     cursor:pointer;
     color:white;
     text-decoration:underline;
@@ -1123,14 +1154,17 @@ ADMIN BUTTONS SECTION
     display:flex;
     flex-wrap:wrap;
     align-content:center;
+    width:80%;
+    margin:0 auto;
 }
 
 .edit {
     padding:10px;
     margin: 5px;
     border-radius:5px;
-    background-color:#DCF3D6;
-    box-shadow: 2px 2px 2px #888888;
+    background-color:#A9E29B;
+    color:white;
+
 }
 
 .edit a:link{
@@ -1149,7 +1183,7 @@ ADMIN BUTTONS SECTION
 }
 
 .edit:hover{
-    background-color:#7fbfd6;
+    background-color:#65875d;
     cursor:pointer;
     color:white;
     text-decoration:underline;
@@ -1160,8 +1194,9 @@ ADMIN BUTTONS SECTION
     padding:10px;
     margin: 5px;
     border-radius:5px;
-    background-color:#F3D6DC;
-    box-shadow: 2px 2px 2px #888888;
+    background-color:#e7afba;
+    color:white;
+
 }
 
 .delete a:link{
@@ -1180,7 +1215,7 @@ ADMIN BUTTONS SECTION
 }
 
 .delete:hover{
-    background-color:#7fbfd6;
+    background-color:#ED89A4;
     cursor:pointer;
     color:white;
     text-decoration:underline;

@@ -431,7 +431,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     <legend>Required Information</legend>
                     <fieldset class="contact">
                         <legend></legend>
-                        <label class="required">Username
+                        <label class="required">
                             <input type="text" id="txtUsername" name="txtUsername"
                                    value="<?php print $Username; ?>"
                                    tabindex="100" maxlength="16" placeholder="Username"
@@ -439,7 +439,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
 
                         </label>
 
-                        <label  class="required">Password
+                        <label  class="required">
                             <input type="password" id="Password" name="Password"
                                    value=""
                                    tabindex="110" maxlength="16" placeholder="Password"
@@ -449,7 +449,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         </label>
 
 
-                        <label  class="required">Email
+                        <label  class="required">
                             <input type="text" id="txtEmail" name="txtEmail"
                                    value="<?php print $email; ?>"
                                    tabindex="120" maxlength="45" placeholder="Email"
@@ -486,8 +486,8 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                >
                     </label>
 
-                  
-                    <fieldset class="radio"
+                  <section class ="SmallFormItems">
+                    <section class="radio"
                               >   <!-- START gender radio -->
                         <legend>Gender</legend>
                         <label  <?php
@@ -517,9 +517,9 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                 value="Other"
     <?php if ($gender == "Other") print 'checked="checked"'; ?>
                                 tabindex="230">Other</label>
-                    </fieldset> <!-- end gender radio -->
+                    </section> <!-- end gender radio -->
                     
-                    <fieldset class="listbox">
+                    <section class="listbox">
                     <label id="lstBuilding">Age</label>               
                     <select id="lstAge" 
                             name="lstAge" 
@@ -540,11 +540,11 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             value="Over51" >Over 51</option>
 
                     </select>
-                    </fieldset>
-                    
+                    </section>
+                  </section>
                     <fieldset class="textarea">
-                    <label id ="AboutMe">About Me</label>
-                    <textarea id="AboutMe" name="AboutMe" rows=5 maxlength= <?php
+                    <label id ="AboutMe"></label>
+                    <textarea id="AboutMe" name="AboutMe" placeholder="About Me" rows=5 maxlength= <?php
     print "'$ABOUTME_MAX_LENGTH'";
     if ($AboutMeERROR) {
         print 'class = "mistake"';

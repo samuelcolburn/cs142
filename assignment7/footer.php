@@ -7,5 +7,5 @@
         echo date('l jS \of F Y h:i:s A');
         
    ?>
-    |<span class="footer"> Author: Sam Colburn </span>
+    |<span class="footer"> Author: Sam Colburn </span> | <span><a href="http://www.freepik.com/free-photos-vectors/logo">Logo vector designed by Freepik</a></span>
 </footer>

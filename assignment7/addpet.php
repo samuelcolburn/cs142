@@ -433,7 +433,7 @@ if (isset($_POST["btnSubmit"])) {
               enctype="multipart/form-data">
             <fieldset class="wrapper">
 
-                <legend><?php print $ProductName; ?></legend>
+                <legend>Pet Information</legend>
                 <!-- Start User Form -->
                 <fieldset class="wrapperTwo">
                     <legend></legend>
@@ -442,7 +442,7 @@ if (isset($_POST["btnSubmit"])) {
                         <input type="hidden" id="hidProductID" name="hidProductID"
                                value="<?php print $pmkProductID; ?>"
                                >
-                        <label  class="required">Product Name
+                        <label  class="required">
                             <input type="text" id="txtProductName" name="txtProductName"
                                    value="<?php print $ProductName; ?>"
                                    tabindex="100" maxlength="16" placeholder="Pet Name"
@@ -451,20 +451,12 @@ if (isset($_POST["btnSubmit"])) {
 
                         </label>
 
-                        <label  class="required">Date of Birth
-                            <input type="date" id="numDoB" name="dateDoB"
-                                   value="<?php print $DoB; ?>"
-                                   tabindex="110" placeholder="mm/dd/yyyy"
-
-                                   <?php if ($DoBERROR) print 'class="mistake"'; ?>
-                                   >
-
-                        </label>
 
 
-                        <label  class="required">Description
+                        <label  class="required">
                             <textarea id="txtDescription" name="txtDescription"
                                       tabindex="120" maxlength="500" rows="5"
+                                      placeholder ="Biography"
 
                                       <?php
                                       if ($DescriptionERROR) {
@@ -473,8 +465,19 @@ if (isset($_POST["btnSubmit"])) {
                                       ?>
                                       ><?php print $Description; ?></textarea>
                         </label>
+                        
+                        
+                        <label  class="required">Date of Birth
+                            <input type="date" id="numDoB" name="dateDoB"
+                                   value="<?php print $DoB; ?>"
+                                   tabindex="110" placeholder="Date of Birth"
+
+                                   <?php if ($DoBERROR) print 'class="mistake"'; ?>
+                                   >
+
+                        </label>
                         <!-- START Listbox -->
-                        <label id="lstCategory">Category</label>
+                        <label id="lstCategory">Species</label>
                         <?php
                         $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
                         $data = array();
@@ -485,7 +488,15 @@ if (isset($_POST["btnSubmit"])) {
                             if (!empty($row)) {
                                 print "<option value='";
                                 echo $row;
-                                print "'>";
+                                
+                                print "'";
+                                
+                                if ($row == $Category){
+                                    print "selected='selected'";
+                                }
+                                    
+                                print ">";
+                                
                                 echo $row;
                                 print "</option> \n";
                             } else {
@@ -498,8 +509,8 @@ if (isset($_POST["btnSubmit"])) {
                         <!-- End ListBox -->
                     </fieldset>
                     <!-- START IMAGEBOX -->
-                    <fieldset class="image">
-                        <label class = "required">Select an Image to Upload</label>
+                    <section class="image">
+                        <label class = "required">Add A Picture</label>
                         <input type="file" name="fileToUpload" id="fileToUpload"
                                    <?php
                                       if ($DescriptionERROR) {
@@ -507,7 +518,8 @@ if (isset($_POST["btnSubmit"])) {
                                       }
                                       ?>
                                >
-                    </fieldset>
+                        <img class ="YourImage" src="#" alt="your image" />
+                    </section>
 
 
                     <!-- END IMAGEBOX -->

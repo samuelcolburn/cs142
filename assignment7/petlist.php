@@ -89,15 +89,28 @@ foreach ($results as $pet) {
             //image check
             if ($key == "Image") {
                 if ($handle = opendir($value)) {
-            while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != "..") {
-                    $img = $value . $entry;
-                    list($width, $height) = getimagesize($img);
-                    print "<img src='" . $img . "' height=200 width=266 alt ='" . $pet[1] . "'>";
+                    
+                    $check = 1;
+                    
+                    while (false !== ($entry = readdir($handle)) && $check == 1) {
+                        if ($entry != "." && $entry != "..") {
+                            $img = $value . $entry;
+                            list($width, $height) = getimagesize($img);
+                            $ratio = $width / $height; // width/height
+                            if ($ratio > 1) {
+                                $width = 300;
+                                $height = 300 / $ratio;
+                            } else {
+                                $width = 300 * $ratio;
+                                $height = 300;
+                            }
+                            
+                            print "<img src='" . $img . "' height=".$height." width=".$width." alt ='" . $pet[1] . "'>";
+                        }
+                        ++$check;
+                    }
+                    closedir($handle);
                 }
-            }
-            closedir($handle);
-        }
             }
 
             //Date of birth check
@@ -109,7 +122,7 @@ foreach ($results as $pet) {
                 $birthDate = explode("-", $birthDate);
 
 
-                
+
                 //get age from birthdate
                 if ($birthDate[0] >= date("Y")) {
                     $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
@@ -118,8 +131,7 @@ foreach ($results as $pet) {
                     $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
                     print $age . " years old";
                 }
-            } 
-            else {
+            } else {
                 print $value . "\n";
             }
 
@@ -130,16 +142,16 @@ foreach ($results as $pet) {
         print "<div class = 'adminoptions'>";
 
 
-  //EDIT BUTTON
+        //EDIT BUTTON
         print ' <p class ="edit" onclick="location.href= ';
         print " 'addpet.php?id=" . $PetID . "' ";
-        print ' " ><a href ="addpet.php?id='.$PetID.'" >Edit</a></p>';
+        print ' " ><a href ="addpet.php?id=' . $PetID . '" >Edit</a></p>';
 
 
 //DELETE BUTTON   
         print ' <p class ="delete" onclick="location.href= ';
         print " 'delete.php?id=" . $PetID . "' ";
-        print ' " ><a href ="delete.php?id='.$PetID.'" >Delete</a></p>';
+        print ' " ><a href ="delete.php?id=' . $PetID . '" >Delete</a></p>';
 
 
 

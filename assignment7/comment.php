@@ -257,7 +257,7 @@ if (($_SESSION["user"])) {
                                        >
 
                                 <!-- Comment box -->
-                                <label id ="txtText" >Comment</label>
+                                <label id ="txtText" ></label>
                                 <textarea id=txtText name=txtText rows=5 onfocus="this.select()" maxlength= 
                                 <?php
                                 print "'$TEXT_MAX_LENGTH'";
