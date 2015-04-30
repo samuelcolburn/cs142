@@ -3,7 +3,7 @@
 if ($_SESSION["admin"]) {
     print "<div class = 'adminoptions'>";
 
-    print "<h3>Admin Options</h3>";
+    print "<h6>Admin Options</h6>";
     //EDIT BUTTON
     print ' <p class ="edit" onclick="location.href= ';
     print " 'addpet.php?id=" . $PetID . "' ";

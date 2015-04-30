@@ -647,8 +647,9 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     <?php
        //EDIT IMAGES BOX
             if ($update == true) {
+                print "<h2>Edit Pictures</h3>";
                 print "<section class = EditImages>";
-                print "<h3>Edit Pictures</h3>";
+                
                 if ($handle = opendir($fldImages)) { 
                     
                     $count = 0;

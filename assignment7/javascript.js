@@ -65,13 +65,11 @@ $(document).ready(function() {
         if (r === true)
         {
             $.ajax({
-                type:'GET',
+                type: 'GET',
                 url: 'deleteimage.php',
-                data: {'file': "<?php echo dirname(__FILE__)?>" + file_name},
+                data: {'file': file_name},
                 success: function(response) {
-                    if(response === "delete"){
-                        alert("deleted!");
-                    }
+                    alert(response);
                 },
                 error: function() {
                     alert("There was an error processing your request.");
@@ -82,20 +80,24 @@ $(document).ready(function() {
 
     $(".ImageDelete").click(function() {
 
+        var petName = document.getElementById("txtProductName");
+        
+        var directory = $(petName).attr("value");
+        
+        
         var id = $(this).prev().prev().attr("id");
-        
-        alert(id);
-        
+
+
         var myImage = document.getElementById(id);
         var src = myImage.src; // will contain the full path
 
-/*
+
         if (src.indexOf('/') >= 0) {
             src = src.substring(src.lastIndexOf('/') + 1);
         }
-        */
-        alert(src);
-        deleteImage(src);
+
+        alert("pics/" +directory +"/"+ src);
+        deleteImage("pics/" +directory + "/"+ src);
     });
 
 

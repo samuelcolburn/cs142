@@ -253,7 +253,6 @@ NAVIGATION SECTION
 
 nav {
     height:30px;
-    margin-bottom:30px;
     width:100%;
     min-width:500px;
 
@@ -444,10 +443,15 @@ FORMS SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
+form {
+    margin-top:30px;
+}
+
 #form article#main{
     float: none;
     text-align: left;
     width:100%;
+    margin-top:30px;
 }
 
 /*need to clear any floats that may exist */
@@ -682,7 +686,9 @@ div.message{
 
 
 /* ======================== COMMENT BOX ================ */
-
+#pet #form {
+    width:60%;
+}
 form#frmComment fieldset{
     margin:0;
 }
@@ -695,7 +701,7 @@ form#frmComment fieldset.wrapperTwo{
     padding-bottom:10px;
 }
 
-lael#txtText {
+label#txtText {
     margin-bottom:10px;  
 }
 
@@ -875,6 +881,8 @@ section.EditImages{
         width:100%;
     }
 }
+/* =========   LOGIN    ==================== */
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -949,8 +957,8 @@ INDIVIDUAL PET SECTION
 
 
 #pet h2{
-    width:80%;
     margin:0 auto;
+      padding: 20px 0 20px 0;
 }
 
 #pet main{
@@ -966,7 +974,7 @@ INDIVIDUAL PET SECTION
     display: flex;
     justify-content: space-around;
     flex-direction:column;
-    width:80%;
+    width:100%;
     align-items:center;
     margin:0 auto;
  //   max-width: 1200px;
@@ -987,6 +995,7 @@ INDIVIDUAL PET SECTION
     justify-content:space-around;
     width:100%;
     max-width:1200px;
+    align-items:center;
 
 }
 
@@ -994,7 +1003,6 @@ INDIVIDUAL PET SECTION
     list-style-type: none;
     float: left;
     margin: 10px;
-    border-radius: 5px;
     flex: 1 1;
     min-width: 200px;
     max-width: 350px;
@@ -1032,7 +1040,6 @@ INDIVIDUAL PET SECTION
     padding: 0;
     margin: 0;
     line-height: 200%;
-    text-indent:2em;
 }
 
 .Description p::first-line {
@@ -1040,6 +1047,17 @@ INDIVIDUAL PET SECTION
 }
 
 /* ========== SLIDER ===================== */
+
+div#owl-demo{
+    background:#F0F0F0;
+    padding:50px 0 50px 0;
+}
+
+#owl-demo .owl-wrapper {
+    left:inherit;
+    margin:0 auto;
+}
+
 #owl-demo .item{
     margin:5px;
 }
@@ -1070,11 +1088,22 @@ INDIVIDUAL PET SECTION
 }
 
 #pet h3 {
+    font-size:20px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width:100%;
+    padding: 20px 0 20px 0;
+    background-color:#F0F0F0;
+    margin:0;
 }
 
-.Comments , #pet h3{
-    width:70%;
-    margin:0 auto;
+.Comments {
+    width:100%;
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   background-color:#F0F0F0;
 }
 
 .comment {
@@ -1082,6 +1111,7 @@ INDIVIDUAL PET SECTION
     border: thin solid #222;
     border-radius: 3px;
     background: white;
+    width:80%;
 }
 
 
@@ -1120,6 +1150,7 @@ span.CommentButtons {
     text-align:center;
     width:90px;
     color:white;
+    transition:0.5s;
 }
 
 p.AdoptMe:hover{
@@ -1132,7 +1163,7 @@ p.AdoptMe:hover{
 /* ======================================== MEDIA QUERIES ======================================== */
 @media screen and (max-width: 1300px) {
     #pet main section {
-       
+       width:100%;
     }
 
     #pet aside{
@@ -1159,20 +1190,36 @@ p.AdoptMe:hover{
         padding:0px;
     }
 
-    #pet ol{
-        margin:0;
+    #pet ol.PetFacts{
+        margin:0 5px 0 5px;
     }
     
     #pet aside{
         flex-direction:column;
+
     }
     
     .Description{
        padding-top:20px; 
+       margin:0 5px 0 5px;
     }
 
     .Description p {
         line-height:140%;
+   
+    }
+    
+    
+    #pet .comment {
+        width:100%;
+    }
+    
+    #pet div#form{
+        width:100%;
+    }
+    
+    #pet fieldset{
+        width:100%;
     }
 }
 
@@ -1195,9 +1242,9 @@ ADMIN BUTTONS SECTION
 .edit {
     padding:10px;
     margin: 5px;
-    border-radius:5px;
     background-color:#A9E29B;
     color:white;
+    transition:0.5s;
 
 }
 
@@ -1227,9 +1274,9 @@ ADMIN BUTTONS SECTION
 .delete {
     padding:10px;
     margin: 5px;
-    border-radius:5px;
     background-color:#e7afba;
     color:white;
+        transition:0.5s;
 
 }
 

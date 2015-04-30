@@ -52,24 +52,8 @@ if (isset($_GET["id"])) {
     print "<article id=main>";
 
 // print edit and delete buttons only if user or admin 
-    if ($_SESSION["admin"]) {
-        print "<div class = 'adminoptions'>";
-
-
-//EDIT BUTTON
-        print ' <p class ="edit" onclick="location.href= ';
-        print " 'addpet.php?id=" . $pmkProductID . "' ";
-        print ' " >Edit</p>';
-
-
-
-//DELETE BUTTON   
-        print ' <p class ="delete" onclick="location.href= ';
-        print " 'delete.php?id=" . $pmkProductID . "' ";
-        print ' " >Delete</p>';
-
-        print "</div>";
-    }
+ include "adminoptions.php";
+    
 
 
 
