@@ -18,11 +18,11 @@ if ($debug)
 if (isset($_GET["id"])) {
 
 //sanitize username
-    $pmkProductID = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
+    $PetID = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
 
 // @@@@ SQL @@@
 //Select product from tblProducts with the given productID
-    $data = array($pmkProductID);
+    $data = array($PetID);
 
     $query = "SELECT pmkProductID , fldProductName as 'fldPetName' , fldDob as 'fldAge' , fldBreed , fldGender ,  fldImages , fldDescription , fldSize , fldDateSubmitted , fldCategoryName as 'fldCategory' FROM tblProducts,tblCategories WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
 
@@ -58,7 +58,7 @@ if (isset($_GET["id"])) {
 
 
     if ($debug) {
-        print "<p>pmk = " . $pmkProductID . "</p>";
+        print "<p>pmk = " . $PetID . "</p>";
     }
 
 
@@ -214,7 +214,7 @@ if (isset($_GET["id"])) {
         //ADOPTION BUTTON
         //make each pet section clickable, with class as their species
         print ' <p class ="AdoptMe" onclick="location.href= ';
-        print " 'adopt.php?id=" . $pmkProductID . "' ";
+        print " 'adopt.php?id=" . $PetID . "' ";
         print ' " >Adopt Me!</p>';
         print "</main>\n";
     }
@@ -224,10 +224,10 @@ if (isset($_GET["id"])) {
     print "<section class = Comments>";
 
 //create data array
-    $data = array($pmkProductID);
+    $data = array($PetID);
 
 //build query
-    $query = 'SELECT fldText , fldUsername  ,  fldDateSubmitted ';
+    $query = 'SELECT fldText , fldUsername  ,  fldDateSubmitted , fnkUserID ';
     $query .= " FROM tblComments, tblUsers ";
     $query .= " WHERE fnkUserID = pmkUserId ";
     $query .= "AND fnkProductID = ? ";
@@ -264,11 +264,11 @@ if (isset($_GET["id"])) {
 
             //username span
             print "<span class='Username'>\n";
-            print $comment[1] . "</span>";
+            print "<a href = user.php?id=".$comment[3].">".$comment[1] . "</a></span>";
 
             //date posted span
             print "<span class='Date'>\n";
-            print $comment[2] . "</span>";
+            print "Posted: ".date( "m  / d / Y", $comment[2]) . "</span>";
 
 
             //if the same user as logged in, added edit/delete buttons

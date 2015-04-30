@@ -466,7 +466,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         <input type="hidden" id="hidusername" name="hidusername"
                                value="<?php print $username; ?>"
                                >
-                        <label for="txtUsername" class="required">Username
+                        <label for="txtUsername" class="required">
                             <input type="text" id="txtUsername" name="txtUsername"
                                    value="<?php print $Username; ?>"
                                    tabindex="100" maxlength="16" placeholder="Enter a username"
@@ -475,7 +475,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
 
                         </label>
 
-                        <label for="Password" class="required">Password
+                        <label for="Password" class="required">
                             <input type="password" id="Password" name="Password"
                                    value=""
                                    tabindex="110" maxlength="16" placeholder="Enter a password"
@@ -485,7 +485,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                         </label>
 
 
-                        <label for="txtEmail" class="required">Email
+                        <label for="txtEmail" class="required">
                             <input type="text" id="txtEmail" name="txtEmail"
                                    value="<?php print $email; ?>"
                                    tabindex="120" maxlength="45" placeholder="Enter a valid email address"
@@ -512,7 +512,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                 <fieldset class ="Profile">
                     <legend>Optional Profile</legend>
 
-                    <label for="txtfirstName" class="required">First Name
+                    <label for="txtfirstName" class="required">
                         <input type="text" id="txtFirstName" name="txtfirstName"
                                value="<?php print $firstName; ?>"
                                tabindex="200" maxlength="45" placeholder="Billy"
@@ -521,7 +521,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                >
                     </label>
 
-                    <label for="txtlastName" class="required">Last Name
+                    <label for="txtlastName" class="required">
                         <input type="text" id="txtLastName" name="txtlastName"
                                value="<?php print $lastName; ?>"
                                tabindex="210" maxlength="45" placeholder="Bob"
@@ -530,7 +530,8 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                >
                     </label>
 
-                    <fieldset class="radio"
+                     <section class ="SmallFormItems">
+                    <section class="radio"
                               >   <!-- START gender radio -->
                         <legend>Gender</legend>
                         <label  <?php
@@ -540,28 +541,30 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                 id="radGenderMale" 
                                 name="radGender" 
                                 value="Male"
-                            <?php if ($gender == "Male") print 'checked="checked"'; ?>
+    <?php if ($gender == "Male") print 'checked="checked"'; ?>
                                 tabindex="210">Male</label>
                         <label <?php
-                        if ($genderERROR)
-                            print 'class="mistake"';
-                        ?>><input type="radio" 
+    if ($genderERROR)
+        print 'class="mistake"';
+    ?>><input type="radio" 
                                 id="radGenderFemale" 
                                 name="radGender" 
                                 value="Female"
-                            <?php if ($gender == "Female") print 'checked="checked"' ?>
+    <?php if ($gender == "Female") print 'checked="checked"' ?>
                                 tabindex="220">Female</label>
                         <label <?php
-                    if ($genderERROR)
-                        print 'class="mistake"';
-                    ?>><input type="radio" 
+    if ($genderERROR)
+        print 'class="mistake"';
+    ?>><input type="radio" 
                                 id="radGenderOther" 
                                 name="radGender" 
                                 value="Other"
-                            <?php if ($gender == "Other") print 'checked="checked"'; ?>
+    <?php if ($gender == "Other") print 'checked="checked"'; ?>
                                 tabindex="230">Other</label>
-                    </fieldset> <!-- end gender radio -->
-                    <label id="lstAge">Age</label>               
+                    </section> <!-- end gender radio -->
+                    
+                    <section class="listbox">
+                    <label id="lstBuilding">Age</label>               
                     <select id="lstAge" 
                             name="lstAge" 
                             tabindex="420" >
@@ -581,8 +584,10 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             value="Over51" >Over 51</option>
 
                     </select>
+                    </section>
+                  </section>
                     <label id ="AboutMe" >About Me</label>
-                    <textarea id=tAboutMe name=AboutMe rows=5 maxlength= <?php
+                    <textarea id=AboutMe name=AboutMe rows=5 maxlength= <?php
                         print "'$ABOUTME_MAX_LENGTH'";
                         if ($AboutMeERROR) {
                             print 'class = "mistake"';

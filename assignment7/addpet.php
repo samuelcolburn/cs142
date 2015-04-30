@@ -64,7 +64,13 @@ if (isset($_GET["id"])) {
     $fldImages = $results[0]["fldImages"];
     $Breed = $results[0]["fldBreed"];
     $Size = $results[0]["fldSize"];
-    $Gender = $results[0]["fldGender"];
+    
+    if($results[0]["fldGender"] == 0){
+        $Gender ="Female";
+    }
+    else{
+        $Gender = "Male";
+    }
 
     if ($debug) {
 
@@ -588,7 +594,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                     id="radGenderMale" 
                                     name="radGender" 
                                     value="Male"
-                            <?php if ($gender == "Male") print 'checked="checked"'; ?>
+                            <?php if ($Gender == "Male") print 'checked="checked"'; ?>
                                     tabindex="210">Male</label>
                             <label <?php
                         if ($genderERROR)
@@ -597,7 +603,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                     id="radGenderFemale" 
                                     name="radGender" 
                                     value="Female"
-                            <?php if ($gender == "Female") print 'checked="checked"' ?>
+                            <?php if ($Gender == "Female") print 'checked="checked"' ?>
                                     tabindex="220">Female</label>
 
                         </section> <!-- end gender radio -->
@@ -647,7 +653,9 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     <?php
        //EDIT IMAGES BOX
             if ($update == true) {
-                print "<h2>Edit Pictures</h3>";
+               
+                print "<section class = EditImagesWrapper>";
+                 print "<h2>Edit Pictures</h3>";
                 print "<section class = EditImages>";
                 
                 if ($handle = opendir($fldImages)) { 
@@ -687,6 +695,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     closedir($handle);
                 }
                 print "</section>";
+                print"</section>";
             } ?>
 </article>
 

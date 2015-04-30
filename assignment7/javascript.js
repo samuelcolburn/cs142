@@ -69,7 +69,7 @@ $(document).ready(function() {
                 url: 'deleteimage.php',
                 data: {'file': file_name},
                 success: function(response) {
-                    alert(response);
+                    location.reload();
                 },
                 error: function() {
                     alert("There was an error processing your request.");
@@ -96,7 +96,7 @@ $(document).ready(function() {
             src = src.substring(src.lastIndexOf('/') + 1);
         }
 
-        alert("pics/" + directory + "/" + src);
+    
         deleteImage("pics/" + directory + "/" + src);
     });
 

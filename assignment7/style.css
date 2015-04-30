@@ -781,10 +781,23 @@ table a:hover{
 }
 
 td.fldDescription{
-    
+
 }
 
 /* =========   ADD PETS    ==================== */
+#addpet article#main{
+    display:flex;
+}
+
+#addpet form{
+    margin:30px;
+    flex:1 1;
+}
+
+#addpet fieldset{
+    width:100%;
+}
+
 #addpet legend{
     margin:0;
 }
@@ -822,7 +835,7 @@ textarea#txtDescription{
 
 #addpet label{
     margin:20px 0 0 0;
-    
+
 }
 
 #addpet section.radio label{
@@ -856,8 +869,8 @@ input#fileToUpload{
     transition:5s;
     transform:translateX(-100%);
     position: absolute;
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
 }
 
 #addpet .image-visible{
@@ -867,18 +880,67 @@ input#fileToUpload{
     padding-bottom:20px;
 
 }
+section.EditImagesWrapper{
+    flex:2 1;
+    margin:30px;
+}
 
+section.EditImagesWrapper h2{
+    font-weight:normal;
+    padding-left:20px;
+
+}
 section.EditImages{
-    width:80%;
+    width:100%;
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-around;
-    margin:0 auto;
+    align-content:space-around;
 }
+
+.ImageBox{
+    padding:5px;
+    margin:3px;
+    min-width:300px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.ImageRename{
+    display:none;
+}
+
+.ImageDelete{
+    padding:10px;
+    margin: 5px;
+    background-color:#e7afba;
+    color:white;
+    transition:0.5s;
+}
+
+.ImageDelete:hover{
+    background-color:#ED89A4;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+@media screen and (max-width: 475px) {
+    #addpet article#main{
+        flex-direction:column;
+    }
+}
+
 
 @media screen and (max-width: 475px) {
     fieldset {
         width:100%;
+    }
+
+
+
+    section.EditImagesWrapper{
+        margin:5px;
     }
 }
 /* =========   LOGIN    ==================== */
@@ -958,11 +1020,11 @@ INDIVIDUAL PET SECTION
 
 #pet h2{
     margin:0 auto;
-      padding: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
 }
 
 #pet main{
-   // padding: 20px;
+    // padding: 20px;
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
@@ -977,7 +1039,7 @@ INDIVIDUAL PET SECTION
     width:100%;
     align-items:center;
     margin:0 auto;
- //   max-width: 1200px;
+    //   max-width: 1200px;
 }
 
 #pet .Image{
@@ -1043,7 +1105,7 @@ INDIVIDUAL PET SECTION
 }
 
 .Description p::first-line {
-  line-height: 50%;
+    line-height: 50%;
 }
 
 /* ========== SLIDER ===================== */
@@ -1069,7 +1131,7 @@ div#owl-demo{
 }
 
 .owl-item{
- //   min-width:600px;
+    //   min-width:600px;
 }
 
 .owl-theme .owl-controls{
@@ -1100,10 +1162,10 @@ div#owl-demo{
 
 .Comments {
     width:100%;
-   display:flex;
-   flex-direction:column;
-   align-items:center;
-   background-color:#F0F0F0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color:#F0F0F0;
 }
 
 .comment {
@@ -1130,46 +1192,55 @@ div#owl-demo{
     align-items:center;
 }
 span.CommentButtons {
-  align-self: flex-end;
-  flex: 1 1;
-  display: flex;
-  justify-content: flex-end;
+    align-self: flex-end;
+    flex: 1 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .Username{
     margin-right:20px;
 }
 
+.Username a:link{
+    color:white;
+    transition:0.5s;
+}
+
+.Username a:hover{
+    color:#222;
+}
 
 
 .AdoptMe {
     padding:10px;
     margin: 15px 15px 15px 0px;
-    border-radius:5px;
     background-color:#7fbfd6;
     text-align:center;
     width:90px;
     color:white;
     transition:0.5s;
+    border: 2px solid transparent;
 }
 
 p.AdoptMe:hover{
-    background-color:#588595;
-    cursor:pointer;
-    color:white;
-    text-decoration:underline;
+    background-color: white;
+    cursor: pointer;
+    color: #222;
+    text-decoration: underline;
+    border: 2px solid #222;
 }
 
 /* ======================================== MEDIA QUERIES ======================================== */
 @media screen and (max-width: 1300px) {
     #pet main section {
-       width:100%;
+        width:100%;
     }
 
     #pet aside{
 
     }
-    
+
     #pet main ol{
     }
 
@@ -1193,35 +1264,53 @@ p.AdoptMe:hover{
     #pet ol.PetFacts{
         margin:0 5px 0 5px;
     }
-    
+
     #pet aside{
         flex-direction:column;
 
     }
-    
+
     .Description{
-       padding-top:20px; 
-       margin:0 5px 0 5px;
+        padding-top:20px; 
+        margin:0 5px 0 5px;
     }
 
     .Description p {
         line-height:140%;
-   
+
     }
-    
-    
+
+
     #pet .comment {
         width:100%;
     }
-    
+
     #pet div#form{
         width:100%;
     }
-    
+
     #pet fieldset{
         width:100%;
     }
 }
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+USER PROFILE SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+
+
+
+
+
+
+
+
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -1276,7 +1365,7 @@ ADMIN BUTTONS SECTION
     margin: 5px;
     background-color:#e7afba;
     color:white;
-        transition:0.5s;
+    transition:0.5s;
 
 }
 
