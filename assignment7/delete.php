@@ -75,7 +75,7 @@ if ($_SESSION["admin"]) {
 
     if ($table == 'tblProducts') {
 
-        $query .= " pmkProductID , fldProductName , fldDescription , fldDateSubmitted , fldPrice , fldImages, fldCategoryName ";
+        $query .= " pmkProductID , fldProductName , fldDescription , fldDateSubmitted , fldSize , fldGender , fldDob , fldImages, fldCategoryName ";
         $query .= "FROM tblProducts , tblCategories ";
         $query .= " WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
     } elseif ($table == 'tblUsers') {
@@ -128,8 +128,14 @@ if ($_SESSION["admin"]) {
 
         foreach ($row as $field => $value) {
             if (!is_int($field)) {
-
-                print "<td>" . $value . "</td>\n";
+                if($field = "fldDescription"){
+                    $MAX_VALUE = 200;
+                    if(strlen($value) > $MAX_VALUE){
+                        $value = substr($value,0,(strlen($value) - $MAX_VALUE));
+                    }
+                    
+                }
+                print "<td class ='".$value."'>" . $value . "</td>\n";
             }
         }
         print "</tr>\n";

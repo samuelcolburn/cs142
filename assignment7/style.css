@@ -774,14 +774,21 @@ table a:hover{
     color:white;
 }
 
+td.fldDescription{
+    
+}
+
 /* =========   ADD PETS    ==================== */
+#addpet legend{
+    margin:0;
+}
 
 #addpet input{
     padding-left:10px;
+    margin:0;
 }
 
 textarea#txtDescription{
-    margin: 20px 0 20px 0;
     border:0;
     background-color:#F5F5F5;
     font-family:"Century Gothic", sans-serif;
@@ -801,7 +808,6 @@ textarea#txtDescription{
     color: #222;
     font-family: "Century Gothic", sans-serif;
     font-size: large;
-    margin: 10px 0 10px 0;
     padding: 5px;
     width: calc(100% + 10px);
 }
@@ -809,13 +815,25 @@ textarea#txtDescription{
 
 
 #addpet label{
-    text-align:left;
+    margin:20px 0 0 0;
+    
 }
+
+#addpet section.radio label{
+    margin:10px 0 0 0;
+}
+
+
 section.image {
     width:100%;
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    align-items:center;
+    background-color: #F5F5F5;
+}
+
+section.image label{
+    align-self:flex-start;
 }
 #addpet input[type="button"]{
     font-size: large;
@@ -825,10 +843,11 @@ section.image {
 input#fileToUpload{ 
     padding: 10px 20px 10px 20px;
     width: calc(100% - 30px);
+    background-color:transparent;
 }
 
 #addpet .YourImage{
-    transition:0.5s;
+    transition:5s;
     transform:translateX(-100%);
     position: absolute;
   top: 0;
@@ -838,8 +857,23 @@ input#fileToUpload{
 #addpet .image-visible{
     transform:translateX(0%);
     position:inherit;
-    padding:20px;
+    width:300px;
+    padding-bottom:20px;
 
+}
+
+section.EditImages{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    margin:0 auto;
+}
+
+@media screen and (max-width: 475px) {
+    fieldset {
+        width:100%;
+    }
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -1152,10 +1186,10 @@ ADMIN BUTTONS SECTION
 */
 .adminoptions {
     display:flex;
-    flex-wrap:wrap;
     align-content:center;
     width:80%;
     margin:0 auto;
+    align-items:center;
 }
 
 .edit {
@@ -1222,3 +1256,6 @@ ADMIN BUTTONS SECTION
 }
 
 
+.is-visible{
+    display:none;
+}
