@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     function deleteImage(file_name)
     {
-
+        
         var r = confirm("Are you sure you want to delete this Image?")
         if (r === true)
         {
@@ -96,8 +96,8 @@ $(document).ready(function() {
             src = src.substring(src.lastIndexOf('/') + 1);
         }
 
-        alert("pics/" +directory +"/"+ src);
-        deleteImage("pics/" +directory + "/"+ src);
+        alert("pics/" + directory + "/" + src);
+        deleteImage("pics/" + directory + "/" + src);
     });
 
 
