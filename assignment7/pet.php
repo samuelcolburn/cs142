@@ -156,13 +156,19 @@ if (isset($_GET["id"])) {
 
         $birthDate = explode("-", $birthDate);
 
-        if ($birthDate[0] >= date("Y")) {
-            $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
-            print $age . " weeks";
-        } elseif ($birthDate[2] < date("Y")) {
-            $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
-            print $age . " years";
-        }
+                 if ($birthDate[0] >= date("Y")) {
+                    $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
+                    print $age . " weeks old";
+                } elseif ($birthDate[0] < date("Y")) {
+                    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+                   if($age < 1){
+                       $age = (12 - ($birthDate[1]-date("m")));
+                       print $age . " months old";
+                   }
+                       else{
+                    print $age . " years old";
+                       }
+                }
         print "</li>";
 
         //breed
@@ -213,9 +219,7 @@ if (isset($_GET["id"])) {
 
         //ADOPTION BUTTON
         //make each pet section clickable, with class as their species
-        print ' <p class ="AdoptMe" onclick="location.href= ';
-        print " 'adopt.php?id=" . $PetID . "' ";
-        print ' " >Adopt Me!</p>';
+        print ' <p class ="AdoptMe">Adopt Me!</p>';
         print "</main>\n";
     }
 

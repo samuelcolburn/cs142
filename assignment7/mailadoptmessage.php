@@ -46,7 +46,7 @@ if ($_SESSION["user"]) {
     $Contactresults = $thisDatabase->select($Contactquery);
 
     //generate message for visitor
-    $messageA = '<h2>Thank you for your Interest! in ' . $petname . '</h2>';
+    $messageA = '<h2>Thank you for your Interest in ' . $petname . '!</h2>';
 
     $messageB = "<p>Dear " . $user_username . ",</p>"
             . "<p>All of our animals would love a forever home, I hope you're the lucky one to have a best friend for life!</p>"
@@ -86,7 +86,7 @@ if ($_SESSION["user"]) {
     $cc = "samuel.colburn@uvm.edu";
     $bcc = "";
     $from = "Burlington Animal Shelter <samuel.colburn@uvm.edu>";
-    $subject = "Thank you for your Interest! in " . $petname . "!";
+    $subject = "Thank you for your Interest in " . $petname . "!";
 
     $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
     

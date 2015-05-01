@@ -94,7 +94,7 @@ foreach ($results as $pet) {
 
                     while (false !== ($entry = readdir($handle)) && $check == 1) {
                         if ($entry != "." && $entry != "..") {
-                                $img = $value . $entry;
+                            $img = $value . $entry;
                             list($width, $height) = getimagesize($img);
                             $ratio = $width / $height; // width/height
                             if ($ratio > 1) {
@@ -103,17 +103,15 @@ foreach ($results as $pet) {
                             } else {
                                 $width = 300 * $ratio;
                                 $height = 300;
-                            } 
-                                print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
-                            
+                            }
+                            print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
                         }
                         ++$check;
                     }
                     closedir($handle);
+                } else {
+                    print "<img src='pics/dog_placeholder.png'width=250 alt ='" . $pet[1] . "'>";
                 }
-                       else{
-                                print "<img src='pics/dog_placeholder.png'width=300 alt ='" . $pet[1] . "'>";
-                            }
             }
 
             //Date of birth check
@@ -132,7 +130,13 @@ foreach ($results as $pet) {
                     print $age . " weeks old";
                 } elseif ($birthDate[0] < date("Y")) {
                     $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+                   if($age < 1){
+                       $age = (12 - ($birthDate[1]-date("m")));
+                       print $age . " months old";
+                   }
+                       else{
                     print $age . " years old";
+                       }
                 }
             } else {
                 print $value . "\n";
