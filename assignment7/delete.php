@@ -97,50 +97,11 @@ if ($_SESSION["admin"]) {
         print_r($data);
         print "<p>sql: " . $query . "</p>";
         print_r($results);
+        print "<p> results[1]";
+        print $results[0]["fldProductName"];
+        print "</p>";
     }
 
-    //@@ DISPLAY record
-    /* since it is associative array display the field names */
-    print"<table>";
-    $firstTime = true;
-    foreach ($results as $row) {
-        if ($firstTime) {
-            print '<thead><tr id = "tableheader">';
-            $keys = array_keys($row);
-            foreach ($keys as $key) {
-
-                if (!is_int($key)) {
-                    print "<th>" . $key . "</th>";
-                }
-            }
-
-            print "</tr>\n";
-            print "</thead>\n";
-            $firstTime = false;
-        }
-
-
-
-        /* display the data, the array is both associative and index so we are
-         *  skipping the index otherwise records are doubled up */
-
-        print " <tr>\n";
-
-        foreach ($row as $field => $value) {
-            if (!is_int($field)) {
-                if($field = "fldDescription"){
-                    $MAX_VALUE = 200;
-                    if(strlen($value) > $MAX_VALUE){
-                        $value = substr($value,0,(strlen($value) - $MAX_VALUE));
-                    }
-                    
-                }
-                print "<td class ='".$value."'>" . $value . "</td>\n";
-            }
-        }
-        print "</tr>\n";
-    }
-    print"</table>";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -196,8 +157,8 @@ if ($_SESSION["admin"]) {
 
 
         if ($debug) {
-            print "<p>santize id = ".$id."</p>";
-            print "<p>table = ".$table."</p>";
+            print "<p>santize id = " . $id . "</p>";
+            print "<p>table = " . $table . "</p>";
             print"<p>sanitize pass</p>";
         }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -224,7 +185,12 @@ if ($_SESSION["admin"]) {
             if ($debug)
                 print "<p>Form is valid</p>";
 
+            if ($table == 'tblProducts') {
 
+                $dir = "pics/".$results[0]["fldProductName"];
+                array_map('unlink', glob($dir . "/*"));
+                rmdir($dir);
+            }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //
         // Category DATA SQL
@@ -323,19 +289,61 @@ if ($_SESSION["admin"]) {
               this prints out a css class so that we can highlight the background etc. to
               make it stand out that a mistake happened here.
              */
+            
+    //@@ DISPLAY record
+    /* since it is associative array display the field names */
+    print"<table>";
+    $firstTime = true;
+    foreach ($results as $row) {
+        if ($firstTime) {
+            print '<thead><tr id = "tableheader">';
+            $keys = array_keys($row);
+            foreach ($keys as $key) {
+
+                if (!is_int($key)) {
+                    print "<th>" . $key . "</th>";
+                }
+            }
+
+            print "</tr>\n";
+            print "</thead>\n";
+            $firstTime = false;
+        }
+
+
+
+        /* display the data, the array is both associative and index so we are
+         *  skipping the index otherwise records are doubled up */
+
+        print " <tr>\n";
+
+        foreach ($row as $field => $value) {
+            if (!is_int($field)) {
+                if ($field = "fldDescription") {
+                    $MAX_VALUE = 200;
+                    if (strlen($value) > $MAX_VALUE) {
+                        $value = substr($value, 0, (strlen($value) - $MAX_VALUE));
+                    }
+                }
+                print "<td class ='" . $value . "'>" . $value . "</td>\n";
+            }
+        }
+        print "</tr>\n";
+    }
+    print"</table>";
             ?>
             <form action="<?php print $phpSelf . "?id=" . $id . "&amp;table=" . $table; ?>"
                   method="post"
                   id="frmDelete">
-                
-                    <input type="hidden" id="hidID" name="hidID"
-                               value="<?php print $id; ?>"
-                               >
-                    <input type="hidden" id="hidTable" name="hidTable"
-                               value="<?php print $table; ?>"
-                               >
-                    
-                    
+
+                <input type="hidden" id="hidID" name="hidID"
+                       value="<?php print $id; ?>"
+                       >
+                <input type="hidden" id="hidTable" name="hidTable"
+                       value="<?php print $table; ?>"
+                       >
+
+
                 <fieldset class="buttons">
                     <legend>DELETING RECORDS IS PERMANENT</legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="DELETE" tabindex="900" class="button">

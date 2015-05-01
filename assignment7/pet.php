@@ -52,8 +52,8 @@ if (isset($_GET["id"])) {
     print "<article id=main>";
 
 // print edit and delete buttons only if user or admin 
- include "adminoptions.php";
-    
+    include "adminoptions.php";
+
 
 
 
@@ -128,7 +128,7 @@ if (isset($_GET["id"])) {
 
 
         print '<div id="owl-demo" class="owl-carousel owl-theme">';
-        
+
         if ($handle = opendir($pet[5])) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != "..") {
@@ -140,10 +140,10 @@ if (isset($_GET["id"])) {
             closedir($handle);
         }
 
-         
+
         print "</div>";
-     //Facts section
-         print"<aside>";
+        //Facts section
+        print"<aside>";
         print "<ol class ='PetFacts' >";
 
 
@@ -190,7 +190,7 @@ if (isset($_GET["id"])) {
 
 
         print "</ol>";
-         //description div
+        //description div
         print "<div class = '" . $key[6] . "'>";
 
         print "<p>";
@@ -207,10 +207,10 @@ if (isset($_GET["id"])) {
 
         print "</section>";
 
-       
-   
 
-       
+
+
+
         //ADOPTION BUTTON
         //make each pet section clickable, with class as their species
         print ' <p class ="AdoptMe" onclick="location.href= ';
@@ -218,6 +218,64 @@ if (isset($_GET["id"])) {
         print ' " >Adopt Me!</p>';
         print "</main>\n";
     }
+
+    //@@@@@@@@@@@@@@@ ADOPT ME POPOUT
+    //  When the adopt button is clicked, this window pops out to the user
+    print "<section class = AdoptMeWindow>";
+    print "<h3>Interested in having a best friend?</h3>";
+
+    $Contactquery = "SELECT  `fldPhoneNumber` , `fldShelterName`,  `fldStreetAdress`, `fldCity`, `fldState`, `fldZipCode` FROM `tblShelterInfo` WHERE 1";
+    $Contactresults = $thisDatabase->select($Contactquery);
+
+    foreach ($Contactresults as $ContactInfo) {
+
+
+
+        $ContactKeys = array_keys($ContactInfo);
+
+        $key = array();
+        foreach ($ContactKeys as $index => $value) {
+            if (!is_int($value)) {
+                $key[] = substr($value, 3);
+            }
+        }
+
+        if ($debug) {
+            print "<p>contact results</p>";
+            print_r($Contactresults);
+            print "<p>contact keys</p>";
+            print_r($key);
+        }
+        //  Show Shelter phone # and address to all interested visitors
+        print "<div class = AdoptContactInfo>";
+        print "<h4>Contact Us:</h4>";
+        foreach ($ContactInfo as $index => $value) {
+            if (!is_int($index)) {
+                if ($index == "fldState" || $index == "fldCity") {
+                    print "<span class = " . substr($index, 3) . ">" . $value . "</span>";
+                } else {
+                    print "<p class = " . substr($index, 3) . ">" . $value . "</p>";
+                }
+            }
+        }
+        print "</div>";
+    }
+
+    print "<h4>Or</h4>";
+
+
+    // If they are logged in, ask if they are interested in the pet.
+    //  If yes, email them & admin, if no, close window
+    if ($_SESSION["user"]) {
+        print "<p class='EmailButton'>Send Us an Email</p>";
+    } else {
+        //if they arent logged in, ask them to login or register
+        print "<div class=AdoptNoUser" >
+                print "<p><a href='login.php'>Login</a> or <a href='register.php'>Register</a> to Send Us an Email</p> ";
+        print"</div>";
+    }
+
+    print "</section>";
 
 //@@@@@@@@ PET COMMENTS @@@@@@@@@
     print"<h3>Comments</h3>\n";
@@ -264,16 +322,16 @@ if (isset($_GET["id"])) {
 
             //username span
             print "<span class='Username'>\n";
-            print "<a href = user.php?id=".$comment[3].">".$comment[1] . "</a></span>";
+            print "<a href = user.php?id=" . $comment[3] . ">" . $comment[1] . "</a></span>";
 
             //date posted span
             print "<span class='Date'>\n";
-            print "Posted: ".date( "m  / d / Y", $comment[2]) . "</span>";
+            print "Posted: " . $comment[2] . "</span>";
 
 
             //if the same user as logged in, added edit/delete buttons
             if ($session_username == $comment[1]) {
-
+                
             }
 
 

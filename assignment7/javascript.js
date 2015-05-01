@@ -102,6 +102,34 @@ $(document).ready(function() {
 
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@ ADOPT PET EMAIL MESSAGE @@@@@@@@@@@@@@@
+
+$(".EmailButton").click(function(){
+    
+                var h2 = document.getElementsByTagName("h2");
+                
+                var petname = h2[0].innerHTML;
+                
+                alert(petname);
+                
+                $.ajax({
+                type: 'GET',
+                url: 'mailadoptmessage.php',
+                data: {'petname': petname},
+                success: function(response) {
+                    alert(response);
+                },
+                error: function() {
+                    alert("There was an error processing your request.");
+                }
+            });
+    
+});
+
+
+
+
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@ OWL CAROUSEL @@@@@@@@@@@@@@@
 
     $("#owl-demo").owlCarousel({

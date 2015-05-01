@@ -89,12 +89,12 @@ foreach ($results as $pet) {
             //image check
             if ($key == "Image") {
                 if ($handle = opendir($value)) {
-                    
+
                     $check = 1;
-                    
+
                     while (false !== ($entry = readdir($handle)) && $check == 1) {
                         if ($entry != "." && $entry != "..") {
-                            $img = $value . $entry;
+                                $img = $value . $entry;
                             list($width, $height) = getimagesize($img);
                             $ratio = $width / $height; // width/height
                             if ($ratio > 1) {
@@ -103,14 +103,17 @@ foreach ($results as $pet) {
                             } else {
                                 $width = 300 * $ratio;
                                 $height = 300;
-                            }
+                            } 
+                                print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
                             
-                            print "<img src='" . $img . "' height=".$height." width=".$width." alt ='" . $pet[1] . "'>";
                         }
                         ++$check;
                     }
                     closedir($handle);
                 }
+                       else{
+                                print "<img src='pics/dog_placeholder.png'width=300 alt ='" . $pet[1] . "'>";
+                            }
             }
 
             //Date of birth check
@@ -140,7 +143,7 @@ foreach ($results as $pet) {
     }
 
     include "adminoptions.php";
-    
+
     print "</section>\n";
 }
 
