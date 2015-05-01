@@ -16,7 +16,7 @@ $yourURL = $domain . $phpSelf;
 //If the id is set, it will be a product edit. Get previous values for the product, and store them in the form for editing.
 if (($_SESSION["user"])) {
     $UserID = $session_pmkUserID;
-    $ProductID = $pmkProductID;
+    $PetID = $PetID;
     
     $text = "";
 
@@ -80,7 +80,7 @@ if (($_SESSION["user"])) {
             print "<p>pmkUserID =" . $UserID . "</p>";
         }
 
-        $ProductID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
+        $PetID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
 
         $text = htmlentities($_POST["txtText"], ENT_QUOTES, "UTF-8");
 
@@ -127,7 +127,7 @@ if (($_SESSION["user"])) {
             //
         // Category DATA SQL
             //
-        $data = array($UserID, $ProductID, $text);
+        $data = array($UserID, $PetID, $text);
 
             $primaryKey = "";
             $dataEntered = false;
@@ -193,7 +193,7 @@ if (($_SESSION["user"])) {
             <script type="text/javascript">
          <!--
                 function delayer() {
-                    window.location = "pet.php?id=<?php print $ProductID; ?>"
+                    window.location = "pet.php?id=<?php print $PetID; ?>"
                 }
          //-->
             </script>
@@ -236,7 +236,7 @@ if (($_SESSION["user"])) {
                   make it stand out that a mistake happened here.
                  */
                 ?>
-                <form action="<?php print $phpSelf . "?id=" . $ProductID; ?>"
+                <form action="<?php print $phpSelf . "?id=" . $PetID; ?>"
                       method="post"
                       id="frmComment">
                     <fieldset class="wrapper">
@@ -249,7 +249,7 @@ if (($_SESSION["user"])) {
                                 <legend></legend>
                                 <!-- Hidden variables -->
                                 <input type="hidden" id="hidProductID" name="hidProductID"
-                                       value="<?php print $ProductID; ?>"
+                                       value="<?php print $PetID; ?>"
                                        >
 
                                 <input type="hidden" id="hidUserID" name="hidUserID"
