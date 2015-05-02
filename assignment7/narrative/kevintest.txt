@@ -1,0 +1,73 @@
+chrome
+-3+ hours daily use
+
+First impression:
+-pictures good, modern
+-used to scrolling interface
+-partners good
+-shelter website 100%
+-small text: in mission section
+-sliding image on featured pets (expected)
+
+
+1.
+-sign in easy
+-register obvious
+
+-invalid username not helpful, needs further information
+
+-form refill helpful
+-AboutMe didnt refill
+-note about requirements of the fields
+-password in plaintext email
+-confirm page not styled
+
+-login page shows up
+
+2.
+-login not throwing error
+-Comments in reverse order (oldest -> newest)
+-
+
+3.
+-adopt button obvious
+-email broken(no feedback)
+-email good, no feedback on website
+-
+
+4.
+-account obvious
+-click hover broken (expect feedback)
+-about me broken on register update
+-white text on update with grey background aboutme
+-edit button hidden
+
+5.
+-admin can login infinte times
+-edit buttons and pet edit obvious
+-no admin page shown
+-edit picture shows for no images
+-jpg not uploading?
+-back button on update pet going to form
+	-or no resub of form data
+
+6.
+-truncating bottom row?
+-easy to find, visual issues.
+
+7.
+-home page, fast and obvious
+-not at the top, so not always obvious
+-implied from type of website
+-(not this website, but long is dangerous)
+
+
+8.
+-at the bottom of homepage as expected
+(links broken)
+
+
+Final Comments:
+-pets page step down in quality
+-petlist irregularity of tiles
+-

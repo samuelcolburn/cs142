@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=tg8oKfXmGh4
+
 Usage:
 -way too fucking much
 -min 6 hours+
@@ -33,11 +35,13 @@ Homepage:
 -email: want to write them an email at best, or at least notification
 
 4.
--edit/delete buttons not styled
+-edit/delete buttons not styled (account page)
 -above them, or in line with the table
 -
 -trying to click on the table rows to edit (due to hover)
 -logout broken (undefined) - on account page
+
+	Note: history javascript breaks on 		firefox with cookie clear
 
 5.
 -Wont allow blank areas in update for pet
