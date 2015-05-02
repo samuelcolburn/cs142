@@ -15,7 +15,6 @@
  * 
  * 
  */
-
 include "top.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -29,16 +28,12 @@ if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
 }
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b Security
 //
 // define security variable to be used in SECTION 2a.
 $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -46,17 +41,12 @@ $yourURL = $domain . $phpSelf;
 // Initialize variables one for each form element
 // in the order they appear on the form
 //@@ USER DATA @@
-
 if (isset($_GET["user"])) {
-
     //sanitize username
     $username = htmlentities($_GET["user"], ENT_QUOTES, "UTF-8");
-
     // USER ACCOUNT DATA VARIALBE SET
     $data = array($username);
-
     $query = "SELECT fldUsername , fldPassword, fldEmail , fldDateJoined , fldPermissionLevel ,pmkUserId FROM tblUsers WHERE fldUsername = ?";
-
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
     $Username = $results[0]["fldUsername"];
@@ -64,13 +54,10 @@ if (isset($_GET["user"])) {
     $email = $results[0]["fldEmail"];
     $password = $results[0]["fldPassword"];
     $PermissionLevel = $results[0]["fldPermissionLevel"];
-
     //PROFILE DATA VARIABLE  SET
     $query = "SELECT fldFirstName , fldLastName , fldGender , fldAge ,fldAboutMe FROM tblProfile WHERE fnkUserId = ?";
     $data = array($UserID);
-
     $results = $thisDatabase->select($query, $data);
-
     $firstName = $results[0]["fldFirstName"];
     $lastName = $results[0]["fldLastName"];
     $gender = $results[0]["fldGender"];
@@ -82,7 +69,6 @@ if (isset($_GET["user"])) {
       }
      */
     if ($debug) {
-
         print "<p>Profile results:</p>";
         print "<p>Insert = " . $insert;
         print_r($data);
@@ -97,16 +83,11 @@ if (isset($_GET["user"])) {
     $Username = '';
     $password = '';
     $PermissionLevel = '';
-
 // @@ PROFILE DATA @@
     $firstName = "";
-
     $lastName = "";
-
     $gender = "";
-
     $age = "";
-
     $AboutMe = "";
 }
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -119,23 +100,19 @@ $emailERROR = false;
 $UsernameERROR = false;
 $passwordERROR = false;
 $PermissionLevelERROR = false;
-
 //PROFILE ERROR FLAGS
 $firstNameERROR = false;
 $lastNameERROR = false;
 $genderERROR = false;
 $ageERROR = false;
 $AboutMeERROR = false;
-
 //ERROR CONSTANTS
 //Username
 $MIN_USERNAME_LENGTH = 6;
 $MAX_USERNAME_LENGTH = 15;
-
 //Password
 $MIN_PASSWORD_LENGTH = 6;
 $MAX_PASSWORD_LENGTH = 15;
-
 //About Me
 $ABOUTME_MAX_LENGTH = 200;
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -144,13 +121,11 @@ $ABOUTME_MAX_LENGTH = 200;
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg = array();
-
 // used for building email message to be sent and displayed
 $mailed = false;
 $messageA = "";
 $messageB = "";
 $messageC = "";
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2 Process for when the form is submitted
@@ -165,37 +140,24 @@ if (isset($_POST["btnSubmit"])) {
 // SECTION: 2b Sanitize (clean) data
 // remove any potential JavaScript or html code from users input on the
 // form. Note it is best to follow the same order as declared in section 1c.
-
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
-
     $Username = htmlentities($_POST["txtUsername"], ENT_QUOTES, "UTF-8");
-
     $password = htmlentities($_POST["Password"], ENT_QUOTES, "UTF-8");
-
     // Only pass through permission level if admin
     if ($_SESSION["admin"]) {
         $PermissionLevel = htmlentities($_POST["numPermissionLevel"], ENT_QUOTES, "UTF-8");
     } else {
         $PermissionLevel = htmlentities($_POST["hidPermissionLevel"], ENT_QUOTES, "UTF-8");
     }
-
     //--- PROFILE SANATIZE ---
-
     $firstName = htmlentities($_POST["txtfirstName"], ENT_QUOTES, "UTF-8");
-
     $lastName = htmlentities($_POST["txtlastName"], ENT_QUOTES, "UTF-8");
-
     $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
-
     $age = htmlentities($_POST["lstAge"], ENT_QUOTES, "UTF-8");
-
     $AboutMe = htmlentities($_POST["AboutMe"], ENT_QUOTES, "UTF-8");
-
     // --- HIDDEN INPUTS
     $UserID = htmlentities($_POST["hidUserID"], ENT_QUOTES, "UTF-8");
     $username = htmlentities($_POST["hidusername"], ENT_QUOTES, "UTF-8");
-
-
     if ($debug) {
         print"<p>sanitize pass</p>";
     }
@@ -217,14 +179,11 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
     }
-
-
     //~~~~~~~~~~~~~USERNAME VALIDATION~~~~~~~~~~~
     $usernamecheck = "SELECT fldUsername FROM tblUsers WHERE fldUsername = ? ";
     $data = array($Username);
     $username_check_results = $thisDatabase->select($usernamecheck, $data);
     $username_check = $username_check_results[0]["fldUsername"];
-
     if ($Username == "") {
         $errorMsg[] = "Please enter a username";
         $UsernameERROR = true;
@@ -243,13 +202,10 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = 'That username is already in use. Please choose a different username.';
         $UsernameERROR = true;
     }
-
-
     if ($debug) {
         print "<p> usercheck = " . $username_check . "</p>";
         print "<p> username =" . $username . "</p>";
     }
-
     //~~~~~~PASSWORD VALIDATION~~~~~~~~~~~
     if ($password == '') {
         $errorMsg[] = "Please enter a password";
@@ -264,7 +220,6 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Invalid Password";
         $passwordERROR = true;
     }
-
     //++++++ PROFILE VALIDATION ++++++++++
     // because profile entries are optional, don't check for empty
     //~~~~~~~~~~ FIRST NAME ~~~~~~~~~~~~
@@ -272,16 +227,12 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your first name appears to not be a name!";
         $firstNameERROR = true;
     }
-
     //~~~~~~~~~~ LAST NAME ~~~~~~~~~~~~
     if (!verifyAlphaNum2($lastName)) {
         $errorMsg[] = "Your last name appears to not be a name!";
         $lastNameERROR = true;
     }
-
-
     //~~~~~~~~~~ ABOUT ME ~~~~~~~~~~~~
-
     if (strlen($AboutMe) > $ABOUTME_MAX_LENGTH) {
         $errorMsg[] = "Your description is too long!";
         $AboutMeERROR = true;
@@ -291,10 +242,6 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your personal description appears to contain malicious characters. Please make sure to only use basic text.";
         $AboutMeERROR = true;
     }
-
-
-
-
     if ($debug) {
         print "<p> about me = " . $AboutMe . "</p>";
         print"<p>validation pass</p>";
@@ -308,19 +255,16 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
-
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         // USER DATA SQL
         //
-
         $primaryKey = "";
         $dataEntered = false;
         try {
             $thisDatabase->db->beginTransaction();
             $query = "UPDATE tblUsers SET ";
             $query .= "fldEmail = ? , fldUsername = ? , fldPassword = ?  , fldPermissionLevel = ? ";
-
             $query .= "WHERE pmkUserID = ?";
             $data = array($email, $Username, $password, $PermissionLevel, $UserID);
             if ($debug) {
@@ -330,12 +274,9 @@ if (isset($_POST["btnSubmit"])) {
                 print"</pre></p>";
             }
             $results = $thisDatabase->update($query, $data);
-
-
             $primaryKey = $thisDatabase->lastInsert();
             if ($debug)
                 print "<p>pmk= " . $primaryKey;
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -347,7 +288,6 @@ if (isset($_POST["btnSubmit"])) {
                 print "Error!: " . $e->getMessage() . "</br>";
             $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
         }
-
         //@@@@@@@@@@@ PROFILE DATA SQL @@@@@@@@@@@@@@@@
         try {
             $thisDatabase->db->beginTransaction();
@@ -364,7 +304,6 @@ if (isset($_POST["btnSubmit"])) {
             //} else {
             $query .=' , fnkUserId = ? ';
             //}
-
             $data = array($firstName, $lastName, $gender, $age, $AboutMe, $UserID);
             if ($debug) {
                 print "<p>sql " . $query;
@@ -372,12 +311,7 @@ if (isset($_POST["btnSubmit"])) {
                 print_r($data);
                 print"</pre></p>";
             }
-
-
             $resultsProfile = $thisDatabase->update($query, $data);
-
-
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -391,7 +325,6 @@ if (isset($_POST["btnSubmit"])) {
         }
         // If the transaction was successful, give success message
         if ($dataEntered) {
-
             if ($debug)
                 print "<p>key 1: " . $key1;
             if ($debug)

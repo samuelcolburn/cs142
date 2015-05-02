@@ -264,19 +264,19 @@ function delayer(){
                     <legend></legend>
                     <fieldset class="contact">
                         <legend></legend>
-                        <label for="txtUsername" class="required">
+                        <label for="txtUsername" class="required">Username
                             <input type="text" id="txtUsername" name="txtUsername"
                                    value="<?php print $Username; ?>"
-                                   tabindex="100" maxlength="16" placeholder="Username"
+                                   tabindex="100" maxlength="16" placeholder="Enter a username"
     <?php if ($UsernameERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
 
-                        <label for="Password" class="required">
+                        <label for="Password" class="required">Password
                             <input type="password" id="Password" name="Password"
                                    value=""
-                                   tabindex="110" maxlength="16" placeholder="Password"
+                                   tabindex="110" maxlength="16" placeholder="Enter a password"
                                    <?php if ($passwordERROR) print 'class="mistake"'; ?>
                                    >
 
@@ -292,7 +292,9 @@ function delayer(){
                 <fieldset class="buttons">
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" tabindex="900" class="button">
+                    <a id = "register-button" href="register.php">Register</a>
                 </fieldset> <!-- ends buttons -->
+                
             </fieldset> <!-- Ends Wrapper -->
         </form>
     <?php

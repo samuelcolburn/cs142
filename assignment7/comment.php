@@ -5,8 +5,6 @@
 //
 // define security variable to be used in SECTION 2a.
 $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -19,12 +17,10 @@ if (($_SESSION["user"])) {
     $PetID = $PetID;
     
     $text = "";
-
     if ($debug) {
         print "<p>pmkUseriD =" . $session_pmkUserID . "</p>";
         print "<p>pmkUseriD =" . $UserID . "</p>";
     }
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -33,7 +29,6 @@ if (($_SESSION["user"])) {
 // in the order they appear in section 1c.
 //Product Flags
     $textERROR = false;
-
     $TEXT_MAX_LENGTH = 2000;
 //ERROR CONSTANTS
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -42,7 +37,6 @@ if (($_SESSION["user"])) {
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
     $errorMsg = array();
-
 // used for building email message to be sent and displayed
     /* NO MAILING FOR PRODUCTS
       $mailed = false;
@@ -66,8 +60,6 @@ if (($_SESSION["user"])) {
           die($msg);
           }
          */
-
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
@@ -75,18 +67,11 @@ if (($_SESSION["user"])) {
 // form. Note it is best to follow the same order as declared in section 1c.
         // - --- PRODUCT SANITIZE
         $UserID = htmlentities($_POST["hidUserID"], ENT_QUOTES, "UTF-8");
-
         if ($debug) {
             print "<p>pmkUserID =" . $UserID . "</p>";
         }
-
         $PetID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
-
         $text = htmlentities($_POST["txtText"], ENT_QUOTES, "UTF-8");
-
-
-
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2c Validation
@@ -98,7 +83,6 @@ if (($_SESSION["user"])) {
 // will be in the order they appear. errorMsg will be displayed on the form
 // see section 3b. The error flag ($emailERROR) will be used in section 3c.
         //~~~~~~~~~~ TEXT ~~~~~~~~~~~~
-
         if (strlen($text) > $TEXT_MAX_LENGTH) {
             $errorMsg[] = "Your comment is too long!";
             $textERROR = true;
@@ -106,9 +90,6 @@ if (($_SESSION["user"])) {
             $errorMsg[] = "Please enter a comment";
             $textERROR = true;
         }
-
-
-
         if ($debug) {
             print"<p>validation pass</p>";
         }
@@ -121,41 +102,24 @@ if (($_SESSION["user"])) {
         if (!$errorMsg) {
             if ($debug)
                 print "<p>Form is valid</p>";
-
-
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //
         // Category DATA SQL
             //
         $data = array($UserID, $PetID, $text);
-
             $primaryKey = "";
             $dataEntered = false;
             try {
                 $thisDatabase->db->beginTransaction();
-
-
                 $query = "INSERT INTO tblComments SET ";
-
                 $query .= " fnkUserID = ? , fnkProductID = ? , fldText = ? ";
-
-
                 $results = $thisDatabase->insert($query, $data);
-
-
-
-
                 if ($debug) {
                     print "<p>sql " . $query;
                     print"<p><pre>";
                     print_r($data);
                     print"</pre></p>";
                 }
-
-
-
-
-
 // all sql statements are done so lets commit to our changes
                 $dataEntered = $thisDatabase->db->commit();
                 $dataEntered = true;

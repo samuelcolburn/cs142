@@ -13,7 +13,6 @@
  * 
  * 
  */
-
 include "top.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -27,16 +26,12 @@ if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
 }
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b Security
 //
 // define security variable to be used in SECTION 2a.
 $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -45,16 +40,12 @@ $yourURL = $domain . $phpSelf;
 // in the order they appear on the form
 //If the id is set, it will be a product edit. Get previous values for the product, and store them in the form for editing.
 if (isset($_GET["id"])) {
-
     //sanitize id
     $pmkProductID = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
-
     // Store the id in the data array for the select
     $data = array($pmkProductID);
-
     // select the product from the product table
     $query = "SELECT pmkProductID , fldProductName , fldDescription , fldDob , fldImages, fnkCategoryID , fldSize, fldGender, fldBreed FROM tblProducts WHERE pmkProductID = ?";
-
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
     $ProductName = $results[0]["fldProductName"];
@@ -71,9 +62,7 @@ if (isset($_GET["id"])) {
     else{
         $Gender = "Male";
     }
-
     if ($debug) {
-
         print "<p>Product:</p>";
         print_r($data);
         print $query;
@@ -82,15 +71,11 @@ if (isset($_GET["id"])) {
     //Using the category ID, get the category for the product
     $query = "SELECT fldCategoryName FROM tblCategories WHERE pmkCategoryID = ?";
     $data = array($CategoryID);
-
     //get the category name
     $results = $thisDatabase->select($query, $data);
-
     //store the category in  $Category
     $Category = $results[0]["fldCategoryName"];
-
     if ($debug) {
-
         print "<p>Category:</p>";
         print_r($data);
         print $query;
@@ -107,14 +92,10 @@ if (isset($_GET["id"])) {
     $Size = 0;
     $Breed = "";
     $Gender = "Male";
-
-
 // Category Variable
     $Category = "Any";
     $update = false;
 }
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -129,10 +110,8 @@ $ImageERROR = false;
 $SizeERROR = false;
 $BreedERROR = false;
 $GenderERROR = false;
-
 //Category Flag
 $CategoryERROR = false;
-
 //ERROR CONSTANTS
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -140,7 +119,6 @@ $CategoryERROR = false;
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg = array();
-
 // used for building email message to be sent and displayed
 /* NO MAILING FOR PRODUCTS
   $mailed = false;
@@ -164,10 +142,6 @@ if (isset($_POST["btnSubmit"])) {
       die($msg);
       }
      */
-
-
-
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
@@ -175,33 +149,22 @@ if (isset($_POST["btnSubmit"])) {
 // form. Note it is best to follow the same order as declared in section 1c.
     // - --- PET SANITIZE
     $pmkProductID = htmlentities($_POST["hidProductID"], ENT_QUOTES, "UTF-8");
-
     if ($pmkProductID > 0) {
         $update = true;
     }
-
     $ProductName = htmlentities($_POST["txtProductName"], ENT_QUOTES, "UTF-8");
-
     $Description = htmlentities($_POST["txtDescription"], ENT_QUOTES, "UTF-8");
-
     $DoB = htmlentities($_POST["dateDoB"], ENT_QUOTES, "UTF-8");
-
     $Breed = htmlentities($_POST["txtBreed"], ENT_QUOTES, "UTF-8");
-
     $Size = htmlentities($_POST["numSize"], ENT_QUOTES, "UTF-8");
-
     $Gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
-
     //IMAGE VARIABLES
     $target_dir = "pics/" . $ProductName . "/";
     $target_filename = basename($_FILES["fileToUpload"]["name"]);
     $target_file = $target_dir . $target_filename;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-
-
     //--- CATEGORY SANITIZE ---
     $Category = htmlentities($_POST["lstCategory"], ENT_QUOTES, "UTF-8");
-
     if ($debug) {
         print "<p>update = " . $update . "</p>";
         print"<p>pmk = " . $pmkProductID . "</p>";
@@ -219,17 +182,15 @@ if (isset($_POST["btnSubmit"])) {
 // see section 3b. The error flag ($emailERROR) will be used in section 3c.
     //~~~~~~~~~~~PRODUCT NAME VALIDATION~~~~~~~~~~
     if ($ProductName == "") {
-        $errorMsg[] = "Please enter a name for the Product";
+        $errorMsg[] = "Please enter a name";
         $ProductNameERROR = true;
     } elseif (!verifyAlphaNum($ProductName)) {
         $errorMsg[] = "Your pet name invalid. Be sure to only use basic characters.";
         $ProductNameERROR = true;
     }
-
-
     //~~~~~~~~~~~~~DESCRIPTION VALIDATION~~~~~~~~~~~
     if ($Description == "") {
-        $errorMsg[] = "Please enter a description for the product";
+        $errorMsg[] = "Please enter a description";
         $DescriptionERROR = true;
     }
     /*
@@ -242,13 +203,13 @@ if (isset($_POST["btnSubmit"])) {
     
     //~~~~~~DOB VALIDATION~~~~~~~~~~~
     if ($DoB == "") {
-        $errorMsg[] = "Please enter a Date of Birth";
+        $errorMsg[] = "Please enter a date of birth";
         $DoBERROR = true;
     }
     
     //~~~~~~BREED VALIDATION~~~~~~~~~~~
      if ($Breed == "") {
-        $errorMsg[] = "Please enter a breed for the animal";
+        $errorMsg[] = "Please enter a breed";
         $BreedERROR = true;
     } elseif (!verifyAlphaNum($Breed)) {
         $errorMsg[] = "Your breed name invalid. Be sure to only use basic characters.";
@@ -279,17 +240,12 @@ if (isset($_POST["btnSubmit"])) {
     }
     
     //~~~~~~~~ IMAGE VALIDATION ~~~~~~~~~~~~~~
-
-
     if ($debug) {
         print $target_file;
     }
-
     if ($target_filename != "") {
-
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-
         if ($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
             $ImageERROR = false;
@@ -315,8 +271,6 @@ if (isset($_POST["btnSubmit"])) {
     } else {
         
     }
-
-
     //
     //++++++ CATEGORY VALIDATION ++++++++++
     if ($Category == "") {
@@ -326,7 +280,6 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Please enter a valid category";
         $CategoryERROR = true;
     }
-
     if ($debug) {
         print"<p>validation pass</p>";
     }
@@ -339,28 +292,21 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
-
         function makeDir($target_dir) {
             return is_dir($target_dir) || mkdir($target_dir);
         }
-
         if (!empty($target_filename)) {
-
             MakeDir($target_dir);
-
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . $target_filename . " has been uploaded.";
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
         }
-
         //@@@@@@ 
         //SQL To get category ID to insert into product target
         $data = array($Category);
-
         $query = "SELECT  pmkCategoryID from tblCategories WHERE fldCategoryName = ? ";
-
         $results = $thisDatabase->select($query, $data);
         $CategoryID = $results[0]['pmkCategoryID'];
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -369,50 +315,36 @@ if (isset($_POST["btnSubmit"])) {
         //
         
         $data = array($ProductName, $Description, $DoB, $CategoryID , $Breed , $Size , $Gender);
-
-
-
         $primaryKey = "";
         $dataEntered = false;
         try {
             $thisDatabase->db->beginTransaction();
-
             if ($update) {
                 $query = "UPDATE tblProducts SET ";
             } else {
                 $query = "INSERT INTO tblProducts SET ";
             }
             $query .= " fldProductName = ? , fldDescription = ? , fldDob = ? , fnkCategoryID = ?  , fldBreed = ? , fldSize = ? , fldGender = ? ";
-
             if ($target_filename != "") {
                 $data[] = $target_dir;
                 $query .= " , fldImages = ? ";
             }
-
             if ($update) {
                 $query .= " WHERE pmkProductID = ? ";
                 $data[] = $pmkProductID;
                 $results = $thisDatabase->update($query, $data);
             } else {
                 $results = $thisDatabase->insert($query, $data);
-
                 $primaryKey = $thisDatabase->lastInsert();
                 if ($debug)
                     print "<p>pmk= " . $primaryKey;
             }
-
-
             if ($debug) {
                 print "<p>sql " . $query;
                 print"<p><pre>";
                 print_r($data);
                 print"</pre></p>";
             }
-
-
-
-
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -558,21 +490,19 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
     $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
     $data = array();
     $results = $thisDatabase->select($query, $data);
-    echo "<select name='lstCategory'> \n";
+    echo "<select name='lstCategory'";
+    if($CategoryERROR) print 'class="mistake"';
+    print "> \n";
     foreach ($results as $row) {
         $row = array_shift($row);
         if (!empty($row)) {
             print "<option value='";
             echo $row;
-
             print "'";
-
             if ($row == $Category) {
                 print "selected='selected'";
             }
-
             print ">";
-
             echo $row;
             print "</option> \n";
         } else {

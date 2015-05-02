@@ -1,20 +1,25 @@
 <!-- ######################     Page header   ############################## -->
-<header>
-    <div class =toolbar>
+<header id="header-top">
+    <a href="home.php">
+        <div>
+            <img src="pics/logo.gif" alt="logo">
+            <h1>Burlington Animals</h1>
+        </div>
+    </a>
+    <nav>
+        <a href="home.php">home</a>
+        <a href="petlist.php">pets</a>
+    </nav>
+    <section>
         <?php
         if ($_SESSION["user"]){
-            print'<span class="login"><a href = "user.php?user='.$session_username.' ">'.$session_username.'</a></span>';
-            print'<span class="register"><a href = "logout.php">Logout</a></span>';
+            print'<a id = "account" href = "user.php?user='.$session_username.' ">account</a>';
+            print'<a id = "account" href = "logout.php">logout</a>';
         }
-        else{ ?>
-                
-        <span class="login"><a href ='login.php'>Login</a></span>
-        <span class="register"><a href ='register.php'>Register</a></span>  
-            <?php
-        }       ?>
-
-    </div>
-    <img src="">
-    <h1><a href = 'home.php'>Burlington Animal Shelter</a></h1>
-    <h4>Suck a Dick!</h4>
+        else {
+            print'<a id="sign-in" href="login.php">sign in</a>';
+        }
+        ?>
+    </section>
+    <a id="scroll-top" href="#header-top"></a>
 </header>

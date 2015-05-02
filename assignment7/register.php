@@ -13,7 +13,6 @@
  * 
  * 
  */
-
 include "top.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -27,16 +26,12 @@ if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
 }
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b Security
 //
 // define security variable to be used in SECTION 2a.
 $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -44,21 +39,15 @@ $yourURL = $domain . $phpSelf;
 // Initialize variables one for each form element
 // in the order they appear on the form
 //@@ USER DATA @@
-$email = "samuel.colburn@uvm.edu";
+$email = "";
 $Username = '';
 $password = '';
-
 // @@ PROFILE DATA @@
 $firstName = "";
-
 $lastName = "";
-
 $gender = "";
-
 $age = "";
-
 $AboutMe = "";
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -68,23 +57,19 @@ $AboutMe = "";
 $emailERROR = false;
 $UsernameERROR = false;
 $passwordERROR = false;
-
 //PROFILE ERROR FLAGS
 $firstNameERROR = false;
 $lastNameERROR = false;
 $genderERROR = false;
 $ageERROR = false;
 $AboutMeERROR = false;
-
 //ERROR CONSTANTS
 //Username
 $MIN_USERNAME_LENGTH = 6;
 $MAX_USERNAME_LENGTH = 15;
-
 //Password
 $MIN_PASSWORD_LENGTH = 6;
 $MAX_PASSWORD_LENGTH = 15;
-
 //About Me
 $ABOUTME_MAX_LENGTH = 200;
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -93,13 +78,11 @@ $ABOUTME_MAX_LENGTH = 200;
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg = array();
-
 // used for building email message to be sent and displayed
 $mailed = false;
 $messageA = "";
 $messageB = "";
 $messageC = "";
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2 Process for when the form is submitted
@@ -109,36 +92,25 @@ if (isset($_POST["btnSubmit"])) {
 //
 // SECTION: 2a Security
 ///
-
     if (!securityCheck(true)) {
         $msg = "<p>Sorry you cannot access this page. ";
         $msg.= "Security breach detected and reported</p>";
         die($msg);
     }
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
 // remove any potential JavaScript or html code from users input on the
 // form. Note it is best to follow the same order as declared in section 1c.
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
-
     $Username = htmlentities($_POST["txtUsername"], ENT_QUOTES, "UTF-8");
-
     $password = htmlentities($_POST["Password"], ENT_QUOTES, "UTF-8");
-
     //--- PROFILE SANATIZE ---
-
     $firstName = htmlentities($_POST["txtfirstName"], ENT_QUOTES, "UTF-8");
-
     $lastName = htmlentities($_POST["txtlastName"], ENT_QUOTES, "UTF-8");
-
     $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
-
     $age = htmlentities($_POST["lstAge"], ENT_QUOTES, "UTF-8");
-
     $AboutMe = htmlentities($_POST["AboutMe"], ENT_QUOTES, "UTF-8");
-
     if ($debug) {
         print"<p>sanitize pass</p>";
     }
@@ -160,7 +132,6 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
     }
-
     if ($debug) {
         print"<p>email pass</p>";
     }
@@ -168,7 +139,6 @@ if (isset($_POST["btnSubmit"])) {
     $usernamecheck = "SELECT fldUsername FROM tblUsers WHERE fldUsername = ? ";
     $data = array($Username);
     $username_check_results = $thisDatabase->select($usernamecheck, $data);
-
     if ($Username == "") {
         $errorMsg[] = "Please enter a username";
         $UsernameERROR = true;
@@ -202,7 +172,6 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Invalid Password";
         $passwordERROR = true;
     }
-
     //++++++ PROFILE VALIDATION ++++++++++
     // because profile entries are optional, don't check for empty
     //~~~~~~~~~~ FIRST NAME ~~~~~~~~~~~~
@@ -210,26 +179,18 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your first name appears to not be a name!";
         $firstNameERROR = true;
     }
-
     //~~~~~~~~~~ LAST NAME ~~~~~~~~~~~~
     if (!verifyAlphaNum2($lastName)) {
         $errorMsg[] = "Your last name appears to not be a name!";
         $lastNameERROR = true;
     }
-
-
     //~~~~~~~~~~ ABOUT ME ~~~~~~~~~~~~
-
     if (!empty($AboutMe)) {
         if (strlen($AboutMe) > $ABOUTME_MAX_LENGTH) {
             $errorMsg[] = "Your description is too long!";
             $AboutMeERROR = true;
-        } elseif (!verifyAlphaNum($AboutMe)) {
-            $errorMsg[] = "Your personal description appears to contain characters other than those accepted. Please make sure to only use basic text.";
-            $AboutMeERROR = true;
         }
     }
-
     if ($debug) {
         print"<p>validation pass</p>";
     }
@@ -242,12 +203,10 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
-
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         // USER DATA SQL
         //
-
         $primaryKey = "";
         $dataEntered = false;
         try {
@@ -261,12 +220,9 @@ if (isset($_POST["btnSubmit"])) {
                 print"</pre></p>";
             }
             $results = $thisDatabase->insert($query, $data);
-
-
             $primaryKey = $thisDatabase->lastInsert();
             if ($debug)
                 print "<p>pmk= " . $primaryKey;
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -278,7 +234,6 @@ if (isset($_POST["btnSubmit"])) {
                 print "Error!: " . $e->getMessage() . "</br>";
             $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
         }
-
         //@@@@@@@@@@@ PROFILE DATA SQL @@@@@@@@@@@@@@@@
         try {
             $thisDatabase->db->beginTransaction();
@@ -290,12 +245,7 @@ if (isset($_POST["btnSubmit"])) {
                 print_r($data);
                 print"</pre></p>";
             }
-
-
             $resultsProfile = $thisDatabase->insert($query, $data);
-
-
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -313,40 +263,27 @@ if (isset($_POST["btnSubmit"])) {
                 print "<p>data entered now prepare keys ";
             //#################################################################
             // create a key value for confirmation
-
             $query = "SELECT fldDateJoined FROM tblUsers WHERE pmkUserId=" . $primaryKey;
             $results = $thisDatabase->select($query);
-
-
             $dateSubmitted = $results[0]["fldDateJoined"];
-
             $key1 = sha1($dateSubmitted);
             $key2 = $primaryKey;
-
             if ($debug)
                 print "<p>key 1: " . $key1;
             if ($debug)
                 print "<p>key 2: " . $key2;
-
-
             //#################################################################
             //
             //Put forms information into a variable to print on the screen
             //
-
             $messageA = '<h2>Thank you for registering.</h2>';
-
             $messageB = "<p>Click this link to confirm your registration: ";
             $messageB .= '<a href="' . $domain . $path_parts["dirname"] . '/confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . '">Confirm Registration</a></p>';
             $messageB .= "<p>or copy and paste this url into a web browser: ";
             $messageB .= $domain . $path_parts["dirname"] . '/confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . "</p>";
             $messageB .= "<p><b>Username:</b>   " . $Username . "</p>";
             $messageB .= "<p><b>Password:</b>   " . $password . "</p>";
-
             $messageC .= "<p><b>Email Address:</b>  " . $email . "</p>";
-
-
-
             //##############################################################
             //
             // email the form's information
@@ -356,7 +293,6 @@ if (isset($_POST["btnSubmit"])) {
             $bcc = "";
             $from = "Assignment 10 <samuel.colburn@uvm.edu>";
             $subject = "Thank you for Registering at Assignment10!";
-
             $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
         } //data entered  
     } // end form is valid

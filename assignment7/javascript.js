@@ -110,14 +110,13 @@ $(".EmailButton").click(function(){
                 
                 var petname = h2[0].innerHTML;
                 
-                alert(petname);
                 
                 $.ajax({
                 type: 'GET',
                 url: 'mailadoptmessage.php',
                 data: {'petname': petname},
                 success: function(response) {
-                    alert(response);
+                    
                 },
                 error: function() {
                     alert("There was an error processing your request.");

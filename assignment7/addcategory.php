@@ -13,7 +13,6 @@
  * 
  * 
  */
-
 include "top.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -27,16 +26,12 @@ if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
 }
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b Security
 //
 // define security variable to be used in SECTION 2a.
 $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -46,24 +41,17 @@ $yourURL = $domain . $phpSelf;
 //If the id is set, it will be a product edit. Get previous values for the product, and store them in the form for editing.
 if ($_SESSION["admin"]) {
 if (isset($_GET["id"])) {
-
     //sanitize id
     $CategoryID = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
-
     // Store the id in the data array for the select
     $data = array($CategoryID);
-
     // select the product from the product table
     $query = "SELECT pmkCategoryID , fldCategoryName FROM tblCategories WHERE pmkCategoryID = ? ";
-
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
     $CategoryName = $results[0]["fldCategoryName"];
     $CategoryID = $results[0]["pmkCategoryID"];
-
-
     if ($debug) {
-
         print "<p>Category:</p>";
         print_r($data);
         print $query;
@@ -73,9 +61,7 @@ if (isset($_GET["id"])) {
     // Product variables
     $CategoryID = -1;
     $CategoryName = "";
-
 }
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -84,8 +70,6 @@ if (isset($_GET["id"])) {
 // in the order they appear in section 1c.
 //Product Flags
 $CategoryNameERROR = false;
-
-
 //ERROR CONSTANTS
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -93,7 +77,6 @@ $CategoryNameERROR = false;
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg = array();
-
 // used for building email message to be sent and displayed
 /* NO MAILING FOR PRODUCTS
   $mailed = false;
@@ -117,8 +100,6 @@ if (isset($_POST["btnSubmit"])) {
       die($msg);
       }
      */
-
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
@@ -126,16 +107,10 @@ if (isset($_POST["btnSubmit"])) {
 // form. Note it is best to follow the same order as declared in section 1c.
     // - --- PRODUCT SANITIZE
     $CategoryID = htmlentities($_POST["hidCategoryID"], ENT_QUOTES, "UTF-8");
-
     if ($CategoryID > 0) {
         $update = true;
     }
-
     $CategoryName = htmlentities($_POST["txtCategoryName"], ENT_QUOTES, "UTF-8");
-
-
-
-
     if ($debug) {
         print"<p>sanitize pass</p>";
         print $CategoryName;
@@ -168,7 +143,6 @@ if (isset($_POST["btnSubmit"])) {
     if ($debug) {
         print"<p>validation pass</p>";
      }
-
   
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
@@ -179,26 +153,21 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
-
-
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         // Category DATA SQL
         //
         $data = array($CategoryName);
-
         $primaryKey = "";
         $dataEntered = false;
         try {
             $thisDatabase->db->beginTransaction();
-
             if ($update) {
                 $query = "UPDATE tblCategories SET ";
             } else {
                 $query = "INSERT INTO tblCategories SET ";
             }
             $query .= " fldCategoryName = ? ";
-
             if ($update) {
                 $query .= " WHERE pmkCategoryID = ? ";
                 $data[] = $CategoryID;
@@ -210,19 +179,12 @@ if (isset($_POST["btnSubmit"])) {
                 if ($debug)
                     print "<p>pmk= " . $primaryKey;
             }
-
-
             if ($debug) {
                 print "<p>sql " . $query;
                 print"<p><pre>";
                 print_r($data);
                 print"</pre></p>";
             }
-
-
-
-
-
 // all sql statements are done so lets commit to our changes
             $dataEntered = $thisDatabase->db->commit();
             $dataEntered = true;
@@ -234,9 +196,7 @@ if (isset($_POST["btnSubmit"])) {
                 print "Error!: " . $e->getMessage() . "</br>";
             $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
         }
-
   
-
     } // end form is valid
 } // ends if form was submitted.
 //#############################################################################

@@ -5,29 +5,18 @@
  * it displays this record, and has a delete button
  * data is deleted when form is submitted
  */
-
 include "top.php";
-
-
-
 $debug = false;
-
 if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
     $debug = true;
 }
-
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
 // basic message to print if admin is false
 $message = '<h2> ACCESS DENIED</h2>';
-
 print '<article>';
-
 //check for admin in the session variable
 if ($_SESSION["admin"]) {
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1 Initialize variables
@@ -37,8 +26,6 @@ if ($_SESSION["admin"]) {
 //
 // define security variable to be used in SECTION 2a.
     $yourURL = $domain . $phpSelf;
-
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c form variables
@@ -48,33 +35,25 @@ if ($_SESSION["admin"]) {
 // 
 //If the id is set, get it, santize it, store it
     if (isset($_GET["id"])) {
-
         //sanitize id
         $id = htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
-
         // Store the id in the data array for the select
         $data = array($id);
     }
     if ($debug) {
         print "<p>id:" . $id . "</p>";
     }
-
 //if the table is set, get it, santize it, store it
     if (isset($_GET["table"])) {
         //sanitize table
         $table = htmlentities($_GET["table"], ENT_QUOTES, "UTF-8");
-
         if ($debug) {
             print "<p>table:" . $table . "</p>";
         }
     }
-
 // build query depending on the table, to display to the user
-
     $query = "SELECT ";
-
     if ($table == 'tblProducts') {
-
         $query .= " pmkProductID , fldProductName , fldDescription , fldDateSubmitted , fldSize , fldGender , fldDob , fldImages, fldCategoryName ";
         $query .= "FROM tblProducts , tblCategories ";
         $query .= " WHERE pmkProductID = ? AND pmkCategoryID = fnkCategoryID ";
@@ -87,12 +66,9 @@ if ($_SESSION["admin"]) {
         $query .="FROM tblCategories ";
         $query .=" WHERE pmkCategoryID = ? ";
     }
-
     //@@@ EXECUTE and store query  @@@
     $results = $thisDatabase->select($query, $data);
-
     if ($debug) {
-
         print "<p>Item:</p>";
         print_r($data);
         print "<p>sql: " . $query . "</p>";
@@ -101,7 +77,6 @@ if ($_SESSION["admin"]) {
         print $results[0]["fldProductName"];
         print "</p>";
     }
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -116,7 +91,6 @@ if ($_SESSION["admin"]) {
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
     $errorMsg = array();
-
 // used for building email message to be sent and displayed
     /* NO MAILING FOR PRODUCTS
       $mailed = false;
@@ -140,22 +114,14 @@ if ($_SESSION["admin"]) {
           die($msg);
           }
          */
-
-
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2b Sanitize (clean) data
 // remove any potential JavaScript or html code from users input on the
 // form. Note it is best to follow the same order as declared in section 1c.
         // - --- PRODUCT SANITIZE
-
         $id = htmlentities($_POST["hidID"], ENT_QUOTES, "UTF-8");
-
         $table = htmlentities($_POST["hidTable"], ENT_QUOTES, "UTF-8");
-
-
-
-
         if ($debug) {
             print "<p>santize id = " . $id . "</p>";
             print "<p>table = " . $table . "</p>";
@@ -171,7 +137,6 @@ if ($_SESSION["admin"]) {
 // order that the elements appear on your form so that the error messages
 // will be in the order they appear. errorMsg will be displayed on the form
 // see section 3b. The error flag ($emailERROR) will be used in section 3c.
-
         if ($debug) {
             print"<p>validation pass</p>";
         }
@@ -184,9 +149,7 @@ if ($_SESSION["admin"]) {
         if (!$errorMsg) {
             if ($debug)
                 print "<p>Form is valid</p>";
-
             if ($table == 'tblProducts') {
-
                 $dir = "pics/".$results[0]["fldProductName"];
                 array_map('unlink', glob($dir . "/*"));
                 rmdir($dir);
@@ -196,15 +159,11 @@ if ($_SESSION["admin"]) {
         // Category DATA SQL
             //
         $data = array($id);
-
             $dataEntered = false;
             try {
                 $thisDatabase->db->beginTransaction();
-
                 $query = "DELETE FROM ";
-
                 if ($table == 'tblProducts') {
-
                     $query .= " tblProducts ";
                     $query .= " WHERE pmkProductID = ? ";
                 } elseif ($table == 'tblUsers') {
@@ -214,20 +173,13 @@ if ($_SESSION["admin"]) {
                     $query .=" tblCategories ";
                     $query .=" WHERE pmkCategoryID = ? ";
                 }
-
-
                 if ($debug) {
                     print "<p>sql " . $query;
                     print"<p><pre>";
                     print_r($data);
                     print"</pre></p>";
                 }
-
-
                 $results = $thisDatabase->delete($query, $data);
-
-
-
 // all sql statements are done so lets commit to our changes
                 $dataEntered = $thisDatabase->db->commit();
                 $dataEntered = true;
@@ -299,24 +251,17 @@ if ($_SESSION["admin"]) {
             print '<thead><tr id = "tableheader">';
             $keys = array_keys($row);
             foreach ($keys as $key) {
-
                 if (!is_int($key)) {
                     print "<th>" . $key . "</th>";
                 }
             }
-
             print "</tr>\n";
             print "</thead>\n";
             $firstTime = false;
         }
-
-
-
         /* display the data, the array is both associative and index so we are
          *  skipping the index otherwise records are doubled up */
-
         print " <tr>\n";
-
         foreach ($row as $field => $value) {
             if (!is_int($field)) {
                 if ($field = "fldDescription") {

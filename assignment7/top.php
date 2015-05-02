@@ -14,6 +14,7 @@
 
 
         <!-- Important Owl stylesheet -->
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
 
         <!-- Default Theme -->
@@ -30,6 +31,7 @@
 
  <!-- Include javascript file -->
         <script src="javascript.js"></script>
+        <script src="content-filter.js"></script>
 
 
 
@@ -50,15 +52,10 @@
                 $domain = "https://";
             }
         }
-
         $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
-
         $domain .= $server;
-
         $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
-
         $path_parts = pathinfo($phpSelf);
-
         if ($debug) {
             print "<p>Domain" . $domain;
             print "<p>php Self" . $phpSelf;
@@ -66,50 +63,29 @@
             print_r($path_parts);
             print "</pre>";
         }
-
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // inlcude all libraries
 //
-
         require_once('../bin/lib/security.php');
-
-
-
         include "../bin/lib/validation-functions.php";
         include "../bin/lib/mail-message.php";
-
-
         require_once('../bin/myDatabase.php');
-
-        $dbUserName = get_current_user() . '_writer';
+        $dbUserName = 'smcolbur' . '_writer';
         $whichPass = "w"; //flag for which one to use.
-        $dbName = strtoupper(get_current_user()) . '_Product';
-
-
+        $dbName = strtoupper('smcolbur') . '_Product';
         $thisDatabase = new myDatabase($dbUserName, $whichPass, $dbName);
-
-
-
-
         // CHECK USER SESSION
         if ($debug) {
             print $_SESSION["user"];
         }
-
         if (!empty($_SESSION["user"])) {
-
             $user = htmlentities($_SESSION["user"], ENT_QUOTES, "UTF-8");
-
             $data = array($user);
-
             $query = "SELECT fldUsername , pmkUserId FROM tblUsers  WHERE fldUsername = ? ";
-
             $session_results = $thisDatabase->select($query, $data);
-
             $session_username = $session_results[0]['fldUsername'];
             $session_pmkUserID = $session_results[0]['pmkUserId'];
-
             if ($debug) {
                 print"<p>Data </p>";
                 print_r($data);
@@ -125,7 +101,5 @@
 
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
-
     include "header.php";
-    include "nav.php";
     ?>

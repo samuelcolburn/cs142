@@ -15,10 +15,7 @@ CREATE TABLE IF NOT EXISTS `tblUsers` (
 `fldPostCount` int(10) NOT NULL DEFAULT '0', 
 PRIMARY KEY (`pmkUserId`) 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
-
-
 @@@@@@@@@@@  TABLE PROFILE @@@@@@@@@@
-
   CREATE TABLE IF NOT EXISTS `tblProfile` (
   `fnkUserId` int(11) NOT NULL AUTO_INCREMENT,
   `fldFirstName` varchar(65) DEFAULT NULL,
@@ -28,7 +25,6 @@ PRIMARY KEY (`pmkUserId`)
   `fldSignature` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`fnkUserId`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
 @@@@@@@@@  TABLE PRODUCTS @@@@@@@@@@
   CREATE TABLE IF NOT EXISTS `tblProducts` (
   `pmkProductID` int(11) NOT NULL AUTO_INCREMENT,
@@ -39,16 +35,12 @@ PRIMARY KEY (`pmkUserId`)
   `fnkCategoryID` int(11) NOT NULL,
   PRIMARY KEY (`pmkProductID`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
 @@@@@@@@@  TABLE CATEGORIES @@@@@
   CREATE TABLE IF NOT EXISTS `tblCategories` (
   `pmkCategoryID` int(11) NOT NULL AUTO_INCREMENT,
   `fldCategoryName` varchar(65) DEFAULT NULL,
   PRIMARY KEY (`pmkCategoryID`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
 @@@@@@@@@  TABLE COMMENTS @@@@@@@@@@@
  
  
@@ -60,7 +52,5 @@ PRIMARY KEY (`pmkUserId`)
   `fldDateSubmitted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
      PRIMARY KEY (`fnkProductID` , `fnkUserID`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
 */
 ?>

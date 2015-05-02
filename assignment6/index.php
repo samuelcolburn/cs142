@@ -18,7 +18,7 @@
 
             <ul>
                 <li>Website we tested: <a href='http://www.ifixit.com'>ifixit</a></li>
-                <li><a href='assignment6/TestScript.pdf'>Test Script</a>(includes test questions)</li>
+                <li><a href='TestScript.pdf'>Test Script</a>(includes test questions)</li>
                 <li>Video Links
                     <ul>
                         <li><a href="https://www.youtube.com/watch?v=47n3jc_k7-I">Ryan's Usability Test</a></li>
