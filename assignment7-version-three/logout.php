@@ -32,7 +32,7 @@ if (ini_get("session.use_cookies")) {
 // Finally, destroy the session.
 session_destroy();
 //Redirect back to home page
-header("Location: https://smcolbur.w3.uvm.edu/cs142/assignment7/home.php");
+header("Location: home.php");
 //exit;
 
 die();

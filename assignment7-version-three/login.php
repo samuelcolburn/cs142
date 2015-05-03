@@ -184,7 +184,6 @@ if (isset($_POST["btnSubmit"])) {
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
 if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-    print '<p> You are now logged in.</p>';
     
     $_SESSION["user"] = $Username; 
     
