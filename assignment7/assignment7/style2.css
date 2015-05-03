@@ -1,0 +1,1542 @@
+/* website by: Sam Colburn, William Kniffin
+
+
+*/
+
+
+/* ==== INTIAL RESETS ===== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+BEGIN STYLESHEET 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+
+/*****************     main layout section             ************************/
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+GENERAL SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+body {
+    font-family: "Oswald", sans-serif;
+}
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+TOOLBAR SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+.toolbar{
+    position:fixed;
+    right:0;
+    top:0;
+    padding:10px;
+    border-bottom-left-radius:5px;
+    background-color:#246e52;
+    font-size:small;
+
+    display:flex;
+    justify-content:center;
+    align-content:center;
+}
+
+.toolbar a:link{
+    color:white;
+}
+.toolbar a:visited{
+    color:white;
+}
+
+.toolbar a:hover{
+    text-decoration:underline;
+}
+
+.login {
+    padding-right:5px;
+    border-right:thin solid white;
+
+}
+.register {
+    padding-left:5px;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+NAVIGATION SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+
+
+/*JS classes*/
+
+
+.is-visible{
+    transition: 0.6s;
+    transform:translateX(-0%);
+}
+
+
+.fixed-nav{
+    position:fixed;
+    top:0px;
+}
+
+/*MENU BUTTON*/
+.menu-button {
+    display:flex;
+    justify-content:center;
+    position: absolute;
+    top: 66px;
+    left: 0px;
+    height: 30px;
+    color: #9A99B0;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    padding:2px;
+    transition: transform 0.6s;
+    background-color:black;
+    transform:translateX(-100%);
+}
+
+.menu-button:hover .panel-button {
+    transform: rotate(90deg);
+}
+.nav-button{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+.bars {
+    height: 3px;
+    width:20px;
+    background-color: white;
+    margin: 2px 0;
+    transition: transform 0.4s;
+}
+
+.menu-button:hover {
+    transform:rotate(180deg);
+}
+.menu-button:hover .bars {
+    background-color:#999;
+}
+
+.fixed-button{
+    top:0;
+}
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+ARTICLE SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+
+
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+FORMS SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+#form article#main{
+    float: none;
+    text-align: left;
+    width:100%;
+}
+
+/*need to clear any floats that may exist */
+
+fieldset{
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    margin: 0;
+    padding:0;
+    padding-bottom:3em;
+    width:80%;
+    max-width:450px;
+}
+
+legend {
+    margin-left:1%;
+    font-size:16px;
+}
+
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+}
+
+fieldset.wrapper > legend{
+    font-size:1.8em;
+    margin-bottom:30px;
+}
+
+
+label {
+    color: #222;
+    display: block;
+    font-size: medium;
+
+}
+
+label:hover {
+    background-color: #FFF;
+} 
+
+input {
+    color:#000;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+
+}
+
+/*~~~ CONTACT ~~~~~~~~~~ */
+fieldset.contactwrapper{
+    float:none;
+    padding-right:10%;
+
+
+
+}
+fieldset.contactwrapper legend{
+    display:inline;
+}
+/* just pushes content to left side of the box. */
+fieldset.contact{
+    float: left;
+    margin:0;
+    padding:0;
+    border:0;
+    width:100%;
+
+}
+
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.contact label{
+    display: block;
+    text-align: right;/* pushes the text to the right where they line up */
+    padding-top:0.5em;
+    font-size:0;
+
+}
+
+fieldset.contact input{
+    width: 100%; 
+    font-size:medium;
+    height:2em;
+    padding-left:2em;
+    border-radius:3px;
+    margin-top:1em;
+}
+input#txtFirstName {
+    margin-top:0.5em;
+}
+
+/* ======================== OPTIONAL PROFILE ================ */
+
+/* ~~~~~~~  First and Last Name    ~~~~~~~~~~~~~~~*/
+
+fieldset.Profile input{
+    width: 100%; 
+    font-size:medium;
+    height:2em;
+    padding-left:2em;
+    border-radius:3px;
+    margin-top:1em;
+}
+/* ~~~ RADIO ~~~*/ 
+fieldset.radiowrapper {
+    float:left;
+    width:30%;
+
+}
+
+fieldset.radiowrapper legend{
+    display:block;
+}
+fieldset.radio {
+    float:left;
+    margin:20px 20px 20px 0px;
+    padding:0;
+    border:0;
+    clear:both;
+    width:40%;
+    width:calc (50% - 20px);
+    max-width:300px;
+
+}
+
+fieldset.radio label {
+    width:100%;
+    font-size:medium;
+    margin:5px;
+}
+
+fieldset.radio input {
+    margin-top:0;
+    margin-right:1em;
+    height:15px;
+    width:15px;
+}
+
+/* ~~~ List Box ~~~*/ 
+fieldset.listbox {
+    width:40%;
+    width:calc (50%- 40px);
+    margin:20px;
+    float:right;
+}
+
+fieldset.listbox legend{
+    display:inline;
+}
+select#lstAge{
+    background-color:#F5F5F5;
+    border:0;
+    border-radius:3px;
+    color:#222;
+    font-family:"Century Gothic", sans-serif;
+    font-size:medium;
+    margin-top:10px;
+    padding:5px;
+
+
+}
+/* Style the comment box*/
+
+fieldset.textarea {
+    padding-bottom:0;
+    clear:both;
+    width:100%;
+}
+
+fieldset.textarea legend{
+    display:block;
+}
+fieldset.textarea label {
+}
+
+textarea#AboutMe{
+    margin-top: 0.5em;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+    width: calc(100% + 2em);
+    border-radius:3px;
+    overflow: auto;
+    resize:both;
+    font-size:medium;
+
+}
+
+
+/* changes button style*/
+fieldset.buttons{
+    border: none;
+    margin-top:0;
+    margin-left:5%;
+    margin-right:0;
+    margin-bottom:0;
+    padding:0;
+}
+
+input#btnSubmit{
+    background-color: #349033;
+    color: #FFF;
+    border: 0;
+    padding:0.5em;
+    font-size:large;
+    border-radius:3px;
+
+}
+input#btnSubmit:hover{
+    background-color: #69227B;
+    cursor:pointer;
+}
+
+/* style the errors in the form so they are visible */
+.mistake {
+    color: #fff;
+    background-color:#ff5555;
+    border: 0;
+}
+
+
+
+/* MAIL MESSAGE RESPONSE FORMATTING */
+div.message{
+    border:thin solid #a8a8a8;
+    background-color:#FFF;
+    color:#000;
+    margin-left:9em;
+    margin-right: 9em;
+}
+
+
+
+
+/* ======================== COMMENT BOX ================ */
+
+form#frmComment fieldset{
+    margin:0;
+}
+
+form#frmComment fieldset.wrapper{
+    margin : 0;
+}
+
+form#frmComment fieldset.wrapperTwo{
+    padding-bottom:10px;
+}
+
+lael#txtText {
+    margin-bottom:10px;  
+}
+
+textarea#txtText{
+    margin-top: 0.5em;
+    border:0;
+    background-color:white;
+    font-family:"Century Gothic", sans-serif;
+    width: calc(100% + 2em);
+    border-radius:3px;
+    border: thin solid #222;
+    overflow: auto;
+    resize:both;
+    font-size:medium;
+}
+
+/*  TABLE SETTINGS */
+
+#memberlist h2 {
+    text-align:left;
+    font-size:1.5em;
+}
+
+table{
+
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 720px;
+    color: #222;
+    margin:auto;
+
+}
+th {
+
+    padding: 0.2em;
+    padding-bottom:0.5em;
+    font-size:1.5em;
+    font-weight:normal;
+    color:#222;
+    background-color:#FFF;
+
+
+
+}
+
+td {
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+tr:nth-child(even) {
+    background-color: #FFF;
+
+}
+
+tr:nth-child(odd){
+    background-color: #DCF3D6;
+
+}
+
+tr:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+}
+
+#tableheader:hover {
+    background-color: #FFF;
+    cursor: default;
+}
+
+table a:hover{
+    color:white;
+}
+
+/* =========   ADD PETS    ==================== */
+
+#addpet input{
+    padding-left:10px;
+}
+
+#txtDescription{
+    margin: 20px 0 20px 0;
+    border:0;
+    background-color:#F5F5F5;
+    font-family:"Century Gothic", sans-serif;
+    width: 100%;
+    border-radius:3px;
+    overflow: auto;
+    resize:both;
+    font-size:medium;
+    padding: 10px 0 10px 10px;
+}
+
+#addpet select{
+    background-color: #F5F5F5;
+    border: 0;
+    border-radius: 3px;
+    color: #222;
+    font-family: "Century Gothic", sans-serif;
+    font-size: large;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    width: calc(100% + 10px);
+}
+
+#addpet input[type="button"]{
+    font-size: large;
+    font-family: "century gothic" , sans-serif;
+}
+
+input#fileToUpload{ 
+    padding: 10px 20px 10px 20px;
+    width: calc(100% + 2em + 40px);
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PET LIST  SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+#petlist section{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+
+#petlist section section{
+    padding:10px;
+    margin:10px;
+    display:flex;
+    flex-direction:column;
+
+}
+#petlist .Description {
+}
+
+.Name {
+    order:-2;
+    text-align:center;
+    margin-bottom:5px;
+    font-weight:bold;
+
+}
+
+.Image {
+    order:-1;
+    margin-bottom:5px;
+}
+
+.Dob {
+    margin-bottom:5px;
+}
+
+#petlist section section:hover {
+    cursor:pointer;
+    background-color: rgba(100,100,100,0.05);
+}
+
+.dog {
+    background-color:#d2ebf8;
+}
+
+.cat{
+    background-color: #f8d2eb;
+}
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+INDIVIDUAL PET SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+#pet article {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#pet h2{
+    width:80%;
+    margin:0 auto;
+}
+
+#pet main{
+    // padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    align-items:center;
+}
+#pet main section {
+    display: flex;
+    justify-content: space-around;
+    flex-direction:column;
+    width:80%;
+    align-items:center;
+    margin:0 auto;
+    //   max-width: 1200px;
+}
+
+#pet .Image{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
+#pet aside{
+    padding: 50px 0 0 0;
+    flex: 1 1;
+    display: flex;
+    justify-content:space-around;
+    width:100%;
+    max-width:1200px;
+
+}
+
+#pet main ol{
+    list-style-type: none;
+    float: left;
+    margin: 10px;
+    border-radius: 5px;
+    flex: 1 1;
+    min-width: 200px;
+    max-width: 350px;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    border: thin solid #999;
+    margin: 0 0 20px 20px;
+}
+
+#pet main ol li{
+    font-weight: normal;
+    list-style: none;
+    padding-top: 10px;
+    padding: 10px;
+    text-align: right;
+}
+
+#pet li span {
+    font-weight: bold;
+    padding-right: 10px;
+    float: left;
+}
+
+.Description{
+    margin: 0 20px 20px 20px;
+    max-width: 450px;
+    min-width: 300px;
+    flex: 3 1;
+}
+
+.Description p{
+    padding: 0;
+    margin: 0;
+    line-height: 200%;
+    text-indent:2em;
+}
+
+/* ========== SLIDER ===================== */
+#owl-demo .item{
+    margin:5px;
+}
+
+#owl-demo .item img{
+    display: block;
+    width:100%;
+    height: auto;
+}
+
+.owl-item{
+    //   min-width:600px;
+}
+
+.owl-theme .owl-controls{
+    margin-top:5px;
+}
+
+.owl-theme .owl-controls .owl-buttons div{
+    padding:5px 10px;
+    margin:0 5px 0 5px;
+    font-size:16px;
+}
+
+.Description p{
+    padding:0;
+    margin:0;
+}
+
+#pet h3 {
+}
+
+.Comments , #pet h3{
+    width:70%;
+    margin:0 auto;
+}
+
+.comment {
+    margin: 10px 0px 10px 0px;
+    border: thin solid #222;
+    border-radius: 3px;
+    background: white;
+}
+
+
+.Text {
+    padding:20px;
+}
+
+.CommentInfo{
+    font-size: small;
+    border-top: thin solid #999;
+    padding: 5px;
+    margin: 0;
+    background-color: #5ce19f;
+    color: white;
+}
+
+.Username{
+    margin-right:20px;
+}
+
+.CommentEdit , .CommentDelete{
+    float: right;
+    margin: 0px 5px 0px 5px;
+}
+
+.AdoptMe {
+    padding:10px;
+    margin: 15px 15px 15px 0px;
+    border-radius:5px;
+    background-color:#DCF3D6;
+    box-shadow: 2px 2px 2px #888888;
+
+    text-align:center;
+    width:90px;
+}
+
+p.AdoptMe:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+/* ======================================== MEDIA QUERIES ======================================== */
+@media screen and (max-width: 1300px) {
+    #pet main section {
+
+    }
+
+    #pet aside{
+
+    }
+
+    #pet main ol{
+    }
+
+
+}
+
+@media screen and (max-width: 750px) {
+    #pet article{
+        margin:0;
+    }
+
+}
+@media screen and (max-width: 635px) {
+    #pet article{
+    }
+
+    #pet main{
+        padding:0px;
+    }
+
+    #pet ol{
+        margin:0;
+    }
+
+    #pet aside{
+        flex-direction:column;
+    }
+
+    .Description{
+        padding-top:20px; 
+    }
+
+    .Description p {
+        line-height:140%;
+    }
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+ADMIN BUTTONS SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+.adminoptions {
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+}
+
+.edit {
+    padding:10px;
+    margin: 5px;
+    border-radius:5px;
+    background-color:#DCF3D6;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.edit a:link{
+    color:#222;
+    text-decoration:none;
+}
+
+.edit a:visited{
+    color:#222;
+    text-decoration:none;
+}
+
+.edit a:hover{
+    text-decoration:underline;
+    color:white;
+}
+
+.edit:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+
+.delete {
+    padding:10px;
+    margin: 5px;
+    border-radius:5px;
+    background-color:#F3D6DC;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.delete a:link{
+    color:#222;
+    text-decoration:none;
+}
+
+.delete a:visited{
+    color:#222;
+    text-decoration:none;
+}
+
+.delete a:hover{
+    text-decoration:underline;
+    color:white;
+}
+
+.delete:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+
+.pet-options {
+    position: absolute;
+    top: 85px;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.nav-options {
+    padding: 0em 1em 0em 1em;
+    cursor: pointer;
+}
+.nav-options:hover {
+    color: blue;
+}
+
+/*home style*/
+
+
+
+
+#home {
+    font-family: 'Oswald', sans-serif;
+    color: #3D3D40;
+}
+
+#home-intro {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+}
+#home-intro h2 {
+    font-size: 40px;
+    padding: 3em 0em 0.3em 0em;
+    font-weight: bold;
+}
+#home-intro h2:nth-child(2) {
+    padding: 0em;
+}
+#home-intro #pet-pic {
+    width: 100%;
+}
+
+#pets-button {
+    text-decoration: none;
+    color: black;
+}
+#pets-button h3 {
+    text-transform: uppercase;
+    margin: 3em;
+    letter-spacing: 2px;
+    background-color: #ffffff;
+    font-size: 13px;
+    padding: 1em 3em;
+    border: 2px solid;
+    border-color: #3D3D40;
+    -webkit-transition: color 0.4s, background-color 0.4s;
+    transition: color 0.4s, background-color 0.4s;
+}
+#pets-button h3:hover {
+    color: white;
+    background-color: #3D3D40;
+}
+#home-intro ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.social {
+    height: 30px;
+    width: 30px;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    cursor: pointer;
+    padding: 0em 0.5em;
+}
+.social:hover {
+    -webkit-transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    transform: scale(1.07);
+}
+
+#home-mission {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    background-color: #F0F0F0;
+}
+#home-mission h2 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding: 2em;
+}
+#home-mission #mission-split {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+#home-mission #mission-split .mission-slide {
+    padding: 1em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.mission-slide h3 {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+.mission-fact {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1em;
+}
+.mission-img {
+    width: 80px;
+    height: 80px;
+    border: 4px solid;
+    border-color: #3D3D40;
+    border-radius: 100%;
+    margin: 1em;
+}
+.mission-fact-text {
+    width: 230px;
+    line-height: 20px;
+}
+.mission-fact-text h4 {
+    color: #0C0F63;
+    padding: 0.3em 0em;
+}
+.mission-fact-text p {
+    font-size: 14px;
+}
+
+#featured-pets {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+#featured-pets a {
+    text-decoration: none;
+}
+#featured-pets h2 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding: 2em 0em 0.5em 0em;
+}
+#featured-pets div:nth-child(1) {
+    width: 300px;
+    padding: 0em 2em 2em 0em;
+}
+#featured-pets div:nth-child(2) {
+    width: 300px;
+    padding: 0em 0em 2em 2em;
+}
+#featured-pets article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+#featured-pets img {
+    height: 250px;
+}
+#featured-pets h3 {
+    color: #0C0F63;
+    text-align: center;
+    padding: 2em 0em 0.5em 0em;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+#featured-pets a:hover h3 {
+    color: #3BA0FF;
+}
+#featured-pets p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    color: #3D3D40;
+}
+
+#partners {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    background-color: #F0F0F0;
+}
+#partners article {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+#partners div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0em 2em 0em 2em;
+}
+#partners h2 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding: 2em;
+}
+#partners img {
+    width: 300px;
+    padding: 1em;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+}
+#partners img:hover {
+    -webkit-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    transform: scale(1.04);
+}
+
+footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #E0E0E0;
+  height: 150px;
+}
+footer a {
+  -webkit-transition: color 0.3s;
+          transition: color 0.3s;
+  text-decoration: none;
+  color: #0C0F63;
+}
+footer div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  padding: 1em;
+}
+footer img {
+  width: 100px;
+}
+footer ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0em 1em;
+}
+#footer-nav li {
+  padding: 1em;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;  
+}
+#footer-nav a:hover {
+  color: #8ec7ff;
+}
+footer p {
+  width: 250px;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 2em;
+}
+
+header {
+  background-color: #E0E0E0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  height: 80px;
+  width: 100%;
+}
+header div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+}
+header img {
+  -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+          transform: scaleX(-1);
+  width: 95px;
+}
+header a {
+  text-decoration: none;
+}
+header h1 {
+  font-weight: bold;
+  font-size: 16px;
+  color: #404040;
+  letter-spacing: 1px;
+  line-height: 20px;
+  text-transform: uppercase;
+  width: 100px;
+  -webkit-transition: color 0.3s;
+          transition: color 0.3s;
+}
+header div:hover h1 {
+  color: #3BA0FF;
+}
+header nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+header nav a {
+  padding: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #0C0F63;
+  font-size: 18px;
+  -webkit-transition: color 0.3s;
+          transition: color 0.3s;
+}
+header nav a:hover {
+  color: #3BA0FF;
+}
+header section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+header #sign-in {
+  padding: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: black;
+  font-size: 14px;
+  border: 1px solid black;
+  padding: 0.5em 1em;
+}
+header #account {
+  padding: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: black;
+  font-size: 14px;
+  padding: 0.5em 1em;
+}
+
+@media (max-width:767px) {
+    #mission-split {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    #featured-pets article {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    #partners article {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    #home-intro h2 {
+        font-size: 25px;
+    }
+    footer {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: 300px;
+    }
+    header section {
+        width: 100px;
+    }
+    header section #sign-in {
+        font-size: 12px;
+    }
+    header h1 {
+        display: none;
+    }
+    header div {
+        width: 100px;
+    }
+}
+@media (min-width: 1171px) {
+    #partners img {
+        padding: 3em;
+    }
+    #featured-pets a {
+        padding: 3em;
+    }
+}
+
+#scroll-top {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 0px;
+  right: 0px;
+  margin: 1em;
+}
+
+#scroll-top:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#scroll-top::before {
+  content: "";
+  height: 2px;
+  width: 15px;
+  background-color: black;
+  position: absolute;
+  top: 45%;
+  left: 13px;
+  -webkit-transform: rotate(-50deg);
+      -ms-transform: rotate(-50deg);
+          transform: rotate(-50deg);
+}
+
+#scroll-top::after {
+  content: "";
+  height: 2px;
+  width: 15px;
+  background-color: black;
+  position: absolute;
+  top: 45%;
+  right: 13px;
+  -webkit-transform: rotate(50deg);
+      -ms-transform: rotate(50deg);
+          transform: rotate(50deg);
+}
+
+#register-button {
+  background-color: #349033;
+  color: #FFF;
+  border: 0;
+  padding: 0.5em;
+  font-size: large;
+  border-radius: 3px;
+  padding-left: 1em;
+  text-decoration: none;
+  font-family:"Century Gothic", sans-serif;
+}
+#register-button:hover{
+    background-color: #69227B;
+    cursor:pointer;
+}
+
+#frmLogin {
+    padding-top: 3em;
+    padding-bottom: 38.5vh;
+}
+#frmRegister {
+    padding-top: 3em;
+}
+
+body {
+    overflow-x: hidden;
+}
