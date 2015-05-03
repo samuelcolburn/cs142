@@ -93,12 +93,12 @@ include "top.php";
         <h2>Our partners</h2>
         <article>
             <div>
-                <a href="" target="_blank"><img src="pics/aspca.jpeg"></a>
-                <a href="" target="_blank"><img src="pics/peta.png"></a>
+                <a href="https://www.aspca.org/" target="_blank"><img src="pics/aspca.jpeg"></a>
+                <a href="http://www.peta.org/" target="_blank"><img src="pics/peta.png"></a>
             </div>
             <div>
-                <a href="" target="_blank"><img src="pics/akc.jpg"></a>
-                <a href="" target="_blank"><img src="pics/humane.jpg"></a>
+                <a href="http://www.akc.org/" target="_blank"><img src="pics/akc.jpg"></a>
+                <a href="http://www.humanesociety.org/" target="_blank"><img src="pics/humane.jpg"></a>
             </div>
         </article>
     </section>

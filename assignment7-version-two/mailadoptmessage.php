@@ -8,7 +8,7 @@ if ($_SESSION["user"]) {
     //include libraries
     require_once('../bin/lib/security.php');
     include "../bin/lib/validation-functions.php";
-    include "../bin/lib/mail-message.php";
+    require_once("../bin/lib/mail-message.php");
     require_once('../bin/myDatabase.php');
     //intialize the databse
     $dbUserName = 'smcolbur' . '_reader';
@@ -31,12 +31,12 @@ if ($_SESSION["user"]) {
     $Contactresults = $thisDatabase->select($Contactquery);
     //generate message for visitor
     $messageA = '<h2>Thank you for your Interest in ' . $petname . '!</h2>';
-    $messageB = "<p>Dear " . $user_username . ",</p>"
-            . "<p>All of our animals would love a forever home, I hope you're the lucky one to have a best friend for life!</p>"
+    $messageB = "<p>Dear " . $user_username . ",</p>\r\n"
+            . "<p>All of our animals would love a forever home, I hope you're the lucky one to have a best friend for life!</p>\r\n"
             . "<p>We well try our best to get back to you shortly on your interest in " . $petname . "."
             . " If you have any further questions or would like to know more feel free to contact us any time or stop by the shelter and see these"
-            . "beautiful animals in person! They always love a visit. </p>";
-    $messageC = "<h3>Contact Infomation:</h3>";
+            . "beautiful animals in person! They always love a visit. </p>\r\n";
+    $messageC = "<h3>Contact Infomation:</h3>\r\n";
     foreach ($Contactresults as $ContactInfo) {
         $ContactKeys = array_keys($ContactInfo);
         $key = array();
@@ -51,6 +51,7 @@ if ($_SESSION["user"]) {
                 } else {
                     $messageC.= "<p class = " . substr($index, 3) . ">" . $value . "</p>";
                 }
+                print "\r\n";
             }
         }
     }
@@ -61,11 +62,13 @@ if ($_SESSION["user"]) {
     $to = $user_email;
     $cc = "samuel.colburn@uvm.edu";
     $bcc = "";
-    $from = "Burlington Animal Shelter <samuel.colburn@uvm.edu>";
+    $from = "Burlington Animals <samuel.colburn@uvm.edu>";
     $subject = "Thank you for your Interest in " . $petname . "!";
     $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
     
-    
-    echo $user_email;
+    if($mailed){
+        echo $user_email;
+    }
 }
+
 ?>

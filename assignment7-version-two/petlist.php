@@ -27,10 +27,18 @@ if ($debug) {
 //MAIN ARTICLE
 print "<article id=main>";
 //PAGE TITLE
-print "<h2>Pets</h2>";
+print "<section id='pets-header'>";
 // PET COUNTER
 $numberRecords = count($results);
 print "<h3>Total Pets: " . $numberRecords . "</h3>";
+?>
+<div id="content-options">
+    <p class="nav-options">all</p>
+    <p class="nav-options">cats</p>
+    <p class="nav-options">dogs</p>
+</div>
+<?php
+print "</section>";
 //@@@@@@@@ ADMIN ONLY BUTTONS
 if ($_SESSION["admin"]) {
     print "<div class = 'adminoptions'>";
@@ -64,11 +72,11 @@ foreach ($results as $pet) {
                             list($width, $height) = getimagesize($img);
                             $ratio = $width / $height; // width/height
                             if ($ratio > 1) {
-                                $width = 300;
-                                $height = 300 / $ratio;
+                                $width = 200;
+                                $height = 200 / $ratio;
                             } else {
-                                $width = 300 * $ratio;
-                                $height = 300;
+                                $width = 200 * $ratio;
+                                $height = 200;
                             }
                             print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
                         }
@@ -76,10 +84,10 @@ foreach ($results as $pet) {
                     }
                     closedir($handle);
                 } elseif($pet[5] == "dog") {
-                    print "<img src='pics/dog_placeholder.png'width=250 alt ='" . $pet[1] . "'>";
+                    print "<img src='pics/dog_placeholder.png' alt ='" . $pet[1] . "' width='200'>";
                 }
                 else{
-                    print "<img src='pics/cat_placeholder.jpg'width=250 alt ='" . $pet[1] . "'>";
+                    print "<img src='pics/cat_placeholder.jpg' alt ='" . $pet[1] . "' width='200'>";
                 }
             }
             //Date of birth check

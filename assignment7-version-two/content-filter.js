@@ -1,10 +1,25 @@
 $(document).ready(function() {
     var windowHeight = $(window).height();
-    if ($("body").height() < windowHeight){
-        $("footer").css("position", "absolute");
-        $("footer").css("top", "calc(100vh - 150px)");
-        $("footer").css("left", "0px");
-        $("footer").css("width", "100%");
+    if($("body").attr("id") != "petlist"){
+       if ($("body").height() < windowHeight){
+            $("footer").css("position", "absolute");
+            $("footer").css("top", "calc(100vh - 150px)");
+            $("footer").css("left", "0px");
+            $("footer").css("width", "100%");
+        } 
+    }
+    
+    if($("body").attr("id") == 'petlist'){
+        $("nav a:nth-child(2)").addClass("active-page");
+        $("nav a:nth-child(1)").removeClass("active-page");
+    }
+    else if($("body").attr("id") == 'home') {
+        $("nav a:nth-child(1)").addClass("active-page");
+        $("nav a:nth-child(2)").removeClass("active-page");
+    }
+
+    if($("header section a").attr("id") == "sign-in" && $("body").attr("id") == "user"){
+        window.location.href = "home.php";
     }
     
     var types = [".all", ".cat", ".dog"];
@@ -41,11 +56,7 @@ $(document).ready(function() {
             }
         }
     });
-    /*
-    var adoptMeOffset = $(".adopt-me").offset();
-    var messageTop = adoptMeOffset.top;
-    $(".message").css("top", (messageTop - 100) + "px");
-    */
+
     $(".adopt-me").click(function(event) {
         event.stopPropagation();
         $(".message").addClass("active");
@@ -56,10 +67,7 @@ $(document).ready(function() {
     });
     $(".cancel").click(function() {
         $(".message").removeClass("active");
-    });
-    $(".EmailButton").click(function(){
-       $(".message").removeClass("active"); 
+        $(".after-message").removeClass("active");
     });
 
-    
 });

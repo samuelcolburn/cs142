@@ -88,7 +88,7 @@ if (isset($_GET["id"])) {
         }
         //create pet page
         //title of the page is the name of the pet
-        print "<h2>" . $pet[1] . "</h2>";
+        print "<h2 id='pet-name'>" . $pet[1] . "</h2>";
         print ' <main class = petinfo >';
         //Images and facts column
         print "<section>";
@@ -102,13 +102,11 @@ if (isset($_GET["id"])) {
                 }
             }
             closedir($handle);
+        } elseif ($pet[9] == "dog") {
+            print "<img src='pics/dog_placeholder.png'width=250 alt ='" . $pet[1] . "'>";
+        } else {
+            print "<img src='pics/cat_placeholder.jpg'width=250 alt ='" . $pet[1] . "'>";
         }
-        elseif($pet[9] == "dog") {
-                    print "<img src='pics/dog_placeholder.png'width=250 alt ='" . $pet[1] . "'>";
-                }
-                else{
-                    print "<img src='pics/cat_placeholder.jpg'width=250 alt ='" . $pet[1] . "'>";
-                }
         print "</div>";
         //Facts section
         print"<aside>";
@@ -119,19 +117,18 @@ if (isset($_GET["id"])) {
         print "<span>" . $key[2] . "</span>";
         $birthDate = $pet[2];
         $birthDate = explode("-", $birthDate);
-                 if ($birthDate[0] >= date("Y")) {
-                    $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
-                    print $age . " weeks old";
-                } elseif ($birthDate[0] < date("Y")) {
-                    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
-                   if($age < 1){
-                       $age = (12 - ($birthDate[1]-date("m")));
-                       print $age . " months old";
-                   }
-                       else{
-                    print $age . " years old";
-                       }
-                }
+        if ($birthDate[0] >= date("Y")) {
+            $age = date("w", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]));
+            print $age . " weeks old";
+        } elseif ($birthDate[0] < date("Y")) {
+            $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+            if ($age < 1) {
+                $age = (12 - ($birthDate[1] - date("m")));
+                print $age . " months old";
+            } else {
+                print $age . " years old";
+            }
+        }
         print "</li>";
         //breed
         print "<li class = '" . $key[3] . "'>";
@@ -166,7 +163,7 @@ if (isset($_GET["id"])) {
     }
     //@@@@@@@@@@@@@@@ ADOPT ME POPOUT
     //  When the adopt button is clicked, this window pops out to the user
-    print "<section class = message>";
+    print "<section class = 'message'>";
     print "<h3>Interested in having a best friend?</h3>";
     $Contactquery = "SELECT  `fldPhoneNumber` , `fldShelterName`,  `fldStreetAdress`, `fldCity`, `fldState`, `fldZipCode` FROM `tblShelterInfo` WHERE 1";
     $Contactresults = $thisDatabase->select($Contactquery);
@@ -209,6 +206,20 @@ if (isset($_GET["id"])) {
     }
     print "<p class='cancel'>Cancel</p>";
     print "</section>";
+    ?>
+
+    <section class='after-message'>
+        <h3>Thank you!</h3>
+        <div class="AdoptContactInfo">
+            <h4>An email has been sent to:</h4>
+            <?php
+            print "<p>You!</p>";
+            ?>
+        </div>
+        <p class="cancel">Close</p>
+    </section>
+    
+    <?php
 //@@@@@@@@ PET COMMENTS @@@@@@@@@
     print"<h3 id='pet-comments-title'>Comments</h3>\n";
     print "<section class = Comments>";
@@ -261,7 +272,7 @@ if (isset($_GET["id"])) {
     if ($_SESSION["user"]) {
         include "comment.php";
     } else {
-        print"<p><a href='login.php'>Login</a> or <a href='register.php'>Register</a> to Comment!</p>";
+        print"<p><a href='login.php'>Login</a> to Comment!</p>";
     }
     print "</section>";
 } else {

@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     function deleteImage(file_name)
     {
-        
+
         var r = confirm("Are you sure you want to delete this Image?")
         if (r === true)
         {
@@ -81,10 +81,10 @@ $(document).ready(function() {
     $(".ImageDelete").click(function() {
 
         var petName = document.getElementById("txtProductName");
-        
+
         var directory = $(petName).attr("value");
-        
-        
+
+
         var id = $(this).prev().prev().attr("id");
 
 
@@ -96,7 +96,7 @@ $(document).ready(function() {
             src = src.substring(src.lastIndexOf('/') + 1);
         }
 
-    
+
         deleteImage("pics/" + directory + "/" + src);
     });
 
@@ -104,26 +104,32 @@ $(document).ready(function() {
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@ ADOPT PET EMAIL MESSAGE @@@@@@@@@@@@@@@
 
-$(".EmailButton").click(function(){
-    
-                var h2 = document.getElementsByTagName("h2");
-                
-                var petname = h2[0].innerHTML;
-                
-                
-                $.ajax({
-                type: 'GET',
-                url: 'mailadoptmessage.php',
-                data: {'petname': petname},
-                success: function(response) {
-                    
-                },
-                error: function() {
-                    alert("There was an error processing your request.");
-                }
-            });
-    
-});
+    $(".EmailButton").click(function() {
+        
+        $(".message").removeClass("active");
+        $(".after-message").addClass("active");
+
+        var petName = document.getElementById("pet-name");
+
+
+
+        var petname = petName.innerHTML;
+
+
+        $.ajax({
+            type: 'GET',
+            url: 'mailadoptmessage.php',
+            data: {'petname': petname},
+            success: function(response) {
+                var userEmail = response;
+
+            },
+            error: function() {
+                alert("There was an error processing your request.");
+            }
+        });
+
+    });
 
 
 

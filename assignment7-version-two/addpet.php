@@ -182,7 +182,7 @@ if (isset($_POST["btnSubmit"])) {
 // see section 3b. The error flag ($emailERROR) will be used in section 3c.
     //~~~~~~~~~~~PRODUCT NAME VALIDATION~~~~~~~~~~
     if ($ProductName == "") {
-        $errorMsg[] = "Please enter a name";
+        $errorMsg[] = "Please enter a name for the Product";
         $ProductNameERROR = true;
     } elseif (!verifyAlphaNum($ProductName)) {
         $errorMsg[] = "Your pet name invalid. Be sure to only use basic characters.";
@@ -190,7 +190,7 @@ if (isset($_POST["btnSubmit"])) {
     }
     //~~~~~~~~~~~~~DESCRIPTION VALIDATION~~~~~~~~~~~
     if ($Description == "") {
-        $errorMsg[] = "Please enter a description";
+        $errorMsg[] = "Please enter a description for the product";
         $DescriptionERROR = true;
     }
     /*
@@ -203,13 +203,13 @@ if (isset($_POST["btnSubmit"])) {
     
     //~~~~~~DOB VALIDATION~~~~~~~~~~~
     if ($DoB == "") {
-        $errorMsg[] = "Please enter a date of birth";
+        $errorMsg[] = "Please enter a Date of Birth";
         $DoBERROR = true;
     }
     
     //~~~~~~BREED VALIDATION~~~~~~~~~~~
      if ($Breed == "") {
-        $errorMsg[] = "Please enter a breed";
+        $errorMsg[] = "Please enter a breed for the animal";
         $BreedERROR = true;
     } elseif (!verifyAlphaNum($Breed)) {
         $errorMsg[] = "Your breed name invalid. Be sure to only use basic characters.";
@@ -490,9 +490,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
     $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
     $data = array();
     $results = $thisDatabase->select($query, $data);
-    echo "<select name='lstCategory'";
-    if($CategoryERROR) print 'class="mistake"';
-    print "> \n";
+    echo "<select name='lstCategory'> \n";
     foreach ($results as $row) {
         $row = array_shift($row);
         if (!empty($row)) {

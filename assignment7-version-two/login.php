@@ -129,6 +129,14 @@ if (isset($_POST["btnSubmit"])) {
     if($debug){
     print $permission;
     }
+    
+    //~~~~~~PERMISSION VALIDATION~~~~~~~~~~~
+    
+    if ($permission < 1){
+        $errorMsg[] = "Please check your email to confirm your account.";
+        $permissionERROR = true;
+    }
+    
     //~~~~~~~~~~~~~USERNAME VALIDATION~~~~~~~~~~~
 
     if ($Username == "") {
@@ -150,6 +158,8 @@ if (isset($_POST["btnSubmit"])) {
     if ($debug) {
         print"<p>validation pass</p>";
     }
+    
+    
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2d Process Form - Passed Validation
@@ -184,7 +194,6 @@ if (isset($_POST["btnSubmit"])) {
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
 if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-    print '<p> You are now logged in.</p>';
     
     $_SESSION["user"] = $Username; 
     
@@ -212,7 +221,6 @@ function delayer(){
 </script>
 <!--TIMER -->
 <body onLoad="setTimeout('delayer()', 0000)"> 
-<h2>You are now logged in.</h2>
 <p>You should be redirected to the home page. If not, click this link: <a href ='home.php'> home</a>.</p>
 
     
@@ -292,7 +300,7 @@ function delayer(){
                 <fieldset class="buttons">
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" tabindex="900" class="button">
-                    <a id = "register-button" href="register.php">Register</a>
+                    <a id = "register-button" href="register.php">register</a>
                 </fieldset> <!-- ends buttons -->
                 
             </fieldset> <!-- Ends Wrapper -->

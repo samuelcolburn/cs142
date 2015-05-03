@@ -282,7 +282,6 @@ if (isset($_POST["btnSubmit"])) {
             $messageB .= "<p>or copy and paste this url into a web browser: ";
             $messageB .= $domain . $path_parts["dirname"] . '/confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . "</p>";
             $messageB .= "<p><b>Username:</b>   " . $Username . "</p>";
-            $messageB .= "<p><b>Password:</b>   " . $password . "</p>";
             $messageC .= "<p><b>Email Address:</b>  " . $email . "</p>";
             //##############################################################
             //
@@ -291,8 +290,8 @@ if (isset($_POST["btnSubmit"])) {
             $to = $email; // the person who filled out the form
             $cc = "";
             $bcc = "";
-            $from = "Assignment 10 <samuel.colburn@uvm.edu>";
-            $subject = "Thank you for Registering at Assignment10!";
+            $from = "Burlington Animals <burlingtonanimals@gmail.com>";
+            $subject = "Thank you for Registering with Burlington Animals!";
             $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
         } //data entered  
     } // end form is valid
@@ -314,6 +313,7 @@ if (isset($_POST["btnSubmit"])) {
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
 if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+    print "<section class='confirm-text'>";
     print "<h2>Your Request has ";
     if (!$mailed) {
         print "not ";
@@ -325,6 +325,8 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
     }
     print "been sent";
     print " to " . $email . " requesting confirmation. Please check your email to confirm your registration.</p>";
+    print "<img src='pics/cute-puppy.jpg' alt='cute puppy'>";
+    print "</section>";
 } else {
 //####################################
 //
