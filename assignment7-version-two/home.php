@@ -72,6 +72,75 @@ include "top.php";
     <section id="featured-pets">
         <h2>Featured pets</h2>
         <article>
+            <?php
+            //@@@ STORE  results
+
+            $query = "SELECT pmkProductID , fldImages , fldProductName , fldDescription FROM tblProducts ORDER BY RAND() LIMIT 2";
+
+            $results = $thisDatabase->select($query);
+
+            foreach ($results as $pet) { 
+                print "<a href ='pet.php?id=".$pet[0]."' >";
+                print "<div>";
+               
+                foreach ($pet as $key => $value) {
+                    if (!is_int($key)) {
+    
+                        $key = substr($key , 3);
+                        
+                        
+                        //NAME
+                       
+                        if($key == "ProductName"){
+                            print "<h3>";
+                            print $value;
+                            print "</h3>";
+                        }
+                        
+                        
+                        //IMAGE 
+                        if ($key == "Images") {
+                            if ($handle = opendir($value)) {
+                                $check = 1;
+                                while (false !== ($entry = readdir($handle)) && $check == 1) {
+                                    if ($entry != "." && $entry != "..") {
+                                        $img = $value . $entry;
+                                        list($width, $height) = getimagesize($img);
+                                        $ratio = $width / $height; // width/height
+                                        if ($ratio > 1) {
+                                            $width = 200;
+                                            $height = 200 / $ratio;
+                                        } else {
+                                            $width = 200 * $ratio;
+                                            $height = 200;
+                                        }
+                                        print "<img src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
+                                    }
+                                    ++$check;
+                                }
+                                closedir($handle);
+                            } elseif ($pet[5] == "dog") {
+                                print "<img src='pics/dog_placeholder.png' alt ='" . $pet[1] . "' width='200'>";
+                            } else {
+                                print "<img src='pics/cat_placeholder.jpg' alt ='" . $pet[1] . "' width='200'>";
+                            }
+                        } // end image
+                        
+                        //DESCRIPTION 
+                        if ($key == "Description"){
+                            print "<p>";
+                            print $value;
+                            print "</p>";
+                        }
+                    } //end is_int
+                    
+                } // end pet data
+                print"</div>";
+                print "</a>";
+            } // end pet
+            
+            ?>
+            <!--
             <a href="https://wkniffin.w3.uvm.edu/cs142/assignment7/pet.php?id=16">
                 <div>
                     <img src="pics/featured-cat.jpg" alt="cat">
@@ -86,12 +155,14 @@ include "top.php";
                     <p>Bobby is still a puppy but he is extremely loving and loyal.</p>
                 </div>
             </a>
+            -->
         </article>
     </section>
 
     <section id="partners">
         <h2>Our partners</h2>
         <article>
+
             <div>
                 <a href="https://www.aspca.org/" target="_blank"><img src="pics/aspca.jpeg"></a>
                 <a href="http://www.peta.org/" target="_blank"><img src="pics/peta.png"></a>
