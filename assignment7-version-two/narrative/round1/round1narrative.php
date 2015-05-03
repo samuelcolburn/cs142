@@ -39,7 +39,7 @@
                 <h2>Documentation</h2>
                 <ul>
                     <li><a href ="../assignment7-version-one/home.php">Before</a></li>
-                    <li><a href ="../assignment7-version-two/home.php">After</a></li>
+                    <li><a href ="../assignment7-version-three/home.php">After</a></li>
                 </ul>
                  <p><a href='TestScript.pdf'>Test Script</a></p>
 
