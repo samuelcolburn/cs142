@@ -9,7 +9,6 @@
 
 
 TODO:
--ERROR LIST STYLE
 (article:first-child not working?)
 -ACCOUNT PAGE STYLE
 
