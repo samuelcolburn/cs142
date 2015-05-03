@@ -202,8 +202,7 @@ if (isset($_GET["id"])) {
         print "</div>";
     }
     */
-    
-    print "<h4 class='message-or'>Or</h4>";
+   
     // If they are logged in, ask if they are interested in the pet.
     //  If yes, email them & admin, if no, close window
     if ($_SESSION["user"]) {

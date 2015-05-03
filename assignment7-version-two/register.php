@@ -374,7 +374,6 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                    value="<?php print $Username; ?>"
                                    tabindex="100" maxlength="16" placeholder="Username"
     <?php if ($UsernameERROR) print 'class="mistake"'; ?>>
-
                         </label>
 
                         <label  class="required">

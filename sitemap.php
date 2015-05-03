@@ -11,7 +11,7 @@
         <article>
 
             <ul>
-                <li>Assignment 7: Final Project - <a href="assignment7/home.php">Home</a>  </li>
+                <li>Assignment 7: Final Project - <a href="assignment7/index.php">Index</a>  </li>
                 
                <li>Assignment 6: Web Usability Testing - <a href="assignment6/index.php">Index</a>  </li>
 

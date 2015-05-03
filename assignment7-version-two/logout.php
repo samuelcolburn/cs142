@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Assignment 10</title>
+        <title>Burlington Animals</title>
         <meta charset="utf-8">
         <meta name="author" content="Sam Colburn">
         <meta name="description" content="product website">

@@ -78,9 +78,9 @@ if (isset($_GET["q"])) {
         $to = $email;
         $cc = "";
         $bcc = "";
-        $from = "Assignment 10 <noreply@yoursite.com>";
+        $from = "Burlington Animals <noreply@yoursite.com>";
         $subject = "Your Registration has been Approved";
-        $message = '<p>You are now officially a member of Assignment 10! To access all of our great content, head over to <a href="' . $domain . $path_parts["dirname"] . '/home.php"> Assignment 10 </a> or if you would like to see our special offer on powdered donuts, please look under your seat.</p>';
+        $message = '<p>You are now officially a member of Burlington Animals! To access all of our great content, head over to <a href="' . $domain . $path_parts["dirname"] . '/home.php"> Burlington Anmials </a> or if you would like to see our special offer on powdered donuts, please look under your seat.</p>';
         $message .="<p>pringles in uncomfortable places.</p>";
         
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
