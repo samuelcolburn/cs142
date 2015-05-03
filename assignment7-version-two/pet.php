@@ -145,7 +145,8 @@ if (isset($_GET["id"])) {
         print "</li>";
         //size
         print "<li class = '" . $key[7] . "'>";
-        print "<span>" . $key[7] . "</span> " . $pet[7] . " lbs";
+        print "<span>Weight</span> " . $pet[7];
+        if($pet[7] != "Unknown"){ print " lbs";}
         print "</li>";
         print "</ol>";
         //description div

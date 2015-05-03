@@ -1,0 +1,21 @@
+-changed the footer
+-added noti to the adopt popup
+-adopt today button homepage
+-petlist style update
+-fixed registration page description box
+-confirmation page styled
+-fixed admin update pet page if no pet pictures
+-sort comments from newest-> oldest
+
+
+TODO:
+-ERROR LIST STYLE
+(article:first-child not working?)
+-ACCOUNT PAGE STYLE
+
+
+
+Maybe:
+-featured pets animated slider?
+-put requirement notes on fields of form
+-no admin page shown to admins
