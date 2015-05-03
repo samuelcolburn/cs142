@@ -163,8 +163,13 @@ if (isset($_GET["id"])) {
     }
     //@@@@@@@@@@@@@@@ ADOPT ME POPOUT
     //  When the adopt button is clicked, this window pops out to the user
+   
     print "<section class = 'message'>";
     print "<h3>Interested in having a best friend?</h3>";
+    
+    
+     /*  @@@@@@@ removed contact information, shows in email
+      * 
     $Contactquery = "SELECT  `fldPhoneNumber` , `fldShelterName`,  `fldStreetAdress`, `fldCity`, `fldState`, `fldZipCode` FROM `tblShelterInfo` WHERE 1";
     $Contactresults = $thisDatabase->select($Contactquery);
     foreach ($Contactresults as $ContactInfo) {
@@ -195,6 +200,8 @@ if (isset($_GET["id"])) {
         }
         print "</div>";
     }
+    */
+    
     print "<h4 class='message-or'>Or</h4>";
     // If they are logged in, ask if they are interested in the pet.
     //  If yes, email them & admin, if no, close window
@@ -212,9 +219,7 @@ if (isset($_GET["id"])) {
         <h3>Thank you!</h3>
         <div class="AdoptContactInfo">
             <h4>An email has been sent to:</h4>
-            <?php
-            print "<p>You!</p>";
-            ?>
+            <p id="message-email"></p>
         </div>
         <p class="cancel">Close</p>
     </section>
@@ -230,7 +235,7 @@ if (isset($_GET["id"])) {
     $query .= " FROM tblComments, tblUsers ";
     $query .= " WHERE fnkUserID = pmkUserId ";
     $query .= "AND fnkProductID = ? ";
-    $query .=" ORDER BY fldDateSubmitted ";
+    $query .=" ORDER BY fldDateSubmitted DESC";
 //execute query
     $comments = $thisDatabase->select($query, $data);
     if (!empty($comments)) {

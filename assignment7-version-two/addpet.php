@@ -55,11 +55,10 @@ if (isset($_GET["id"])) {
     $fldImages = $results[0]["fldImages"];
     $Breed = $results[0]["fldBreed"];
     $Size = $results[0]["fldSize"];
-    
-    if($results[0]["fldGender"] == 0){
-        $Gender ="Female";
-    }
-    else{
+
+    if ($results[0]["fldGender"] == 0) {
+        $Gender = "Female";
+    } else {
         $Gender = "Male";
     }
     if ($debug) {
@@ -199,46 +198,44 @@ if (isset($_POST["btnSubmit"])) {
       $DescriptionERROR = true;
       }
      */
-    
-    
+
+
     //~~~~~~DOB VALIDATION~~~~~~~~~~~
     if ($DoB == "") {
         $errorMsg[] = "Please enter a Date of Birth";
         $DoBERROR = true;
     }
-    
+
     //~~~~~~BREED VALIDATION~~~~~~~~~~~
-     if ($Breed == "") {
+    if ($Breed == "") {
         $errorMsg[] = "Please enter a breed for the animal";
         $BreedERROR = true;
     } elseif (!verifyAlphaNum($Breed)) {
         $errorMsg[] = "Your breed name invalid. Be sure to only use basic characters.";
         $BreedERROR = true;
     }
-    
-     //~~~~~~Size VALIDATION~~~~~~~~~~~
+
+    //~~~~~~Size VALIDATION~~~~~~~~~~~
     if ($Size == "") {
         $errorMsg[] = "Please enter a weight";
         $SizeERROR = true;
     } elseif (!verifyNumeric($Size)) {
         $errorMsg[] = "Please enter a weight from 1 to 500";
         $SizeERROR = true;
-    }
-    elseif($Size > 500 or $Size < 1){
+    } elseif ($Size > 500 or $Size < 1) {
         $errorMsg[] = "Please enter a weight from 1 to 500";
         $SizeERROR = true;
     }
-    
-     //~~~~~~Gender VALIDATION~~~~~~~~~~~
-     //No actual validation because it's a radio button, but checks the value and sets it true/false
-    
-    if($Gender == "Male"){
+
+    //~~~~~~Gender VALIDATION~~~~~~~~~~~
+    //No actual validation because it's a radio button, but checks the value and sets it true/false
+
+    if ($Gender == "Male") {
         $Gender = True;
-    }
-    else{
+    } else {
         $Gender = False;
     }
-    
+
     //~~~~~~~~ IMAGE VALIDATION ~~~~~~~~~~~~~~
     if ($debug) {
         print $target_file;
@@ -292,9 +289,11 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
+
         function makeDir($target_dir) {
             return is_dir($target_dir) || mkdir($target_dir);
         }
+
         if (!empty($target_filename)) {
             MakeDir($target_dir);
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -314,7 +313,7 @@ if (isset($_POST["btnSubmit"])) {
         // Product DATA SQL
         //
         
-        $data = array($ProductName, $Description, $DoB, $CategoryID , $Breed , $Size , $Gender);
+        $data = array($ProductName, $Description, $DoB, $CategoryID, $Breed, $Size, $Gender);
         $primaryKey = "";
         $dataEntered = false;
         try {
@@ -364,7 +363,7 @@ if (isset($_POST["btnSubmit"])) {
 //
 ?>
 <article id="main">
-<?php
+    <?php
 //####################################
 //
 // SECTION 3a.
@@ -374,44 +373,44 @@ if (isset($_POST["btnSubmit"])) {
 //
 // If its the first time coming to the form or there are errors we are going
 // to display the form.
-if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
-    print "<h2>Animal ";
-    if ($update) {
-        print" updated</h2>";
+    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+        print "<h2>Animal ";
+        if ($update) {
+            print" updated</h2>";
+        } else {
+            print" added</h2>";
+        }
     } else {
-        print" added</h2>";
-    }
-} else {
 //####################################
 //
 // SECTION 3b Error Messages
 //
 // display any error messages before we print out the form
-    if ($errorMsg) {
-        print '<div id="errors">';
-        print "<ol>\n";
-        foreach ($errorMsg as $err) {
-            print "<li>" . $err . "</li>\n";
+        if ($errorMsg) {
+            print '<div id="errors">';
+            print "<ol>\n";
+            foreach ($errorMsg as $err) {
+                print "<li>" . $err . "</li>\n";
+            }
+            print "</ol>\n";
+            print '</div>';
         }
-        print "</ol>\n";
-        print '</div>';
-    }
 //####################################
 //
 // SECTION 3c html Form
 //
-    /* Display the HTML form. note that the action is to this same page. $phpSelf
-      is defined in top.php
-      NOTE the line:
-      value="<?php print $email; ?>
-      this makes the form sticky by displaying either the initial default value (line 35)
-      or the value they typed in (line 84)
-      NOTE this line:
-      <?php if($emailERROR) print 'class="mistake"'; ?>
-      this prints out a css class so that we can highlight the background etc. to
-      make it stand out that a mistake happened here.
-     */
-    ?>
+        /* Display the HTML form. note that the action is to this same page. $phpSelf
+          is defined in top.php
+          NOTE the line:
+          value="<?php print $email; ?>
+          this makes the form sticky by displaying either the initial default value (line 35)
+          or the value they typed in (line 84)
+          NOTE this line:
+          <?php if($emailERROR) print 'class="mistake"'; ?>
+          this prints out a css class so that we can highlight the background etc. to
+          make it stand out that a mistake happened here.
+         */
+        ?>
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister"
@@ -431,7 +430,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             <input type="text" id="txtProductName" name="txtProductName"
                                    value="<?php print $ProductName; ?>"
                                    tabindex="100" maxlength="16" placeholder="Pet Name"
-    <?php if ($ProductNameERROR) print 'class="mistake"'; ?>
+                                   <?php if ($ProductNameERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
@@ -443,11 +442,11 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                       tabindex="120" maxlength="500" rows="5"
                                       placeholder ="Biography"
 
-    <?php
-    if ($DescriptionERROR) {
-        print 'class="mistake"';
-    }
-    ?>
+                                      <?php
+                                      if ($DescriptionERROR) {
+                                          print 'class="mistake"';
+                                      }
+                                      ?>
                                       ><?php print $Description; ?></textarea>
                         </label>
 
@@ -456,21 +455,21 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             <input type="text" id="txtProductName" name="txtBreed"
                                    value="<?php print $Breed; ?>"
                                    tabindex="100" maxlength="50" placeholder="Breed"
-    <?php if ($BreedERROR) print 'class="mistake"'; ?>
+                                   <?php if ($BreedERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
                         <!-- Size -->
                         <label  class="required">
                             <input type="quantity" id="numSize" name="numSize"
-                                   value="<?php 
-                                   if($Size > 0){
-                                   print $Size;
+                                   value="<?php
+                                   if ($Size > 0) {
+                                       print $Size;
                                    }
-?>"
+                                   ?>"
                                    tabindex="110"  placeholder="Weight(lbs)"
                                    min ="1" max ="500"  
-    <?php if ($SizeERROR) print 'class="mistake"'; ?>
+                                   <?php if ($SizeERROR) print 'class="mistake"'; ?>
                                    >
                         </label>
 
@@ -480,35 +479,35 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                                    value="<?php print $DoB; ?>"
                                    tabindex="110" placeholder="Date of Birth"
 
-    <?php if ($DoBERROR) print 'class="mistake"'; ?>
+                                   <?php if ($DoBERROR) print 'class="mistake"'; ?>
                                    >
 
                         </label>
                         <!-- START Listbox -->
                         <label id="lstCategory">Species</label>
-    <?php
-    $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
-    $data = array();
-    $results = $thisDatabase->select($query, $data);
-    echo "<select name='lstCategory'> \n";
-    foreach ($results as $row) {
-        $row = array_shift($row);
-        if (!empty($row)) {
-            print "<option value='";
-            echo $row;
-            print "'";
-            if ($row == $Category) {
-                print "selected='selected'";
-            }
-            print ">";
-            echo $row;
-            print "</option> \n";
-        } else {
-            print "<option value=''>Any</option> \n";
-        }
-    }
-    echo "</select>";
-    ?>
+                        <?php
+                        $query = "SELECT DISTINCT fldCategoryName FROM tblCategories ORDER BY fldCategoryName ";
+                        $data = array();
+                        $results = $thisDatabase->select($query, $data);
+                        echo "<select name='lstCategory'> \n";
+                        foreach ($results as $row) {
+                            $row = array_shift($row);
+                            if (!empty($row)) {
+                                print "<option value='";
+                                echo $row;
+                                print "'";
+                                if ($row == $Category) {
+                                    print "selected='selected'";
+                                }
+                                print ">";
+                                echo $row;
+                                print "</option> \n";
+                            } else {
+                                print "<option value=''>Any</option> \n";
+                            }
+                        }
+                        echo "</select>";
+                        ?>
 
                         <!-- End ListBox -->
 
@@ -518,20 +517,20 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                             <label  <?php
                     if ($genderERROR)
                         print 'class="mistake"';
-                    ?>><input type="radio" 
+                        ?>><input type="radio" 
                                     id="radGenderMale" 
                                     name="radGender" 
                                     value="Male"
-                            <?php if ($Gender == "Male") print 'checked="checked"'; ?>
+                                    <?php if ($Gender == "Male") print 'checked="checked"'; ?>
                                     tabindex="210">Male</label>
                             <label <?php
-                        if ($genderERROR)
-                            print 'class="mistake"';
-                            ?>><input type="radio" 
+                                    if ($genderERROR)
+                                        print 'class="mistake"';
+                                    ?>><input type="radio" 
                                     id="radGenderFemale" 
                                     name="radGender" 
                                     value="Female"
-                            <?php if ($Gender == "Female") print 'checked="checked"' ?>
+                                    <?php if ($Gender == "Female") print 'checked="checked"' ?>
                                     tabindex="220">Female</label>
 
                         </section> <!-- end gender radio -->
@@ -545,18 +544,18 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                     <section class="image">
                         <label class = "required">Add A Picture</label>
                         <input type="file" name="fileToUpload" id="fileToUpload"
-    <?php
-    if ($DescriptionERROR) {
-        print 'class="mistake"';
-    }
-    ?>
+                        <?php
+                        if ($DescriptionERROR) {
+                            print 'class="mistake"';
+                        }
+                        ?>
                                >
                         <img class ="YourImage" src="#" alt="your image" />
                     </section>
 
 
                     <!-- END IMAGEBOX -->
-    
+
                     <!-- ends User Form -->
                 </fieldset> 
 
@@ -566,73 +565,72 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                 <fieldset class="buttons">
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="<?php
-    if ($update) {
-        print "Update";
-    } else {
-        print "Submit";
-    }
-    ?>" tabindex="900" class="button"></fieldset> <!-- ends buttons -->
+                    if ($update) {
+                        print "Update";
+                    } else {
+                        print "Submit";
+                    }
+                        ?>" tabindex="900" class="button"></fieldset> <!-- ends buttons -->
             </fieldset> <!-- Ends Wrapper -->
         </form>
-                    <?php
-                       } // end body submit
-                       ?>
-    
-                    <?php
-       //EDIT IMAGES BOX
-            if ($update == true) {
-               
-                print "<section class = EditImagesWrapper>";
-                 print "<h2>Edit Pictures</h3>";
-                print "<section class = EditImages>";
-                
-                if ($handle = opendir($fldImages)) { 
-                    
-                    $count = 0;
-                    
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-                            
-                            
-                            
-                            $img = $fldImages . $entry;
-                            list($width, $height) = getimagesize($img);
-                            $ratio = $width / $height; // width/height
-                            if ($ratio > 1) {
-                                $width = 300;
-                                $height = 300 / $ratio;
-                            } else {
-                                $width = 300 * $ratio;
-                                $height = 300;
-                            }
-                            print "<div class ='ImageBox'>";
-                            print "<p>Image Name: ".$entry."</p>";
-                            print "<img class='ImageBox-image' id = '".$count."' src='" . $img . "' height=".$height." width=".$width." alt ='" . $pet[1] . "'>";
-                            
-                            print "<p class='ImageRename'>Rename</p>";
-                            print "<p class='ImageDelete'>Delete</p>";
-                            
-                            print "</div>";
-                            
-                            $count++;
-                            
-                            }
-                        
-                       
+        <?php
+    } // end body submit
+    ?>
+
+    <?php
+    //EDIT IMAGES BOX
+    if ($update == true) {
+
+
+
+        if ($handle = opendir($fldImages)) {
+            print "<section class = EditImagesWrapper>";
+            print "<h2>Edit Pictures</h3>";
+            print "<section class = EditImages>";
+            $count = 0;
+
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+
+
+
+                    $img = $fldImages . $entry;
+                    list($width, $height) = getimagesize($img);
+                    $ratio = $width / $height; // width/height
+                    if ($ratio > 1) {
+                        $width = 300;
+                        $height = 300 / $ratio;
+                    } else {
+                        $width = 300 * $ratio;
+                        $height = 300;
                     }
-                    closedir($handle);
+                    print "<div class ='ImageBox'>";
+                    print "<p>Image Name: " . $entry . "</p>";
+                    print "<img class='ImageBox-image' id = '" . $count . "' src='" . $img . "' height=" . $height . " width=" . $width . " alt ='" . $pet[1] . "'>";
+
+                    print "<p class='ImageRename'>Rename</p>";
+                    print "<p class='ImageDelete'>Delete</p>";
+
+                    print "</div>";
+
+                    $count++;
                 }
+            }
+            closedir($handle);
                 print "</section>";
-                print"</section>";
-            } ?>
+        print"</section>";
+        }
+    
+    }
+    ?>
 </article>
 
 
 
-    <?php
-    include "footer.php";
-    if ($debug)
-        print "<p>END OF PROCESSING</p>";
-    ?>
+<?php
+include "footer.php";
+if ($debug)
+    print "<p>END OF PROCESSING</p>";
+?>
 </body>
 </html>

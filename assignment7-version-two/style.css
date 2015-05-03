@@ -231,6 +231,23 @@ form {
     margin-top:30px;
 }
 
+#register article{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+#frmRegister{
+    width:80%;
+}
+
+@media screen and (max-width: 475px) {
+    #frmRegister{
+        width:100%;
+    }
+
+}
+
 /*need to clear any floats that may exist */
 
 fieldset{
@@ -409,7 +426,7 @@ textarea#AboutMe{
     border:0;
     background-color:#F0F0F0;
     font-family:"Century Gothic", sans-serif;
-    width: calc(100% - 4px);
+    width: calc(100% + 2em);
     border-radius:3px;
     overflow: auto;
     resize:both;
@@ -443,6 +460,15 @@ input#btnSubmit:hover{
 }
 
 /* style the errors in the form so they are visible */
+
+#errors {
+    display:flex;
+    justify-content:center;
+}
+
+#errors ol li{
+    margin:10px 0 10px 0; 
+}
 .mistake {
     color: #fff;
     background-color:#ff5555;
@@ -451,14 +477,17 @@ input#btnSubmit:hover{
 
 textarea#AboutMe.mistake{
     color: #fff;
-     background-color:#ff5555;
+    background-color:#ff5555;
 }
 
 textarea#txtDescription.mistake{
     color: #fff;
-     background-color:#ff5555;
+    background-color:#ff5555;
 }
 
+#login article:first-child{
+    margin-top:3em;
+}
 
 /* MAIL MESSAGE RESPONSE FORMATTING */
 div.message{
@@ -505,71 +534,6 @@ textarea#txtText{
     font-size:medium;
 }
 
-/*  TABLE SETTINGS */
-
-#memberlist h2 {
-    text-align:left;
-    font-size:1.5em;
-}
-
-table{
-
-    border-collapse: collapse;
-    width: 90%;
-    max-width: 1000px;
-    min-width: 720px;
-    color: #222;
-    margin:auto;
-
-}
-th {
-
-    padding: 0.2em;
-    padding-bottom:0.5em;
-    font-size:1.5em;
-    font-weight:normal;
-    color:#222;
-    background-color:#FFF;
-
-
-
-}
-
-td {
-    border-collapse: collapse;
-    padding: 10px;
-    text-align: center;
-
-}
-
-
-tr:nth-child(even) {
-    background-color: #FFF;
-
-}
-
-tr:nth-child(odd){
-    background-color: #DCF3D6;
-
-}
-
-tr:hover{
-    background-color:#7fbfd6;
-    cursor:pointer;
-}
-
-#tableheader:hover {
-    background-color: #FFF;
-    cursor: default;
-}
-
-table a:hover{
-    color:white;
-}
-
-td.fldDescription{
-
-}
 
 /* =========   ADD PETS    ==================== */
 #addpet article#main{
@@ -1036,6 +1000,91 @@ p.adopt-me:hover{
         width:100%;
     }
 }
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+USER PAGE AND TABLE SECTION
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+*/
+
+#user h3{
+    text-align:center;
+    margin:10px 0 5px 0;
+}
+
+#user h2{
+    text-align:center;
+    margin:30px;
+    font-size:20px;
+}
+#memberlist h2 {
+    text-align:left;
+    font-size:1.5em;
+}
+
+table{
+
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 720px;
+    color: #222;
+    margin:auto;
+
+}
+th {
+
+    padding: 0.2em;
+    padding-bottom:0.5em;
+    font-size:1.5em;
+    font-weight:normal;
+    color:#222;
+    background-color:#FFF;
+
+
+
+}
+
+td {
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+tr:nth-child(even) {
+    background-color: #FFF;
+
+}
+
+tr:nth-child(odd){
+    background-color: #DCF3D6;
+
+}
+
+tr:hover{
+    background-color:#7fbfd6;
+    cursor:pointer;
+}
+
+#tableheader:hover {
+    background-color: #FFF;
+    cursor: default;
+}
+
+table a:hover{
+    color:white;
+}
+
+td.fldDescription{
+
+}
+
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -1709,11 +1758,8 @@ header #account {
 }
 
 #frmLogin {
-    padding-top: 3em;
 }
-#frmRegister {
-    padding-top: 3em;
-}
+
 
 body {
     overflow-x: hidden;
@@ -1946,12 +1992,12 @@ body {
 }
 
 @media (max-width: 500px){
-  .message, .after-message {
-    width: 380px;
-    font-size: 13px;
-    left: calc(50% - 190px);
-  }
-  .message h3, .after-message h3 {
-    font-size: 18px;
-  }
+    .message, .after-message {
+        width: 380px;
+        font-size: 13px;
+        left: calc(50% - 190px);
+    }
+    .message h3, .after-message h3 {
+        font-size: 18px;
+    }
 }

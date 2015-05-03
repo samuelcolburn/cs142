@@ -149,7 +149,7 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Username can be no longer than 15 characters";
         $UsernameERROR = true;
     } elseif (!verifyAlphaNum2($Username)) {
-        $errorMsg[] = "Invalid Username";
+        $errorMsg[] = "Username can only contain letters and numbers";
         $UsernameERROR = true;
     } elseif (!empty($username_check_results)) {
         $errorMsg[] = 'That username is already in use. Please choose a different username.';

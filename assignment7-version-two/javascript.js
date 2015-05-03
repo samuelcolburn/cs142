@@ -120,18 +120,30 @@ $(document).ready(function() {
             type: 'GET',
             url: 'mailadoptmessage.php',
             data: {'petname': petname},
-            success: function(response) {
-                var userEmail = response;
-
+            dataType: 'json',
+            success: function(response) { 
+                document.getElementById("message-email").textContent=response.email;
             },
             error: function() {
-                alert("There was an error processing your request.");
+                document.getElementById("message-email").textContent="There was an error processing your request.";
             }
         });
 
     });
 
 
+    $(".adopt-me").click(function(event) {
+        event.stopPropagation();
+        $(".message").addClass("active");
+        
+    });
+    $(".message").click(function(event) {
+        event.stopPropagation();
+    });
+    $(".cancel").click(function() {
+        $(".message").removeClass("active");
+        $(".after-message").removeClass("active");
+    });
 
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

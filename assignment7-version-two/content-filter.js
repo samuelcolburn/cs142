@@ -57,17 +57,5 @@ $(document).ready(function() {
         }
     });
 
-    $(".adopt-me").click(function(event) {
-        event.stopPropagation();
-        $(".message").addClass("active");
-        
-    });
-    $(".message").click(function(event) {
-        event.stopPropagation();
-    });
-    $(".cancel").click(function() {
-        $(".message").removeClass("active");
-        $(".after-message").removeClass("active");
-    });
 
 });

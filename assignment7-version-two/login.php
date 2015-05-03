@@ -300,7 +300,7 @@ function delayer(){
                 <fieldset class="buttons">
                     <legend></legend>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" tabindex="900" class="button">
-                    <a id = "register-button" href="register.php">register</a>
+                    <a id = "register-button" href="register.php">Register</a>
                 </fieldset> <!-- ends buttons -->
                 
             </fieldset> <!-- Ends Wrapper -->

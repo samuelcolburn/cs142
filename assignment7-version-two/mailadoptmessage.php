@@ -1,4 +1,5 @@
 <?php
+
 session_start(session_id());
 if ($_SESSION["user"]) {
 //get the pet name from ajax
@@ -65,10 +66,13 @@ if ($_SESSION["user"]) {
     $from = "Burlington Animals <samuel.colburn@uvm.edu>";
     $subject = "Thank you for your Interest in " . $petname . "!";
     $mailed = sendMail($to, $cc, $bcc, $from, $subject, $messageA . $messageB . $messageC);
-    
-    if($mailed){
-        echo $user_email;
+
+    if ($mailed) {
+        $arr = array(
+            'email' => $user_email,
+        );
+        echo json_encode($arr); 
+        exit(); 
     }
 }
-
 ?>

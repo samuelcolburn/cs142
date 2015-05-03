@@ -21,70 +21,92 @@ if (isset($_GET["user"])) {
     // @@@@ SQL @@@
     //Select user from tblUsers with the given username
     $data = array($username);
-    $query = "SELECT fldUsername , fldPassword, fldEmail , fldDateJoined , fldPermissionLevel ,pmkUserId FROM tblUsers WHERE fldUsername = ?";
+    $query = "SELECT fldUsername , fldEmail , fldDateJoined , pmkUserId FROM tblUsers WHERE fldUsername = ?";
     //@@@ STORE  results
     $results = $thisDatabase->select($query, $data);
     $UserID = $results[0]["pmkUserId"];
     if ($debug) {
         print "<p>pmk=" . $UserID . "</p>";
         print "<p>query = " . $query . "</p>";
+        print "<p>data:</p>";
         print_r($data);
+         print "<p>results:</p>";
         print_r($results);
     }
     //@@@@ DISPLAY RESULTS @@@@
     // check if their username is the same as the person logged in, or if admin.
     // only display account information if its the user or the admin.
     if ($_SESSION["user"] == $username Or $_SESSION["admin"]) {
+
+        print "<section class = userinfo>";
         print "<h3> Account Information </h3>";
-        print "<table class = userinfo>";
+        print "<section>";
         foreach ($results as $row) {
             foreach ($row as $field => $value) {
-                if (!is_int($field)) {
-                    print "<tr>";
+                if (!is_int($field) && $field != "pmkUserId") {
+
                     $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
-                    print "<td>" . $field /*  comment out added spaces . "&emsp;&emsp;" */ . "</td>";
-                    print "<td>" . $value . "</td>";
-                    print"</tr>\n";
+
+                    print "<p class =' " . $field . " ' >";
+
+                    print "<span = field>";
+                    print $field;
+                    print "</span>";
+                    print "<span = value>" . $value;
+
+                    print "</span>";
+                    print"</p>";
                 }
             }
         }
+         print"</section>";
+            print"</section>";
     }
-    print"</table>";
+ 
+
+
     //@@@ Select information from tblProfile connected to the user @@@
     $data = array($UserID);
     $query = "SELECT fldFirstName, fldLastName , fldGender , fldAge , fldAboutMe  FROM tblProfile WHERE fnkUserId = ? ";
     //@@@ STORE  query results @@@
     $results = $thisDatabase->select($query, $data);
     // @@@@ DISPLAY PROFILE RESULTS @@@
-    print "<h3>Personal Profile</h3>";
+
     if ($debug) {
         print "<p>pmk=" . $UserID . "</p>";
         print "<p>query = " . $query . "</p>";
         print_r($data);
         print_r($results);
     }
-if(empty($results)){
-    print "<p>You haven't created a profile yet! Click the edit button below to create one.</p>";
-}
-else{
-     print "<table class = personalinfo>";
-    foreach ($results as $row) {
-        foreach ($row as $field => $value) {
-            if (!is_int($field)) {
-                print "<tr>";
-                $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
-                print "<td>" . $field . "</td>";
-                print "<td>" . $value . "</td>";
-                print"</tr>\n";
+    if (empty($results)) {
+        print "<p>You haven't created a profile yet! Click the edit button below to create one.</p>";
+    } else {
+        print "<section class = personalinfo>";
+        print "<h3>Personal Profile</h3>";
+           print"<section>";
+        foreach ($results as $row) {
+            foreach ($row as $field => $value) {
+                if (!is_int($field)) {
+
+                    $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
+
+                    print "<p class ='".$field."'>";
+
+                    print "<span = field>" . $field . "</span>";
+                    print "<span = value>" . $value . "</span>";
+                    print"</p>\n";
+                }
             }
         }
     }
-}
-     print"</table>";
+       print"</section>";
+    print"</section>";
     // print edit and delte buttons only if user or admin 
     if ($_SESSION["user"] == $username Or $_SESSION["admin"]) {
+        print "<section class = user-admin-options>";
         print"<p><a href = edituser.php?user=" . $username . ">Edit</a></p>";
         print"<p><a href = 'delete.php?id=" . $UserID . "&amp;table=tblUsers' >DELETE</a></p>";
+        print "</section>";
     }
 }
 if ($debug)

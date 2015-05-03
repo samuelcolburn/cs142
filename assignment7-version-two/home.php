@@ -5,7 +5,7 @@ include "top.php";
     <section id="home-intro">
         <h2>All a pet wants is a home and love,</h2>
         <h2>be their savior by adopting</h2>
-        <a id="pets-button" href="petlist.php"><h3>See the pets</h3></a>
+        <a id="pets-button" href="petlist.php"><h3>Adopt</h3></a>
         <ul>
             <li><a href="https://www.twitter.com" target="_blank"><img class="social" src="https://wkniffin.w3.uvm.edu/cs142/assignment5/after/assets/twitter.png" alt="twitter"></a></li>
             <li><a href="https://www.facebook.com" target="_blank"><img class="social" src="https://wkniffin.w3.uvm.edu/cs142/assignment5/after/assets/facebook.png" alt="facebook"></a></li>
