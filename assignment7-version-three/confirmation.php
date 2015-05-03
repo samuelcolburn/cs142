@@ -86,8 +86,8 @@ if (isset($_GET["q"])) {
         $to = $adminEmail;
         $cc = "";
         $bcc = "";
-        $from = "Assignment10 <".$adminEmail.";>";
-        $subject = "Assignment 10 User Approval:" . $email;
+        $from = "Burlington Animals <".$adminEmail.";>";
+        $subject = "Burlington Animals User Approval:" . $email;
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
         if ($debug) {
             print "<p>";
@@ -100,7 +100,7 @@ if (isset($_GET["q"])) {
         $to = $email;
         $cc = "";
         $bcc = "";
-        $from = "Assignment 10 <".$adminEmail.">";
+        $from = "Burlington Animals <".$adminEmail.">";
         $subject = "Your Registration has been Confirmed";
         $message = "<p>Thank you for taking the time to confirm your registration. Your membership will be reviewed by our site administrator for approval. You will be notified when your account is approved. If you'd like see our special offer on powdered donuts, please look under your seat.</p>";
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);

@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `tblUsers` (
 `fldPassword` varchar(15) DEFAULT NULL, 
 `fldDateJoined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
 `fldPermissionLevel` tinyint(5) NOT NULL DEFAULT '0', 
-`fldPostCount` int(10) NOT NULL DEFAULT '0', 
 PRIMARY KEY (`pmkUserId`) 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
  
@@ -24,8 +23,8 @@ PRIMARY KEY (`pmkUserId`)
   `fldFirstName` varchar(65) DEFAULT NULL,
   `fldLastName` varchar(15) DEFAULT NULL,
   `fldAboutMe` varchar(200) DEFAULT NULL,
-  `fldProfilePicture` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fldSignature` tinyint(1) NOT NULL DEFAULT '0',
+ `fldAge` varchar(200) DEFAULT NULL,
+ `fldGender` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`fnkUserId`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
   
@@ -73,5 +72,22 @@ PRIMARY KEY (`pmkUserId`)
   `fldDateSubmitted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
      PRIMARY KEY (`fnkProductID` , `fnkUserID`)
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+@@@@@@@@@  TABLE SHELTER INFO @@@@@@@@@@@
+   
+    CREATE TABLE IF NOT EXISTS `tblShelterInfo` (
+`pmkShelterID` int(11) NOT NULL AUTO_INCREMENT, 
+  `fldShelterName` varchar(65) DEFAULT NULL,
+   `fldPhoneNumber` varchar(65) DEFAULT NULL,
+  `fldStreetAdress` varchar(65) DEFAULT NULL,
+   `fldCity` varchar(65) DEFAULT NULL,
+  `fldState` varchar(65) DEFAULT NULL,
+  `fldCountry` varchar(65) DEFAULT NULL,
+  `fldZipCode` varchar(65) DEFAULT NULL,
+     PRIMARY KEY (`pmkShelterID`)
+  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 */
+
 ?>

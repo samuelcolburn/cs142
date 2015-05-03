@@ -412,7 +412,7 @@ fieldset.textarea legend{
     display:block;
 }
 
-textarea#AboutMe{
+textarea#txtAboutMe{
     margin-top: 0.5em;
     border:0;
     background-color:#F0F0F0;
@@ -686,7 +686,7 @@ INDIVIDUAL PET SECTION
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
-#pet article {
+#pet main {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -703,7 +703,7 @@ INDIVIDUAL PET SECTION
     font-size: 45px;
 }
 
-#pet main{
+#pet .petinfo{
     border-radius: 10px;
     margin: 0 auto;
     display: flex;
@@ -711,7 +711,7 @@ INDIVIDUAL PET SECTION
     width:100%;
     align-items:center;
 }
-#pet main section {
+#pet .petinfo section {
     display: flex;
     justify-content: space-around;
     flex-direction:column;
@@ -739,7 +739,7 @@ INDIVIDUAL PET SECTION
 
 }
 
-#pet main ol{
+#pet .petinfo ol{
     list-style-type: none;
     float: left;
     margin: 10px;
@@ -755,7 +755,7 @@ INDIVIDUAL PET SECTION
     margin: 0 0 20px 20px;
 }
 
-#pet main ol li{
+#pet .petinfo ol li{
     font-weight: normal;
     list-style: none;
     padding-top: 10px;
@@ -1869,7 +1869,7 @@ body {
     color: #0C0F63;
 }
 
-#petlist {
+#petgrid {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1883,7 +1883,7 @@ body {
     justify-content: center;
 }
 
-#petlist .dog, #petlist .cat {
+#petgrid .dog, #petgrid .cat {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1905,18 +1905,18 @@ body {
     transition: background-color 0.3s;
     justify-content: center;
 }
-#petlist .dog:hover, #petlist .cat:hover {
+#petgrid .dog:hover, #petgrid .cat:hover {
     background-color: #d3e3e9;
 }
-#petlist section img {
+#petgrid section img {
     padding: 1em;
 }
-#petlist .Name {
+#petgrid .Name {
     font-size: 20px;
     letter-spacing: 1px;
     padding: 0.2em;
 }
-#petlist .Age {
+#petgrid .Age {
     font-size: 15px;
     padding-bottom: 0.5em;
     order: 3;

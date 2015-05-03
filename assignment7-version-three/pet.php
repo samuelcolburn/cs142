@@ -1,6 +1,7 @@
 <?php
 //this is a  page to display a product.
 include "top.php";
+print "<main id=main>";
 $debug = false;
 if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
     $debug = true;
@@ -35,7 +36,7 @@ if (isset($_GET["id"])) {
         print_r($results);
     }
 //basic tags
-    print "<article id=main>";
+    
 // print edit and delete buttons only if user or admin 
     include "adminoptions.php";
     if ($debug) {
@@ -89,7 +90,7 @@ if (isset($_GET["id"])) {
         //create pet page
         //title of the page is the name of the pet
         print "<h2 id='pet-name'>" . $pet[1] . "</h2>";
-        print ' <main class = petinfo >';
+        print ' <article class = petinfo >';
         //Images and facts column
         print "<section>";
         print '<div id="owl-demo" class="owl-carousel owl-theme">';
@@ -160,7 +161,7 @@ if (isset($_GET["id"])) {
         //ADOPTION BUTTON
         //make each pet section clickable, with class as their species
         print ' <p class ="adopt-me">Adopt Me!</p>';
-        print "</main>\n";
+        print "</article>\n";
     }
     //@@@@@@@@@@@@@@@ ADOPT ME POPOUT
     //  When the adopt button is clicked, this window pops out to the user
@@ -224,7 +225,7 @@ if (isset($_GET["id"])) {
             print "<p class = 'CommentInfo'>";
             //username span
             print "<span class='Username'>\n";
-            print "<a href = user.php?id=" . $comment[3] . ">" . $comment[1] . "</a></span>";
+            print "<a href = 'user.php?id=" . $comment[3] . "'>" . $comment[1] . "</a></span>";
             //date posted span
             print "<span class='Date'>\n";
             print "Posted: " . $comment[2] . "</span>";
@@ -245,12 +246,12 @@ if (isset($_GET["id"])) {
     }
     print "</section>";
 } else {
-    print "<p>Sorry, that product cannot be found.</p>";
+    print "<p>Sorry, that pet cannot be found.</p>";
 }
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
-</article>
+</main>
 
 <?php
 //@@ FOOTER @@

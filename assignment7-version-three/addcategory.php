@@ -302,6 +302,7 @@ if (isset($_POST["btnSubmit"])) {
     } // end body submit
 }
 else{
+    print "<article id='main'>";
     print"<h2>ACCESS DENIED</h2>";
 }
     ?>

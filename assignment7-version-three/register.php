@@ -427,7 +427,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                   <section class ="SmallFormItems">
                     <section class="radio"
                               >   <!-- START gender radio -->
-                        <legend>Gender</legend>
+                        <p>Gender</p>
                         <label  <?php
     if ($genderERROR)
         print 'class="mistake"';
@@ -482,7 +482,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked w
                   </section>
                     <fieldset class="textarea">
                     <label id ="AboutMe"></label>
-                    <textarea id="AboutMe" name="AboutMe" placeholder="About Me" rows=5 maxlength= <?php
+                    <textarea id="txtAboutMe" name="AboutMe" placeholder="About Me" rows=5 maxlength= <?php
     print "'$ABOUTME_MAX_LENGTH'";
     if ($AboutMeERROR) {
         print 'class = "mistake"';

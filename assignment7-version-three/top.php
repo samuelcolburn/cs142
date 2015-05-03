@@ -3,8 +3,8 @@
     <head>
         <title>Adopt a Pet</title>
         <meta charset="utf-8">
-        <meta name="author" content="Sam Colburn">
-        <meta name="description" content="Adopt a Pet">
+        <meta name="author" content="Samuel Colburn , William Kniffin">
+        <meta name="description" content="Adopt a Pet, save a life.">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

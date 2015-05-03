@@ -23,7 +23,8 @@
                  <li><a href="home.php">Home Page</a></li>
                  <li><a href="specs.pdf">Spec Doc</a></li>
                 <li><a href="styleoverview.pdf">Style Summary</a></li>
-                <li><a href="narrative.php">Usability Testing</a></li>
+                <li><a href="narrative/round1/round1narrative.php">Usability Testing Round 1</a></li>
+                 <li><a href="narrative/round2/round2narrative.php">Usability Testing Round 2</a></li>
             </ul>
             <h2>Note:</h2>
             <p>See style summary for validation exceptions.</p>

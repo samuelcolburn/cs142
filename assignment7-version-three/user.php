@@ -1,6 +1,7 @@
 <?php
 //this is a  page to display a user's profile.
 include "top.php";
+print "<article id=main>";
 $debug = false;
 if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
     $debug = true;
@@ -12,7 +13,7 @@ if (isset($_GET["user"])) {
     //sanitize username
     $username = htmlentities($_GET["user"], ENT_QUOTES, "UTF-8");
     //basic tags
-    print "<article id=main>";
+    
     //title of the page is the name of the user
     print "<h2>" . $username . "</h2>";
     if ($debug) {
@@ -45,10 +46,10 @@ if (isset($_GET["user"])) {
                 if (!is_int($field) && $field != "pmkUserId") {
                     $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
                     print "<p class =' " . $field . " ' >";
-                    print "<span = field>";
+                    print '<span class="field" >';
                     print $field;
                     print "</span>";
-                    print "<span = value>" . $value;
+                    print '<span class="value" >'. $value;
                     print "</span>";
                     print"</p>";
                 }
@@ -81,8 +82,8 @@ if (isset($_GET["user"])) {
                 if (!is_int($field)) {
                     $field = preg_replace(' /(?<! )(?<!^)(?<![A-Z])[A-Z]/', ' $0', substr($field, 3));
                     print "<p class ='".$field."'>";
-                    print "<span = field>" . $field . "</span>";
-                    print "<span = value>" . $value . "</span>";
+                    print "<span class='field' >" . $field . "</span>";
+                    print "<span class='value' >" . $value . "</span>";
                     print"</p>\n";
                 }
             }

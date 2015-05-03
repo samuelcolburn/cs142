@@ -45,7 +45,7 @@ if ($_SESSION["admin"]) {
     print "<p class = 'edit'><a href = 'addpet.php'>Add</a></p>";
     print "</div>";
 }
-print "<section id = petlist>";
+print "<section id = petgrid>";
 // @@@@@@@@@ PET SECTIONS LOOP
 
 foreach ($results as $pet) {

@@ -442,7 +442,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
                         <label  class="required">
-                            <input type="text" id="txtProductName" name="txtBreed"
+                            <input type="text" id="txtBreed" name="txtBreed"
                                    value="<?php print $Breed; ?>"
                                    tabindex="100" maxlength="50" placeholder="Breed"
                                    <?php if ($BreedERROR) print 'class="mistake"'; ?>
@@ -503,7 +503,7 @@ if (isset($_POST["btnSubmit"])) {
 
                         <section class="radio"
                                  >   <!-- START gender radio -->
-                            <legend>Gender</legend>
+                            <p>Gender</p>
                             <label  <?php
                     if ($genderERROR)
                         print 'class="mistake"';
@@ -528,7 +528,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-                        </section>
+
                     </fieldset>
                     <!-- START IMAGEBOX -->
                     <section class="image">
@@ -572,7 +572,7 @@ if (isset($_POST["btnSubmit"])) {
     if ($update == true) {
         if ($handle = opendir($fldImages)) {
             print "<section class = EditImagesWrapper>";
-            print "<h2>Edit Pictures</h3>";
+            print "<h2>Edit Pictures</h2>";
             print "<section class = EditImages>";
             $count = 0;
             while (false !== ($entry = readdir($handle))) {

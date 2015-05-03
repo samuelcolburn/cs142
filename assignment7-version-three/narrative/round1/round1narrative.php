@@ -58,7 +58,7 @@
                         <ul>
                             <li><a href="https://www.youtube.com/watch?v=tg8oKfXmGh4">Test 1</a></li>
                             <li><a href="https://www.youtube.com/watch?v=lr69d1PyQME&feature=youtu.be">Test 2</a>(Note, first half of video got corrupted)</li>
-                            <li><a href="">Test 3</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=vddzryApTio">Test 3</a></li>
                         </ul>
                     
 

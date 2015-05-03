@@ -11,7 +11,7 @@ include "top.php";
             <li><a href="https://www.facebook.com" target="_blank"><img class="social" src="https://wkniffin.w3.uvm.edu/cs142/assignment5/after/assets/facebook.png" alt="facebook"></a></li>
             <li><a href="https://www.youtube.com" target="_blank"><img class="social" src="https://wkniffin.w3.uvm.edu/cs142/assignment5/after/assets/youtube.png" alt="youtube"></a></li>
         </ul>
-        <img id="pet-pic" src="pics/intro-bground.jpg">
+        <img id="pet-pic" src="pics/intro-bground.jpg" alt="background">
     </section>
 
     <section id="home-mission">
@@ -93,12 +93,12 @@ include "top.php";
         <h2>Our partners</h2>
         <article>
             <div>
-                <a href="https://www.aspca.org/" target="_blank"><img src="pics/aspca.jpeg"></a>
-                <a href="http://www.peta.org/" target="_blank"><img src="pics/peta.png"></a>
+                <a href="https://www.aspca.org/" target="_blank"><img src="pics/aspca.jpeg" alt="aspca"></a>
+                <a href="http://www.peta.org/" target="_blank"><img src="pics/peta.png"  alt="peta"></a>
             </div>
             <div>
-                <a href="http://www.akc.org/" target="_blank"><img src="pics/akc.jpg"></a>
-                <a href="http://www.humanesociety.org/" target="_blank"><img src="pics/humane.jpg"></a>
+                <a href="http://www.akc.org/" target="_blank"><img src="pics/akc.jpg" alt="=akc"></a>
+                <a href="http://www.humanesociety.org/" target="_blank"><img src="pics/humane.jpg" alt="humane society"></a>
             </div>
         </article>
     </section>
