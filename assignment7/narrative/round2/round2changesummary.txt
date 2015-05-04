@@ -1,0 +1,17 @@
+Round 2 changes:
+-style admin page
+-add admin page link
+-add contact info
+
+
+
+
+
+
+
+
+
+
+MAYBE:
+-login on adopt popup go back to pet page
+-

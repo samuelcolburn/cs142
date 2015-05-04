@@ -138,7 +138,7 @@ if (isset($_GET["id"])) {
         //gender
         print "<li class = '" . $key[4] . "'>";
         print "<span>" . $key[4] . "</span>";
-        if ($pet[4]) {
+        if ($pet[4] == 1) {
             print "Male";
         } else {
             print "Female";

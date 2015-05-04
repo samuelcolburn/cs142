@@ -1,0 +1,67 @@
+https://www.youtube.com/watch?v=tg8oKfXmGh4
+
+Usage:
+-way too fucking much
+-min 6 hours+
+-working 12+
+-firefox
+
+Homepage:
+-cute bulldog
+-organized, good colors
+-nav confusion, give a home not a link
+-purpose to adopt
+-hard to find a link to adopt
+
+
+1. 
+-register confusion
+-about me text box validation broken
+-password broken?
+-Header broken
+
+-errors list not styled
+
+-approved page unstyled
+
+-shows pw on account page
+-and permission level
+
+2. 
+-comments good
+
+3.
+-adopt: email doesn't show notification that email has been sent
+-email: want to write them an email at best, or at least notification
+
+4.
+-edit/delete buttons not styled (account page)
+-above them, or in line with the table
+-
+-trying to click on the table rows to edit (due to hover)
+-logout broken (undefined) - on account page
+
+	Note: history javascript breaks on 		firefox with cookie clear
+
+5.
+-Wont allow blank areas in update for pet
+-
+
+6.
+-Easy
+-Show weight/size on the main petlist page
+
+
+7.
+- Featured pets not on the pets
+- on front page easy to find
+
+8.
+- Easy to find.
+
+Finals:
+- Logo maybe not needed
+- Remove main nav?
+- Footer cat confusing
+- 
+

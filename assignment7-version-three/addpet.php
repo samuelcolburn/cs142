@@ -161,6 +161,8 @@ if (isset($_POST["btnSubmit"])) {
     $target_filename = basename($_FILES["fileToUpload"]["name"]);
     $target_file = $target_dir . $target_filename;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+    
+    
     //--- CATEGORY SANITIZE ---
     $Category = htmlentities($_POST["lstCategory"], ENT_QUOTES, "UTF-8");
     if ($debug) {
@@ -232,14 +234,41 @@ if (isset($_POST["btnSubmit"])) {
     if ($debug) {
         print $target_file;
     }
+    //checks parameters
+    try{
+     if (
+        !isset($_FILES['upfile']['error']) ||
+        is_array($_FILES['upfile']['error'])
+    ) {
+        throw new RuntimeException('Invalid parameters.');
+    }
+    
+       // Check $_FILES['upfile']['error'] value.
+    switch ($_FILES['upfile']['error']) {
+        case UPLOAD_ERR_OK:
+            break;
+        case UPLOAD_ERR_NO_FILE:
+            throw new RuntimeException('No file sent.');
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            throw new RuntimeException('Exceeded filesize limit.');
+        default:
+            throw new RuntimeException('Unknown errors.');
+    }
+    
+  } catch (RuntimeException $e) {
+
+     $errorMsg[] = $e->getMessage();
+
+}
     if ($target_filename != "") {
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            echo "File is an  - " . $check["mime"] . ".";
             $ImageERROR = false;
         } else {
-            $errorMsg[] = "File is not an image.";
+            $errorMsg[] = "There was an error uploading this file.";
             $ImageERROR = true;
         }
         // Check if file already exists

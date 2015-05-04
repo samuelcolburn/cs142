@@ -169,8 +169,8 @@ if (isset($_GET["id"])) {
     print "<h3>Interested in having a best friend?</h3>";
     
     
-     /*  @@@@@@@ removed contact information, shows in email
-      * 
+    /* //@@@@@@@ removed contact information, shows in email
+      
     $Contactquery = "SELECT  `fldPhoneNumber` , `fldShelterName`,  `fldStreetAdress`, `fldCity`, `fldState`, `fldZipCode` FROM `tblShelterInfo` WHERE 1";
     $Contactresults = $thisDatabase->select($Contactquery);
     foreach ($Contactresults as $ContactInfo) {

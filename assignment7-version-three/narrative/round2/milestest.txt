@@ -1,0 +1,46 @@
+QUESTIONS:
+-please register an account
+-make changes to account
+-show me all the cats we have
+-pick a pet and adopt
+-login as admin and edit a pet
+-where are we located
+-add a species of pet as admin
+
+
+web usage:
+6+ hours
+
+First Impressions:
+-burlington animals
+-adoption
+-"happening"
+
+1.
+-found right away
+
+2.
+-totally obvious
+-account page update great
+
+
+3.
+-pets - > cats
+
+4.
+-edit account doesnt resfresh the ID if error check throws
+
+5.
+- know burlington
+- can't find contact / location information
+-tried logo
+-tried bottom
+-facebook last try
+
+6.
+-admin page not styled
+-product name , pet type ( species)
+
+Final thoughts:
+-should sell peanut butter
+-

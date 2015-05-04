@@ -7,10 +7,10 @@ if (isset($_GET["debug"])) { // ONLY do this in a classroom environment
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
 print "<article id=main>\n";
-print "<h2>Product Categories</h2>\n";
+print "<h2>Pet Categories</h2>\n";
 // if the admin is viewing the product list, have 'add a product' link at the top of the page
 if ($_SESSION["admin"]) {
-    print "<p><a href = 'addcategory.php'>Add a Product Category</a></p>";
+    print "<p><a href = 'addcategory.php'>Add a Pet Species</a></p>";
 $yourURL = $domain . $phpSelf;
 //Get all product data to be displayed
 $query = "SELECT fldCategoryName as 'Name' , pmkCategoryID as 'Category ID' FROM tblCategories ORDER BY fldCategoryName ";
